@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xray.amazonaws.com/schemas/trace",
+  "title": "AWS X-Ray Trace",
+  "description": "Schema representing an AWS X-Ray trace resource for distributed tracing.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The unique identifier for the request trace.",
+      "pattern": "^1-[0-9a-f]{8}-[0-9a-f]{24}$"
+    },
+    "Duration": {
+      "type": "number",
+      "description": "The length of time in seconds between the start and end of the trace."
+    },
+    "LimitExceeded": {
+      "type": "boolean",
+      "description": "Whether the trace exceeded the segment document size limit."
+    },
+    "Segments": {
+      "type": "array",
+      "description": "The segment documents associated with the trace.",
+      "items": {
+        "$ref": "#/$defs/Segment"
+      }
+    }
+  },
+  "$defs": {
+    "Segment": {
+      "type": "object",
+      "description": "A segment document representing a unit of work in the trace.",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The segment ID.",
+          "pattern": "^[0-9a-f]{16}$"
+        },
+        "Document": {
+          "type": "string",
+          "description": "The segment document as a JSON string."
+        }
+      }
+    },
+    "SegmentDocument": {
+      "type": "object",
+      "description": "The parsed content of a segment document.",
+      "required": [
+        "name",
+        "id",
+        "trace_id",
+        "start_time",
+        "end_time"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The logical name of the service."
+        },
+        "id": {
+          "type": "string",
+          "description": "A 64-bit identifier for the segment."
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "A unique identifier that connects segments for a single request."
+        },
+        "start_time": {
+          "type": "number",
+          "description": "The time the segment was created, in epoch seconds."
+        },
+        "end_time": {
+          "type": "number",
+          "description": "The time the segment was closed, in epoch seconds."
+        },
+        "in_progress": {
+          "type": "boolean",
+          "description": "Whether the segment is in progress."
+        },
+        "http": {
+          "type": "object",
+          "description": "HTTP request and response information.",
+          "properties": {
+            "request": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "client_ip": {
+                  "type": "string"
+                }
+              }
+            },
+            "response": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer"
+                },
+                "content_length": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "fault": {
+          "type": "boolean",
+          "description": "Whether the segment recorded a fault (5xx error)."
+        },
+        "error": {
+          "type": "boolean",
+          "description": "Whether the segment recorded an error (4xx error)."
+        },
+        "annotations": {
+          "type": "object",
+          "description": "Key-value pairs for filtering traces.",
+          "additionalProperties": true
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Object with any keys and values for storing trace data.",
+          "additionalProperties": true
+        },
+        "subsegments": {
+          "type": "array",
+          "description": "Subsegments representing downstream calls.",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "Tag": {
+      "type": "object",
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "properties": {
+        "Key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "Value": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 256
+        }
+      }
+    }
+  }
+}

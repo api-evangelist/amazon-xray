@@ -1,0 +1,226 @@
+openapi: 3.1.0
+info:
+  title: Amazon X-Ray API
+  description: >-
+    AWS X-Ray is a distributed tracing service that helps developers analyze
+    and debug distributed applications. The API provides operations for
+    managing traces, segments, service maps, sampling rules, groups, and
+    insights for end-to-end request tracing.
+  version: '2016-04-12'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/xray/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+externalDocs:
+  description: AWS X-Ray API Reference
+  url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+servers:
+  - url: https://xray.{region}.amazonaws.com
+    description: AWS X-Ray regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS region
+        enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - eu-west-1
+          - eu-west-2
+          - eu-central-1
+          - ap-northeast-1
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-south-1
+          - ca-central-1
+paths:
+  /Traces:
+    post:
+      operationId: PutTraceSegments
+      summary: Upload trace segments
+      description: Uploads segment documents to AWS X-Ray.
+      tags:
+        - Traces
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - TraceSegmentDocuments
+              properties:
+                TraceSegmentDocuments:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of segment documents as JSON strings.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  UnprocessedTraceSegments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: string
+                        ErrorCode:
+                          type: string
+                        Message:
+                          type: string
+  /TraceSummaries:
+    post:
+      operationId: GetTraceSummaries
+      summary: Get trace summaries
+      description: >-
+        Retrieves IDs and annotations for traces available for a specified
+        time frame using an optional filter.
+      tags:
+        - Traces
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - StartTime
+                - EndTime
+              properties:
+                StartTime:
+                  type: string
+                  format: date-time
+                EndTime:
+                  type: string
+                  format: date-time
+                FilterExpression:
+                  type: string
+                Sampling:
+                  type: boolean
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response.
+  /ServiceGraph:
+    post:
+      operationId: GetServiceGraph
+      summary: Get the service graph
+      description: Retrieves a document that describes services that process incoming requests.
+      tags:
+        - Service Graph
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - StartTime
+                - EndTime
+              properties:
+                StartTime:
+                  type: string
+                  format: date-time
+                EndTime:
+                  type: string
+                  format: date-time
+                GroupName:
+                  type: string
+                GroupARN:
+                  type: string
+      responses:
+        '200':
+          description: Successful response.
+  /SamplingRules:
+    post:
+      operationId: GetSamplingRules
+      summary: Get sampling rules
+      description: Retrieves all sampling rules.
+      tags:
+        - Sampling
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response.
+  /Groups:
+    post:
+      operationId: GetGroups
+      summary: Get groups
+      description: Retrieves all active group details.
+      tags:
+        - Groups
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response.
+components:
+  schemas:
+    Trace:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The unique identifier for the trace.
+        Duration:
+          type: number
+          description: The length of time in seconds.
+        LimitExceeded:
+          type: boolean
+        Segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Segment'
+    Segment:
+      type: object
+      properties:
+        Id:
+          type: string
+        Document:
+          type: string
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+      required:
+        - Key
+        - Value
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+security:
+  - aws_sig_v4: []

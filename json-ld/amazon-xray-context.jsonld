@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "xray": "https://docs.aws.amazon.com/xray/latest/api/",
+    "aws": "https://aws.amazon.com/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "identifier": "schema:identifier",
+    "dateCreated": "schema:dateCreated",
+    "dateModified": "schema:dateModified",
+    "status": "schema:status",
+    "provider": {
+      "@id": "schema:provider",
+      "@type": "schema:Organization"
+    },
+    "Trace": {
+      "@id": "xray:API_GetTraceSummaries.html",
+      "@context": {
+        "Id": "schema:identifier",
+        "Duration": "schema:duration",
+        "Segments": "xray:Segments",
+        "LimitExceeded": "xray:LimitExceeded"
+      }
+    },
+    "Segment": {
+      "@id": "xray:API_PutTraceSegments.html",
+      "@context": {
+        "Id": "schema:identifier",
+        "name": "schema:name",
+        "start_time": "schema:startDate",
+        "end_time": "schema:endDate",
+        "http": "xray:http",
+        "fault": "xray:fault",
+        "error": "xray:error",
+        "annotations": "xray:annotations",
+        "metadata": "xray:metadata"
+      }
+    },
+    "SamplingRule": {
+      "@id": "xray:API_CreateSamplingRule.html",
+      "@context": {
+        "RuleName": "schema:name",
+        "RuleARN": "schema:identifier",
+        "Priority": "xray:Priority",
+        "FixedRate": "xray:FixedRate",
+        "ReservoirSize": "xray:ReservoirSize",
+        "ServiceName": "schema:name",
+        "ServiceType": "xray:ServiceType",
+        "Host": "schema:url"
+      }
+    },
+    "Group": {
+      "@id": "xray:API_CreateGroup.html",
+      "@context": {
+        "GroupName": "schema:name",
+        "GroupARN": "schema:identifier",
+        "FilterExpression": "xray:FilterExpression"
+      }
+    },
+    "Tag": {
+      "@id": "xray:Tag",
+      "@context": {
+        "Key": "schema:name",
+        "Value": "schema:value"
+      }
+    }
+  }
+}
