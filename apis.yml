@@ -1,4 +1,4 @@
-name: Amazon X-Ray API
+name: Amazon X-Ray
 description: AWS X-Ray is a distributed tracing service that helps developers analyze and debug production applications, providing end-to-end visibility into requests as they travel through the application.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/xray/
