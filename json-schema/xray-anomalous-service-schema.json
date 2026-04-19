@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "ServiceId": {
+      "$ref": "#/components/schemas/ServiceId"
+    }
+  },
+  "description": "The service within the service graph that has anomalously high fault rates. ",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AnomalousService",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-anomalous-service-schema.json"
+}

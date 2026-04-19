@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 1011,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AmazonResourceName",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-amazon-resource-name-schema.json",
+  "description": "AmazonResourceName schema from Amazon X-Ray API"
+}

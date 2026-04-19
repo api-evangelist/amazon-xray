@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingStrategyName"
+        },
+        {
+          "description": "The name of a sampling rule."
+        }
+      ]
+    },
+    "Value": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "The value of a sampling rule."
+        }
+      ]
+    }
+  },
+  "description": "The name and value of a sampling rule to apply to a trace summary.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingStrategy",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-strategy-structure.json"
+}

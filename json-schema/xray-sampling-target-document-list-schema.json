@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/SamplingTargetDocument"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SamplingTargetDocumentList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-sampling-target-document-list-schema.json",
+  "description": "SamplingTargetDocumentList schema from Amazon X-Ray API"
+}

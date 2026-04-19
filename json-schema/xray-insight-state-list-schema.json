@@ -1,0 +1,12 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/InsightState"
+  },
+  "minItems": 0,
+  "maxItems": 1,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsightStateList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-insight-state-list-schema.json",
+  "description": "InsightStateList schema from Amazon X-Ray API"
+}

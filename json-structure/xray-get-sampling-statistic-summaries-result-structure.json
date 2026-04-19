@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingStatisticSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingStatisticSummaryList"
+        },
+        {
+          "description": "Information about the number of requests instrumented for each sampling rule."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetSamplingStatisticSummariesResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-sampling-statistic-summaries-result-structure.json",
+  "description": "GetSamplingStatisticSummariesResult schema from Amazon X-Ray API"
+}

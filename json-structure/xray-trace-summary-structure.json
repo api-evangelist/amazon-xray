@@ -1,0 +1,209 @@
+{
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceId"
+        },
+        {
+          "description": "The unique identifier for the request that generated the trace's segments and subsegments."
+        }
+      ]
+    },
+    "Duration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "The length of time in seconds between the start time of the root segment and the end time of the last segment that completed."
+        }
+      ]
+    },
+    "ResponseTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "The length of time in seconds between the start and end times of the root segment. If the service performs work asynchronously, the response time measures the time before the response is sent to the user, while the duration measures the amount of time before the last traced activity completes."
+        }
+      ]
+    },
+    "HasFault": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "The root segment document has a 500 series error."
+        }
+      ]
+    },
+    "HasError": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "The root segment document has a 400 series error."
+        }
+      ]
+    },
+    "HasThrottle": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "One or more of the segment documents has a 429 throttling error."
+        }
+      ]
+    },
+    "IsPartial": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "One or more of the segment documents is in progress."
+        }
+      ]
+    },
+    "Http": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Http"
+        },
+        {
+          "description": "Information about the HTTP request served by the trace."
+        }
+      ]
+    },
+    "Annotations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Annotations"
+        },
+        {
+          "description": "Annotations from the trace's segment documents."
+        }
+      ]
+    },
+    "Users": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceUsers"
+        },
+        {
+          "description": "Users from the trace's segment documents."
+        }
+      ]
+    },
+    "ServiceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceIds"
+        },
+        {
+          "description": "Service IDs from the trace's segment documents."
+        }
+      ]
+    },
+    "ResourceARNs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceResourceARNs"
+        },
+        {
+          "description": "A list of resource ARNs for any resource corresponding to the trace segments."
+        }
+      ]
+    },
+    "InstanceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceInstanceIds"
+        },
+        {
+          "description": "A list of EC2 instance IDs for any instance corresponding to the trace segments."
+        }
+      ]
+    },
+    "AvailabilityZones": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceAvailabilityZones"
+        },
+        {
+          "description": "A list of Availability Zones for any zone corresponding to the trace segments."
+        }
+      ]
+    },
+    "EntryPoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceId"
+        },
+        {
+          "description": "The root of a trace."
+        }
+      ]
+    },
+    "FaultRootCauses": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FaultRootCauses"
+        },
+        {
+          "description": "A collection of FaultRootCause structures corresponding to the trace segments."
+        }
+      ]
+    },
+    "ErrorRootCauses": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ErrorRootCauses"
+        },
+        {
+          "description": "A collection of ErrorRootCause structures corresponding to the trace segments."
+        }
+      ]
+    },
+    "ResponseTimeRootCauses": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResponseTimeRootCauses"
+        },
+        {
+          "description": "A collection of ResponseTimeRootCause structures corresponding to the trace segments."
+        }
+      ]
+    },
+    "Revision": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The revision number of a trace."
+        }
+      ]
+    },
+    "MatchedEventTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The matched time stamp of a defined event."
+        }
+      ]
+    }
+  },
+  "description": "Metadata generated from the segment documents in a trace.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TraceSummary",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-trace-summary-structure.json"
+}

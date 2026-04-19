@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "PolicyRevisionId",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-policy-revision-id-structure.json",
+  "description": "PolicyRevisionId schema from Amazon X-Ray API"
+}

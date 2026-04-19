@@ -1,0 +1,10 @@
+{
+  "type": "number",
+  "format": "double",
+  "minimum": 0,
+  "maximum": 1,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "FixedRate",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-fixed-rate-structure.json",
+  "description": "FixedRate schema from Amazon X-Ray API"
+}

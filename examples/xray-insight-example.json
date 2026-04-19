@@ -1,0 +1,14 @@
+{
+  "InsightId": "trace-abc123def456",
+  "GroupARN": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "GroupName": "Example Service",
+  "RootCauseServiceId": "trace-abc123def456",
+  "Categories": "example-value",
+  "State": "example-value",
+  "StartTime": "example-value",
+  "EndTime": "example-value",
+  "Summary": "example-value",
+  "ClientRequestImpactStatistics": "example-value",
+  "RootCauseServiceRequestImpactStatistics": "example-value",
+  "TopAnomalousServices": "example-value"
+}

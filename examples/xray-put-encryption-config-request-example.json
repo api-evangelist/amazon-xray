@@ -1,0 +1,4 @@
+{
+  "KeyId": "trace-abc123def456",
+  "Type": "AWS::Lambda::Function"
+}

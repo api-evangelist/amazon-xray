@@ -1,0 +1,6 @@
+{
+  "InsightId": "trace-abc123def456",
+  "StartTime": "example-value",
+  "EndTime": "example-value",
+  "NextToken": "example-value"
+}

@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "required": [
+    "PolicyName",
+    "PolicyDocument"
+  ],
+  "name": "PutResourcePolicyRequest",
+  "properties": {
+    "PolicyName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyName"
+        },
+        {
+          "description": "The name of the resource policy. Must be unique within a specific Amazon Web Services account."
+        }
+      ]
+    },
+    "PolicyDocument": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyDocument"
+        },
+        {
+          "description": "The resource policy document, which can be up to 5kb in size."
+        }
+      ]
+    },
+    "PolicyRevisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyRevisionId"
+        },
+        {
+          "description": "<p>Specifies a specific policy revision, to ensure an atomic create operation. By default the resource policy is created if it does not exist, or updated with an incremented revision id. The revision id is unique to each policy in the account.</p> <p>If the policy revision id does not match the latest revision id, the operation will fail with an <code>InvalidPolicyRevisionIdException</code> exception. You can also provide a <code>PolicyRevisionId</code> of 0. In this case, the operation will fail with an <code>InvalidPolicyRevisionIdException</code> exception if a resource policy with the same name already exists. </p>"
+        }
+      ]
+    },
+    "BypassPolicyLockoutCheck": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "<p>A flag to indicate whether to bypass the resource policy lockout safety check.</p> <important> <p>Setting this value to true increases the risk that the policy becomes unmanageable. Do not set this value to true indiscriminately.</p> </important> <p>Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent <code>PutResourcePolicy</code> request.</p> <p>The default value is false.</p>"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-put-resource-policy-request-structure.json",
+  "description": "PutResourcePolicyRequest schema from Amazon X-Ray API"
+}

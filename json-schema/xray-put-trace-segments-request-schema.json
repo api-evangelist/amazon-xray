@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "TraceSegmentDocuments"
+  ],
+  "title": "PutTraceSegmentsRequest",
+  "properties": {
+    "TraceSegmentDocuments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceSegmentDocumentList"
+        },
+        {
+          "description": "A string containing a JSON document defining one or more segments or subsegments."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-put-trace-segments-request-schema.json",
+  "description": "PutTraceSegmentsRequest schema from Amazon X-Ray API"
+}

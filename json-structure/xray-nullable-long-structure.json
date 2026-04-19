@@ -1,0 +1,7 @@
+{
+  "type": "integer",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "NullableLong",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-nullable-long-structure.json",
+  "description": "NullableLong schema from Amazon X-Ray API"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 100,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResourcePolicyNextToken",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-resource-policy-next-token-schema.json",
+  "description": "ResourcePolicyNextToken schema from Amazon X-Ray API"
+}

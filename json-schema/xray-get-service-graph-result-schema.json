@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start of the time frame for which the graph was generated."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The end of the time frame for which the graph was generated."
+        }
+      ]
+    },
+    "Services": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceList"
+        },
+        {
+          "description": "The services that have processed a traced request during the specified time frame."
+        }
+      ]
+    },
+    "ContainsOldGroupVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "A flag indicating whether the group's filter expression has been consistent, or if the returned service graph may show traces from an older version of the group's filter expression."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetServiceGraphResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-service-graph-result-schema.json",
+  "description": "GetServiceGraphResult schema from Amazon X-Ray API"
+}

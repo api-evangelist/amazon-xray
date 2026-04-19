@@ -1,0 +1,7 @@
+{
+  "type": "datetime",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Timestamp",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-timestamp-structure.json",
+  "description": "Timestamp schema from Amazon X-Ray API"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "enum": [
+    "TraceId",
+    "Event"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TimeRangeType",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-time-range-type-structure.json",
+  "description": "TimeRangeType schema from Amazon X-Ray API"
+}

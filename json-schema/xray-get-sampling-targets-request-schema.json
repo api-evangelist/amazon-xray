@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "SamplingStatisticsDocuments"
+  ],
+  "title": "GetSamplingTargetsRequest",
+  "properties": {
+    "SamplingStatisticsDocuments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingStatisticsDocumentList"
+        },
+        {
+          "description": "Information about rules that the service is using to sample requests."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-sampling-targets-request-schema.json",
+  "description": "GetSamplingTargetsRequest schema from Amazon X-Ray API"
+}

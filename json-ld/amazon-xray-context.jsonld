@@ -1,69 +1,773 @@
 {
   "@context": {
-    "@vocab": "https://schema.org/",
-    "xray": "https://docs.aws.amazon.com/xray/latest/api/",
-    "aws": "https://aws.amazon.com/",
-    "name": "schema:name",
-    "description": "schema:description",
-    "url": "schema:url",
-    "identifier": "schema:identifier",
-    "dateCreated": "schema:dateCreated",
-    "dateModified": "schema:dateModified",
-    "status": "schema:status",
-    "provider": {
-      "@id": "schema:provider",
-      "@type": "schema:Organization"
+    "@version": 1.1,
+    "amz": "https://amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "BatchGetTracesResult": "amz:BatchGetTracesResult",
+    "Traces": {
+      "@id": "amz:Traces",
+      "@type": "xsd:string"
     },
-    "Trace": {
-      "@id": "xray:API_GetTraceSummaries.html",
-      "@context": {
-        "Id": "schema:identifier",
-        "Duration": "schema:duration",
-        "Segments": "xray:Segments",
-        "LimitExceeded": "xray:LimitExceeded"
-      }
+    "UnprocessedTraceIds": {
+      "@id": "amz:UnprocessedTraceIds",
+      "@type": "xsd:string"
     },
-    "Segment": {
-      "@id": "xray:API_PutTraceSegments.html",
-      "@context": {
-        "Id": "schema:identifier",
-        "name": "schema:name",
-        "start_time": "schema:startDate",
-        "end_time": "schema:endDate",
-        "http": "xray:http",
-        "fault": "xray:fault",
-        "error": "xray:error",
-        "annotations": "xray:annotations",
-        "metadata": "xray:metadata"
-      }
+    "NextToken": {
+      "@id": "amz:NextToken",
+      "@type": "xsd:string"
+    },
+    "CreateGroupResult": "amz:CreateGroupResult",
+    "Group": "amz:Group",
+    "Tag": "amz:Tag",
+    "Key": {
+      "@id": "amz:Key",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "amz:Value",
+      "@type": "xsd:string"
+    },
+    "CreateSamplingRuleResult": "amz:CreateSamplingRuleResult",
+    "SamplingRuleRecord": "amz:SamplingRuleRecord",
+    "AttributeMap": "amz:AttributeMap",
+    "DeleteGroupResult": "amz:DeleteGroupResult",
+    "DeleteResourcePolicyResult": "amz:DeleteResourcePolicyResult",
+    "DeleteSamplingRuleResult": "amz:DeleteSamplingRuleResult",
+    "GetEncryptionConfigResult": "amz:GetEncryptionConfigResult",
+    "EncryptionConfig": "amz:EncryptionConfig",
+    "GetGroupResult": "amz:GetGroupResult",
+    "GetGroupsResult": "amz:GetGroupsResult",
+    "Groups": {
+      "@id": "amz:Groups",
+      "@type": "xsd:string"
+    },
+    "GetInsightResult": "amz:GetInsightResult",
+    "Insight": "amz:Insight",
+    "GetInsightEventsResult": "amz:GetInsightEventsResult",
+    "InsightEvents": {
+      "@id": "amz:InsightEvents",
+      "@type": "xsd:string"
+    },
+    "GetInsightImpactGraphResult": "amz:GetInsightImpactGraphResult",
+    "InsightId": {
+      "@id": "amz:InsightId",
+      "@type": "xsd:string"
+    },
+    "StartTime": {
+      "@id": "amz:StartTime",
+      "@type": "xsd:string"
+    },
+    "EndTime": {
+      "@id": "amz:EndTime",
+      "@type": "xsd:string"
+    },
+    "ServiceGraphStartTime": {
+      "@id": "amz:ServiceGraphStartTime",
+      "@type": "xsd:string"
+    },
+    "ServiceGraphEndTime": {
+      "@id": "amz:ServiceGraphEndTime",
+      "@type": "xsd:string"
+    },
+    "Services": {
+      "@id": "amz:Services",
+      "@type": "xsd:string"
+    },
+    "GetInsightSummariesResult": "amz:GetInsightSummariesResult",
+    "InsightSummaries": {
+      "@id": "amz:InsightSummaries",
+      "@type": "xsd:string"
+    },
+    "GetSamplingRulesResult": "amz:GetSamplingRulesResult",
+    "SamplingRuleRecords": {
+      "@id": "amz:SamplingRuleRecords",
+      "@type": "xsd:string"
+    },
+    "GetSamplingStatisticSummariesResult": "amz:GetSamplingStatisticSummariesResult",
+    "SamplingStatisticSummaries": {
+      "@id": "amz:SamplingStatisticSummaries",
+      "@type": "xsd:string"
+    },
+    "GetSamplingTargetsResult": "amz:GetSamplingTargetsResult",
+    "SamplingTargetDocuments": {
+      "@id": "amz:SamplingTargetDocuments",
+      "@type": "xsd:string"
+    },
+    "LastRuleModification": {
+      "@id": "amz:LastRuleModification",
+      "@type": "xsd:string"
+    },
+    "UnprocessedStatistics": "amz:UnprocessedStatistics",
+    "SamplingStatisticsDocument": "amz:SamplingStatisticsDocument",
+    "RuleName": {
+      "@id": "amz:RuleName",
+      "@type": "xsd:string"
+    },
+    "ClientID": {
+      "@id": "amz:ClientID",
+      "@type": "xsd:string"
+    },
+    "Timestamp": {
+      "@id": "amz:Timestamp",
+      "@type": "xsd:string"
+    },
+    "RequestCount": {
+      "@id": "amz:RequestCount",
+      "@type": "xsd:string"
+    },
+    "SampledCount": {
+      "@id": "amz:SampledCount",
+      "@type": "xsd:string"
+    },
+    "BorrowCount": {
+      "@id": "amz:BorrowCount",
+      "@type": "xsd:string"
+    },
+    "GetServiceGraphResult": "amz:GetServiceGraphResult",
+    "ContainsOldGroupVersions": {
+      "@id": "amz:ContainsOldGroupVersions",
+      "@type": "xsd:string"
+    },
+    "GetTimeSeriesServiceStatisticsResult": "amz:GetTimeSeriesServiceStatisticsResult",
+    "TimeSeriesServiceStatistics": "amz:TimeSeriesServiceStatistics",
+    "GetTraceGraphResult": "amz:GetTraceGraphResult",
+    "GetTraceSummariesResult": "amz:GetTraceSummariesResult",
+    "TraceSummaries": {
+      "@id": "amz:TraceSummaries",
+      "@type": "xsd:string"
+    },
+    "ApproximateTime": {
+      "@id": "amz:ApproximateTime",
+      "@type": "xsd:string"
+    },
+    "TracesProcessedCount": {
+      "@id": "amz:TracesProcessedCount",
+      "@type": "xsd:string"
+    },
+    "ListResourcePoliciesResult": "amz:ListResourcePoliciesResult",
+    "ResourcePolicies": {
+      "@id": "amz:ResourcePolicies",
+      "@type": "xsd:string"
+    },
+    "ListTagsForResourceResponse": "amz:ListTagsForResourceResponse",
+    "Tags": {
+      "@id": "amz:Tags",
+      "@type": "xsd:string"
+    },
+    "PutEncryptionConfigResult": "amz:PutEncryptionConfigResult",
+    "PutResourcePolicyResult": "amz:PutResourcePolicyResult",
+    "ResourcePolicy": "amz:ResourcePolicy",
+    "PutTelemetryRecordsResult": "amz:PutTelemetryRecordsResult",
+    "TelemetryRecord": "amz:TelemetryRecord",
+    "SegmentsReceivedCount": {
+      "@id": "amz:SegmentsReceivedCount",
+      "@type": "xsd:string"
+    },
+    "SegmentsSentCount": {
+      "@id": "amz:SegmentsSentCount",
+      "@type": "xsd:string"
+    },
+    "SegmentsSpilloverCount": {
+      "@id": "amz:SegmentsSpilloverCount",
+      "@type": "xsd:string"
+    },
+    "SegmentsRejectedCount": {
+      "@id": "amz:SegmentsRejectedCount",
+      "@type": "xsd:string"
+    },
+    "BackendConnectionErrors": "amz:BackendConnectionErrors",
+    "PutTraceSegmentsResult": "amz:PutTraceSegmentsResult",
+    "UnprocessedTraceSegments": {
+      "@id": "amz:UnprocessedTraceSegments",
+      "@type": "xsd:string"
+    },
+    "TagResourceResponse": "amz:TagResourceResponse",
+    "UntagResourceResponse": "amz:UntagResourceResponse",
+    "UpdateGroupResult": "amz:UpdateGroupResult",
+    "UpdateSamplingRuleResult": "amz:UpdateSamplingRuleResult",
+    "Alias": "amz:Alias",
+    "Name": {
+      "@id": "amz:Name",
+      "@type": "xsd:string"
+    },
+    "Names": {
+      "@id": "amz:Names",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "amz:Type",
+      "@type": "xsd:string"
+    },
+    "AnnotationValue": {
+      "@id": "amz:AnnotationValue",
+      "@type": "xsd:string"
+    },
+    "NumberValue": {
+      "@id": "amz:NumberValue",
+      "@type": "xsd:string"
+    },
+    "BooleanValue": {
+      "@id": "amz:BooleanValue",
+      "@type": "xsd:string"
+    },
+    "StringValue": {
+      "@id": "amz:StringValue",
+      "@type": "xsd:string"
+    },
+    "Annotations": {
+      "@id": "amz:Annotations",
+      "@type": "xsd:string"
+    },
+    "ServiceId": {
+      "@id": "amz:ServiceId",
+      "@type": "xsd:string"
+    },
+    "AccountId": {
+      "@id": "amz:AccountId",
+      "@type": "xsd:string"
+    },
+    "AnomalousService": "amz:AnomalousService",
+    "AvailabilityZoneDetail": "amz:AvailabilityZoneDetail",
+    "TimeoutCount": {
+      "@id": "amz:TimeoutCount",
+      "@type": "xsd:string"
+    },
+    "ConnectionRefusedCount": {
+      "@id": "amz:ConnectionRefusedCount",
+      "@type": "xsd:string"
+    },
+    "HTTPCode4XXCount": {
+      "@id": "amz:HTTPCode4XXCount",
+      "@type": "xsd:string"
+    },
+    "HTTPCode5XXCount": {
+      "@id": "amz:HTTPCode5XXCount",
+      "@type": "xsd:string"
+    },
+    "UnknownHostCount": {
+      "@id": "amz:UnknownHostCount",
+      "@type": "xsd:string"
+    },
+    "OtherCount": {
+      "@id": "amz:OtherCount",
+      "@type": "xsd:string"
+    },
+    "BatchGetTracesRequest": "amz:BatchGetTracesRequest",
+    "TraceIds": {
+      "@id": "amz:TraceIds",
+      "@type": "xsd:string"
+    },
+    "InsightsConfiguration": {
+      "@id": "amz:InsightsConfiguration",
+      "@type": "xsd:string"
+    },
+    "InsightsEnabled": {
+      "@id": "amz:InsightsEnabled",
+      "@type": "xsd:string"
+    },
+    "NotificationsEnabled": {
+      "@id": "amz:NotificationsEnabled",
+      "@type": "xsd:string"
+    },
+    "CreateGroupRequest": "amz:CreateGroupRequest",
+    "GroupName": {
+      "@id": "amz:GroupName",
+      "@type": "xsd:string"
+    },
+    "FilterExpression": {
+      "@id": "amz:FilterExpression",
+      "@type": "xsd:string"
+    },
+    "GroupARN": {
+      "@id": "amz:GroupARN",
+      "@type": "xsd:string"
     },
     "SamplingRule": {
-      "@id": "xray:API_CreateSamplingRule.html",
-      "@context": {
-        "RuleName": "schema:name",
-        "RuleARN": "schema:identifier",
-        "Priority": "xray:Priority",
-        "FixedRate": "xray:FixedRate",
-        "ReservoirSize": "xray:ReservoirSize",
-        "ServiceName": "schema:name",
-        "ServiceType": "xray:ServiceType",
-        "Host": "schema:url"
-      }
+      "@id": "amz:SamplingRule",
+      "@type": "xsd:string"
     },
-    "Group": {
-      "@id": "xray:API_CreateGroup.html",
-      "@context": {
-        "GroupName": "schema:name",
-        "GroupARN": "schema:identifier",
-        "FilterExpression": "xray:FilterExpression"
-      }
+    "RuleARN": {
+      "@id": "amz:RuleARN",
+      "@type": "xsd:string"
     },
-    "Tag": {
-      "@id": "xray:Tag",
-      "@context": {
-        "Key": "schema:name",
-        "Value": "schema:value"
-      }
-    }
+    "ResourceARN": {
+      "@id": "amz:ResourceARN",
+      "@type": "xsd:string"
+    },
+    "Priority": {
+      "@id": "amz:Priority",
+      "@type": "xsd:string"
+    },
+    "FixedRate": {
+      "@id": "amz:FixedRate",
+      "@type": "xsd:string"
+    },
+    "ReservoirSize": {
+      "@id": "amz:ReservoirSize",
+      "@type": "xsd:string"
+    },
+    "ServiceName": {
+      "@id": "amz:ServiceName",
+      "@type": "xsd:string"
+    },
+    "ServiceType": {
+      "@id": "amz:ServiceType",
+      "@type": "xsd:string"
+    },
+    "Host": {
+      "@id": "amz:Host",
+      "@type": "xsd:string"
+    },
+    "HTTPMethod": {
+      "@id": "amz:HTTPMethod",
+      "@type": "xsd:string"
+    },
+    "URLPath": {
+      "@id": "amz:URLPath",
+      "@type": "xsd:string"
+    },
+    "Version": {
+      "@id": "amz:Version",
+      "@type": "xsd:string"
+    },
+    "Attributes": {
+      "@id": "amz:Attributes",
+      "@type": "xsd:string"
+    },
+    "CreateSamplingRuleRequest": "amz:CreateSamplingRuleRequest",
+    "CreatedAt": {
+      "@id": "amz:CreatedAt",
+      "@type": "xsd:string"
+    },
+    "ModifiedAt": {
+      "@id": "amz:ModifiedAt",
+      "@type": "xsd:string"
+    },
+    "DeleteGroupRequest": "amz:DeleteGroupRequest",
+    "DeleteResourcePolicyRequest": "amz:DeleteResourcePolicyRequest",
+    "PolicyName": {
+      "@id": "amz:PolicyName",
+      "@type": "xsd:string"
+    },
+    "PolicyRevisionId": {
+      "@id": "amz:PolicyRevisionId",
+      "@type": "xsd:string"
+    },
+    "DeleteSamplingRuleRequest": "amz:DeleteSamplingRuleRequest",
+    "EdgeStatistics": "amz:EdgeStatistics",
+    "OkCount": {
+      "@id": "amz:OkCount",
+      "@type": "xsd:string"
+    },
+    "ErrorStatistics": "amz:ErrorStatistics",
+    "FaultStatistics": "amz:FaultStatistics",
+    "TotalCount": {
+      "@id": "amz:TotalCount",
+      "@type": "xsd:string"
+    },
+    "TotalResponseTime": {
+      "@id": "amz:TotalResponseTime",
+      "@type": "xsd:string"
+    },
+    "Edge": "amz:Edge",
+    "ReferenceId": {
+      "@id": "amz:ReferenceId",
+      "@type": "xsd:string"
+    },
+    "SummaryStatistics": {
+      "@id": "amz:SummaryStatistics",
+      "@type": "xsd:string"
+    },
+    "ResponseTimeHistogram": {
+      "@id": "amz:ResponseTimeHistogram",
+      "@type": "xsd:string"
+    },
+    "Aliases": {
+      "@id": "amz:Aliases",
+      "@type": "xsd:string"
+    },
+    "EdgeType": {
+      "@id": "amz:EdgeType",
+      "@type": "xsd:string"
+    },
+    "ReceivedEventAgeHistogram": {
+      "@id": "amz:ReceivedEventAgeHistogram",
+      "@type": "xsd:string"
+    },
+    "ThrottleCount": {
+      "@id": "amz:ThrottleCount",
+      "@type": "xsd:string"
+    },
+    "KeyId": {
+      "@id": "amz:KeyId",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "amz:Status",
+      "@type": "xsd:string"
+    },
+    "ErrorRootCause": "amz:ErrorRootCause",
+    "ClientImpacting": {
+      "@id": "amz:ClientImpacting",
+      "@type": "xsd:string"
+    },
+    "ErrorRootCauseEntity": "amz:ErrorRootCauseEntity",
+    "Exceptions": {
+      "@id": "amz:Exceptions",
+      "@type": "xsd:string"
+    },
+    "Remote": {
+      "@id": "amz:Remote",
+      "@type": "xsd:string"
+    },
+    "ErrorRootCauseService": "amz:ErrorRootCauseService",
+    "EntityPath": {
+      "@id": "amz:EntityPath",
+      "@type": "xsd:string"
+    },
+    "Inferred": {
+      "@id": "amz:Inferred",
+      "@type": "xsd:string"
+    },
+    "FaultRootCause": "amz:FaultRootCause",
+    "FaultRootCauseEntity": "amz:FaultRootCauseEntity",
+    "FaultRootCauseService": "amz:FaultRootCauseService",
+    "ForecastStatistics": {
+      "@id": "amz:ForecastStatistics",
+      "@type": "xsd:string"
+    },
+    "FaultCountHigh": {
+      "@id": "amz:FaultCountHigh",
+      "@type": "xsd:string"
+    },
+    "FaultCountLow": {
+      "@id": "amz:FaultCountLow",
+      "@type": "xsd:string"
+    },
+    "GetEncryptionConfigRequest": "amz:GetEncryptionConfigRequest",
+    "GetGroupRequest": "amz:GetGroupRequest",
+    "GetGroupsRequest": "amz:GetGroupsRequest",
+    "GetInsightEventsRequest": "amz:GetInsightEventsRequest",
+    "MaxResults": {
+      "@id": "amz:MaxResults",
+      "@type": "xsd:string"
+    },
+    "GetInsightImpactGraphRequest": "amz:GetInsightImpactGraphRequest",
+    "GetInsightRequest": "amz:GetInsightRequest",
+    "RootCauseServiceId": {
+      "@id": "amz:RootCauseServiceId",
+      "@type": "xsd:string"
+    },
+    "Categories": {
+      "@id": "amz:Categories",
+      "@type": "xsd:string"
+    },
+    "State": {
+      "@id": "amz:State",
+      "@type": "xsd:string"
+    },
+    "Summary": {
+      "@id": "amz:Summary",
+      "@type": "xsd:string"
+    },
+    "ClientRequestImpactStatistics": {
+      "@id": "amz:ClientRequestImpactStatistics",
+      "@type": "xsd:string"
+    },
+    "RootCauseServiceRequestImpactStatistics": {
+      "@id": "amz:RootCauseServiceRequestImpactStatistics",
+      "@type": "xsd:string"
+    },
+    "TopAnomalousServices": {
+      "@id": "amz:TopAnomalousServices",
+      "@type": "xsd:string"
+    },
+    "GetInsightSummariesRequest": "amz:GetInsightSummariesRequest",
+    "States": {
+      "@id": "amz:States",
+      "@type": "xsd:string"
+    },
+    "GetSamplingRulesRequest": "amz:GetSamplingRulesRequest",
+    "GetSamplingStatisticSummariesRequest": "amz:GetSamplingStatisticSummariesRequest",
+    "GetSamplingTargetsRequest": "amz:GetSamplingTargetsRequest",
+    "SamplingStatisticsDocuments": {
+      "@id": "amz:SamplingStatisticsDocuments",
+      "@type": "xsd:string"
+    },
+    "GetServiceGraphRequest": "amz:GetServiceGraphRequest",
+    "GetTimeSeriesServiceStatisticsRequest": "amz:GetTimeSeriesServiceStatisticsRequest",
+    "EntitySelectorExpression": {
+      "@id": "amz:EntitySelectorExpression",
+      "@type": "xsd:string"
+    },
+    "Period": {
+      "@id": "amz:Period",
+      "@type": "xsd:string"
+    },
+    "GetTraceGraphRequest": "amz:GetTraceGraphRequest",
+    "SamplingStrategy": {
+      "@id": "amz:SamplingStrategy",
+      "@type": "xsd:string"
+    },
+    "GetTraceSummariesRequest": "amz:GetTraceSummariesRequest",
+    "TimeRangeType": {
+      "@id": "amz:TimeRangeType",
+      "@type": "xsd:string"
+    },
+    "Sampling": {
+      "@id": "amz:Sampling",
+      "@type": "xsd:string"
+    },
+    "GroupSummary": "amz:GroupSummary",
+    "HistogramEntry": "amz:HistogramEntry",
+    "Count": {
+      "@id": "amz:Count",
+      "@type": "xsd:string"
+    },
+    "Http": {
+      "@id": "amz:Http",
+      "@type": "xsd:string"
+    },
+    "HttpURL": {
+      "@id": "amz:HttpURL",
+      "@type": "xsd:string"
+    },
+    "HttpStatus": {
+      "@id": "amz:HttpStatus",
+      "@type": "xsd:string"
+    },
+    "HttpMethod": {
+      "@id": "amz:HttpMethod",
+      "@type": "xsd:string"
+    },
+    "UserAgent": {
+      "@id": "amz:UserAgent",
+      "@type": "xsd:string"
+    },
+    "ClientIp": {
+      "@id": "amz:ClientIp",
+      "@type": "xsd:string"
+    },
+    "RequestImpactStatistics": "amz:RequestImpactStatistics",
+    "FaultCount": {
+      "@id": "amz:FaultCount",
+      "@type": "xsd:string"
+    },
+    "InsightEvent": "amz:InsightEvent",
+    "EventTime": {
+      "@id": "amz:EventTime",
+      "@type": "xsd:string"
+    },
+    "InsightImpactGraphEdge": "amz:InsightImpactGraphEdge",
+    "InsightImpactGraphService": "amz:InsightImpactGraphService",
+    "Edges": {
+      "@id": "amz:Edges",
+      "@type": "xsd:string"
+    },
+    "InsightSummary": "amz:InsightSummary",
+    "LastUpdateTime": {
+      "@id": "amz:LastUpdateTime",
+      "@type": "xsd:string"
+    },
+    "InstanceIdDetail": "amz:InstanceIdDetail",
+    "Id": {
+      "@id": "amz:Id",
+      "@type": "xsd:string"
+    },
+    "ListResourcePoliciesRequest": "amz:ListResourcePoliciesRequest",
+    "ListTagsForResourceRequest": "amz:ListTagsForResourceRequest",
+    "PutEncryptionConfigRequest": "amz:PutEncryptionConfigRequest",
+    "PutResourcePolicyRequest": "amz:PutResourcePolicyRequest",
+    "PolicyDocument": {
+      "@id": "amz:PolicyDocument",
+      "@type": "xsd:string"
+    },
+    "BypassPolicyLockoutCheck": {
+      "@id": "amz:BypassPolicyLockoutCheck",
+      "@type": "xsd:string"
+    },
+    "LastUpdatedTime": {
+      "@id": "amz:LastUpdatedTime",
+      "@type": "xsd:string"
+    },
+    "PutTelemetryRecordsRequest": "amz:PutTelemetryRecordsRequest",
+    "TelemetryRecords": {
+      "@id": "amz:TelemetryRecords",
+      "@type": "xsd:string"
+    },
+    "EC2InstanceId": {
+      "@id": "amz:EC2InstanceId",
+      "@type": "xsd:string"
+    },
+    "Hostname": {
+      "@id": "amz:Hostname",
+      "@type": "xsd:string"
+    },
+    "PutTraceSegmentsRequest": "amz:PutTraceSegmentsRequest",
+    "TraceSegmentDocuments": {
+      "@id": "amz:TraceSegmentDocuments",
+      "@type": "xsd:string"
+    },
+    "ResourceARNDetail": "amz:ResourceARNDetail",
+    "ARN": {
+      "@id": "amz:ARN",
+      "@type": "xsd:string"
+    },
+    "ResponseTimeRootCause": "amz:ResponseTimeRootCause",
+    "ResponseTimeRootCauseEntity": "amz:ResponseTimeRootCauseEntity",
+    "Coverage": {
+      "@id": "amz:Coverage",
+      "@type": "xsd:string"
+    },
+    "ResponseTimeRootCauseService": "amz:ResponseTimeRootCauseService",
+    "RootCauseException": "amz:RootCauseException",
+    "Message": {
+      "@id": "amz:Message",
+      "@type": "xsd:string"
+    },
+    "SamplingRuleUpdate": {
+      "@id": "amz:SamplingRuleUpdate",
+      "@type": "xsd:string"
+    },
+    "SamplingStatisticSummary": "amz:SamplingStatisticSummary",
+    "SamplingTargetDocument": "amz:SamplingTargetDocument",
+    "ReservoirQuota": {
+      "@id": "amz:ReservoirQuota",
+      "@type": "xsd:string"
+    },
+    "ReservoirQuotaTTL": {
+      "@id": "amz:ReservoirQuotaTTL",
+      "@type": "xsd:string"
+    },
+    "Interval": {
+      "@id": "amz:Interval",
+      "@type": "xsd:string"
+    },
+    "Segment": "amz:Segment",
+    "Document": {
+      "@id": "amz:Document",
+      "@type": "xsd:string"
+    },
+    "ServiceStatistics": "amz:ServiceStatistics",
+    "Service": "amz:Service",
+    "Root": {
+      "@id": "amz:Root",
+      "@type": "xsd:string"
+    },
+    "DurationHistogram": {
+      "@id": "amz:DurationHistogram",
+      "@type": "xsd:string"
+    },
+    "TagResourceRequest": "amz:TagResourceRequest",
+    "EdgeSummaryStatistics": {
+      "@id": "amz:EdgeSummaryStatistics",
+      "@type": "xsd:string"
+    },
+    "ServiceSummaryStatistics": {
+      "@id": "amz:ServiceSummaryStatistics",
+      "@type": "xsd:string"
+    },
+    "ServiceForecastStatistics": {
+      "@id": "amz:ServiceForecastStatistics",
+      "@type": "xsd:string"
+    },
+    "Trace": "amz:Trace",
+    "Duration": {
+      "@id": "amz:Duration",
+      "@type": "xsd:string"
+    },
+    "LimitExceeded": {
+      "@id": "amz:LimitExceeded",
+      "@type": "xsd:string"
+    },
+    "Segments": {
+      "@id": "amz:Segments",
+      "@type": "xsd:string"
+    },
+    "TraceSummary": "amz:TraceSummary",
+    "ResponseTime": {
+      "@id": "amz:ResponseTime",
+      "@type": "xsd:string"
+    },
+    "HasFault": {
+      "@id": "amz:HasFault",
+      "@type": "xsd:string"
+    },
+    "HasError": {
+      "@id": "amz:HasError",
+      "@type": "xsd:string"
+    },
+    "HasThrottle": {
+      "@id": "amz:HasThrottle",
+      "@type": "xsd:string"
+    },
+    "IsPartial": {
+      "@id": "amz:IsPartial",
+      "@type": "xsd:string"
+    },
+    "Users": {
+      "@id": "amz:Users",
+      "@type": "xsd:string"
+    },
+    "ServiceIds": {
+      "@id": "amz:ServiceIds",
+      "@type": "xsd:string"
+    },
+    "ResourceARNs": {
+      "@id": "amz:ResourceARNs",
+      "@type": "xsd:string"
+    },
+    "InstanceIds": {
+      "@id": "amz:InstanceIds",
+      "@type": "xsd:string"
+    },
+    "AvailabilityZones": {
+      "@id": "amz:AvailabilityZones",
+      "@type": "xsd:string"
+    },
+    "EntryPoint": {
+      "@id": "amz:EntryPoint",
+      "@type": "xsd:string"
+    },
+    "FaultRootCauses": {
+      "@id": "amz:FaultRootCauses",
+      "@type": "xsd:string"
+    },
+    "ErrorRootCauses": {
+      "@id": "amz:ErrorRootCauses",
+      "@type": "xsd:string"
+    },
+    "ResponseTimeRootCauses": {
+      "@id": "amz:ResponseTimeRootCauses",
+      "@type": "xsd:string"
+    },
+    "Revision": {
+      "@id": "amz:Revision",
+      "@type": "xsd:string"
+    },
+    "MatchedEventTime": {
+      "@id": "amz:MatchedEventTime",
+      "@type": "xsd:string"
+    },
+    "TraceUser": "amz:TraceUser",
+    "UserName": {
+      "@id": "amz:UserName",
+      "@type": "xsd:string"
+    },
+    "ErrorCode": {
+      "@id": "amz:ErrorCode",
+      "@type": "xsd:string"
+    },
+    "UnprocessedTraceSegment": "amz:UnprocessedTraceSegment",
+    "UntagResourceRequest": "amz:UntagResourceRequest",
+    "TagKeys": {
+      "@id": "amz:TagKeys",
+      "@type": "xsd:string"
+    },
+    "UpdateGroupRequest": "amz:UpdateGroupRequest",
+    "UpdateSamplingRuleRequest": "amz:UpdateSamplingRuleRequest",
+    "ValueWithServiceIds": "amz:ValueWithServiceIds"
   }
 }

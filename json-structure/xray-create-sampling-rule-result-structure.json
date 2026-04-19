@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingRuleRecord": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingRuleRecord"
+        },
+        {
+          "description": "The saved rule definition and metadata."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "CreateSamplingRuleResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-create-sampling-rule-result-structure.json",
+  "description": "CreateSamplingRuleResult schema from Amazon X-Ray API"
+}

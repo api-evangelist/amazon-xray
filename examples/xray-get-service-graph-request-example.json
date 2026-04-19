@@ -1,0 +1,7 @@
+{
+  "StartTime": "example-value",
+  "EndTime": "example-value",
+  "GroupName": "Example Service",
+  "GroupARN": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "NextToken": "example-value"
+}

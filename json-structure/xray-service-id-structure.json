@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "Names": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceNames"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "AccountId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    }
+  },
+  "description": "<p/>",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ServiceId",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-service-id-structure.json"
+}

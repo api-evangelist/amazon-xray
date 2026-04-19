@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 1011,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "AmazonResourceName",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-amazon-resource-name-structure.json",
+  "description": "AmazonResourceName schema from Amazon X-Ray API"
+}

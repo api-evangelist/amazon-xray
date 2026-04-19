@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ValueWithServiceIds"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ValuesWithServiceIds",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-values-with-service-ids-structure.json",
+  "description": "ValuesWithServiceIds schema from Amazon X-Ray API"
+}

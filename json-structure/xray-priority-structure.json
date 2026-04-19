@@ -1,0 +1,9 @@
+{
+  "type": "integer",
+  "minimum": 1,
+  "maximum": 9999,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Priority",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-priority-structure.json",
+  "description": "Priority schema from Amazon X-Ray API"
+}

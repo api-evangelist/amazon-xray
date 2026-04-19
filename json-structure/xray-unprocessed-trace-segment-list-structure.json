@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/UnprocessedTraceSegment"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "UnprocessedTraceSegmentList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-unprocessed-trace-segment-list-structure.json",
+  "description": "UnprocessedTraceSegmentList schema from Amazon X-Ray API"
+}

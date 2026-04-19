@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "required": [
+    "ResourceARN",
+    "TagKeys"
+  ],
+  "name": "UntagResourceRequest",
+  "properties": {
+    "ResourceARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AmazonResourceName"
+        },
+        {
+          "description": "The Amazon Resource Number (ARN) of an X-Ray group or sampling rule."
+        }
+      ]
+    },
+    "TagKeys": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagKeyList"
+        },
+        {
+          "description": "Keys for one or more tags that you want to remove from an X-Ray group or sampling rule."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-untag-resource-request-structure.json",
+  "description": "UntagResourceRequest schema from Amazon X-Ray API"
+}

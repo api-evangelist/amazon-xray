@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {},
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "DeleteGroupResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-delete-group-result-structure.json",
+  "description": "DeleteGroupResult schema from Amazon X-Ray API"
+}

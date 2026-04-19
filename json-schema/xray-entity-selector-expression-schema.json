@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 500,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EntitySelectorExpression",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-entity-selector-expression-schema.json",
+  "description": "EntitySelectorExpression schema from Amazon X-Ray API"
+}

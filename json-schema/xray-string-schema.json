@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "String",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-string-schema.json",
+  "description": "String schema from Amazon X-Ray API"
+}

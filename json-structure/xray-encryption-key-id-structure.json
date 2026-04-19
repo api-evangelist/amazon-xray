@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 3000,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "EncryptionKeyId",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-encryption-key-id-structure.json",
+  "description": "EncryptionKeyId schema from Amazon X-Ray API"
+}

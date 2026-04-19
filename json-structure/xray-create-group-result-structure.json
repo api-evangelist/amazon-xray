@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "Group": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Group"
+        },
+        {
+          "description": "The group that was created. Contains the name of the group that was created, the Amazon Resource Name (ARN) of the group that was generated based on the group name, the filter expression, and the insight configuration that was assigned to the group."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "CreateGroupResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-create-group-result-structure.json",
+  "description": "CreateGroupResult schema from Amazon X-Ray API"
+}

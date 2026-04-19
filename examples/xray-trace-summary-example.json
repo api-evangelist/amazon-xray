@@ -1,0 +1,22 @@
+{
+  "Id": "trace-abc123def456",
+  "Duration": "example-value",
+  "ResponseTime": "example-value",
+  "HasFault": "example-value",
+  "HasError": "example-value",
+  "HasThrottle": "example-value",
+  "IsPartial": "example-value",
+  "Http": "example-value",
+  "Annotations": "example-value",
+  "Users": "example-value",
+  "ServiceIds": "trace-abc123def456",
+  "ResourceARNs": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "InstanceIds": "trace-abc123def456",
+  "AvailabilityZones": "example-value",
+  "EntryPoint": "example-value",
+  "FaultRootCauses": "example-value",
+  "ErrorRootCauses": "example-value",
+  "ResponseTimeRootCauses": "example-value",
+  "Revision": "example-value",
+  "MatchedEventTime": "example-value"
+}

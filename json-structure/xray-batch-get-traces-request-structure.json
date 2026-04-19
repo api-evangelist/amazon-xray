@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "TraceIds"
+  ],
+  "name": "BatchGetTracesRequest",
+  "properties": {
+    "TraceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceIdList"
+        },
+        {
+          "description": "Specify the trace IDs of requests for which to retrieve segments."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-batch-get-traces-request-structure.json",
+  "description": "BatchGetTracesRequest schema from Amazon X-Ray API"
+}

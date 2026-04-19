@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The unique case-sensitive name of the group."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The ARN of the group generated based on the GroupName."
+        }
+      ]
+    },
+    "FilterExpression": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The filter expression defining the parameters to include traces."
+        }
+      ]
+    },
+    "InsightsConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightsConfiguration"
+        },
+        {
+          "description": "<p>The structure containing configurations related to insights.</p> <ul> <li> <p>The InsightsEnabled boolean can be set to true to enable insights for the group or false to disable insights for the group.</p> </li> <li> <p>The NotificationsEnabled boolean can be set to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.</p> </li> </ul>"
+        }
+      ]
+    }
+  },
+  "description": "Details for a group without metadata.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupSummary",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-group-summary-schema.json"
+}

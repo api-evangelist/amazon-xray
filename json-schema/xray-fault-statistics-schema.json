@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "OtherCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The number of requests that failed with untracked 5xx Server Error status codes."
+        }
+      ]
+    },
+    "TotalCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The total number of requests that failed with a 5xx Server Error status code."
+        }
+      ]
+    }
+  },
+  "description": "Information about requests that failed with a 5xx Server Error status code.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FaultStatistics",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-fault-statistics-schema.json"
+}

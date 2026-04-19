@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "Insight": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Insight"
+        },
+        {
+          "description": "The summary information of an insight."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetInsightResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-insight-result-schema.json",
+  "description": "GetInsightResult schema from Amazon X-Ray API"
+}

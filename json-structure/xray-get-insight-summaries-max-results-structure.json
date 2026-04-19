@@ -1,0 +1,9 @@
+{
+  "type": "integer",
+  "minimum": 1,
+  "maximum": 100,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetInsightSummariesMaxResults",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-insight-summaries-max-results-structure.json",
+  "description": "GetInsightSummariesMaxResults schema from Amazon X-Ray API"
+}

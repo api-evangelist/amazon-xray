@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "ResourcePolicies": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourcePolicyList"
+        },
+        {
+          "description": "The list of resource policies in the target Amazon Web Services account."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourcePolicyNextToken"
+        },
+        {
+          "description": "Pagination token. Not currently supported."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ListResourcePoliciesResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-list-resource-policies-result-structure.json",
+  "description": "ListResourcePoliciesResult schema from Amazon X-Ray API"
+}

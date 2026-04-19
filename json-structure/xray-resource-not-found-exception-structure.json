@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResourceNotFoundException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-resource-not-found-exception-structure.json",
+  "description": "ResourceNotFoundException schema from Amazon X-Ray API"
+}

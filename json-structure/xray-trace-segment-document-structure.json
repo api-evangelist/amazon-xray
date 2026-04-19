@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TraceSegmentDocument",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-trace-segment-document-structure.json",
+  "description": "TraceSegmentDocument schema from Amazon X-Ray API"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 128,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TagKey",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-tag-key-structure.json",
+  "description": "TagKey schema from Amazon X-Ray API"
+}

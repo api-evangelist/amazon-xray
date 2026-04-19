@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "enum": [
+    "PartialScan",
+    "FixedRate"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingStrategyName",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-strategy-name-structure.json",
+  "description": "SamplingStrategyName schema from Amazon X-Ray API"
+}

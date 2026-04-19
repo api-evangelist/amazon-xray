@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 32,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "RuleName",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-rule-name-structure.json",
+  "description": "RuleName schema from Amazon X-Ray API"
+}

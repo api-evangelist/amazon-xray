@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ThrottledException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-throttled-exception-schema.json",
+  "description": "ThrottledException schema from Amazon X-Ray API"
+}

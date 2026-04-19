@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "Summary": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EventSummaryText"
+        },
+        {
+          "description": "A brief description of the event."
+        }
+      ]
+    },
+    "EventTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time, in Unix seconds, at which the event was recorded."
+        }
+      ]
+    },
+    "ClientRequestImpactStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RequestImpactStatistics"
+        },
+        {
+          "description": "The impact statistics of the client side service. This includes the number of requests to the client service and whether the requests were faults or okay."
+        }
+      ]
+    },
+    "RootCauseServiceRequestImpactStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RequestImpactStatistics"
+        },
+        {
+          "description": "The impact statistics of the root cause service. This includes the number of requests to the client service and whether the requests were faults or okay."
+        }
+      ]
+    },
+    "TopAnomalousServices": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AnomalousServiceList"
+        },
+        {
+          "description": "The service during the event that is most impacted by the incident."
+        }
+      ]
+    }
+  },
+  "description": "X-Ray reevaluates insights periodically until they are resolved, and records each intermediate state in an event. You can review incident events in the Impact Timeline on the Inspect page in the X-Ray console.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsightEvent",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-insight-event-schema.json"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/HistogramEntry"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Histogram",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-histogram-structure.json",
+  "description": "Histogram schema from Amazon X-Ray API"
+}

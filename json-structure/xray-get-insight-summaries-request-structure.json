@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "required": [
+    "StartTime",
+    "EndTime"
+  ],
+  "name": "GetInsightSummariesRequest",
+  "properties": {
+    "States": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightStateList"
+        },
+        {
+          "description": "The list of insight states. "
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't provided."
+        }
+      ]
+    },
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The name of the group. Required if the GroupARN isn't provided."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The beginning of the time frame in which the insights started. The start time can't be more than 30 days old."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The end of the time frame in which the insights ended. The end time can't be more than 30 days old."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GetInsightSummariesMaxResults"
+        },
+        {
+          "description": "The maximum number of results to display."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Token"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-insight-summaries-request-structure.json",
+  "description": "GetInsightSummariesRequest schema from Amazon X-Ray API"
+}

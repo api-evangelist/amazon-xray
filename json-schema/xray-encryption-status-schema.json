@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "enum": [
+    "UPDATING",
+    "ACTIVE"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EncryptionStatus",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-encryption-status-schema.json",
+  "description": "EncryptionStatus schema from Amazon X-Ray API"
+}

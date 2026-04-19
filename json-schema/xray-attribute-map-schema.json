@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "maxProperties": 5,
+  "additionalProperties": {
+    "$ref": "#/components/schemas/AttributeValue"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AttributeMap",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-attribute-map-schema.json",
+  "description": "AttributeMap schema from Amazon X-Ray API"
+}

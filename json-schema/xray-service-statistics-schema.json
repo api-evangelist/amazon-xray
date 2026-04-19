@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "OkCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The number of requests that completed with a 2xx Success status code."
+        }
+      ]
+    },
+    "ErrorStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ErrorStatistics"
+        },
+        {
+          "description": "Information about requests that failed with a 4xx Client Error status code."
+        }
+      ]
+    },
+    "FaultStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FaultStatistics"
+        },
+        {
+          "description": "Information about requests that failed with a 5xx Server Error status code."
+        }
+      ]
+    },
+    "TotalCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The total number of completed requests."
+        }
+      ]
+    },
+    "TotalResponseTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "The aggregate response time of completed requests."
+        }
+      ]
+    }
+  },
+  "description": "Response statistics for a service.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ServiceStatistics",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-service-statistics-schema.json"
+}

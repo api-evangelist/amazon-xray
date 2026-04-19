@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "SamplingRuleUpdate"
+  ],
+  "title": "UpdateSamplingRuleRequest",
+  "properties": {
+    "SamplingRuleUpdate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingRuleUpdate"
+        },
+        {
+          "description": "The rule and fields to change."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-update-sampling-rule-request-schema.json",
+  "description": "UpdateSamplingRuleRequest schema from Amazon X-Ray API"
+}

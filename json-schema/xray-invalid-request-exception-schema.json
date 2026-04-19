@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InvalidRequestException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-invalid-request-exception-schema.json",
+  "description": "InvalidRequestException schema from Amazon X-Ray API"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "integer",
+  "minimum": 0,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ReservoirSize",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-reservoir-size-structure.json",
+  "description": "ReservoirSize schema from Amazon X-Ray API"
+}

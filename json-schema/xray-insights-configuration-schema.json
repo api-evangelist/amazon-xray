@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "InsightsEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "Set the InsightsEnabled value to true to enable insights or false to disable insights."
+        }
+      ]
+    },
+    "NotificationsEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true."
+        }
+      ]
+    }
+  },
+  "description": "The structure containing configurations related to insights.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsightsConfiguration",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-insights-configuration-schema.json"
+}

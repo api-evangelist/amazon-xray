@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MalformedPolicyDocumentException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-malformed-policy-document-exception-schema.json",
+  "description": "MalformedPolicyDocumentException schema from Amazon X-Ray API"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "name": "GetSamplingRulesRequest",
+  "properties": {
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-sampling-rules-request-structure.json",
+  "description": "GetSamplingRulesRequest schema from Amazon X-Ray API"
+}

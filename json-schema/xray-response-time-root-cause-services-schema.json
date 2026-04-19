@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ResponseTimeRootCauseService"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResponseTimeRootCauseServices",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-response-time-root-cause-services-schema.json",
+  "description": "ResponseTimeRootCauseServices schema from Amazon X-Ray API"
+}

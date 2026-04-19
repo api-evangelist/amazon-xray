@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "RuleLimitExceededException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-rule-limit-exceeded-exception-structure.json",
+  "description": "RuleLimitExceededException schema from Amazon X-Ray API"
+}

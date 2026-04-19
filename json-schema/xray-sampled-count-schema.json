@@ -1,0 +1,8 @@
+{
+  "type": "integer",
+  "minimum": 0,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SampledCount",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-sampled-count-schema.json",
+  "description": "SampledCount schema from Amazon X-Ray API"
+}

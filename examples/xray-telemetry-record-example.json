@@ -1,0 +1,8 @@
+{
+  "Timestamp": "example-value",
+  "SegmentsReceivedCount": "example-value",
+  "SegmentsSentCount": "example-value",
+  "SegmentsSpilloverCount": "example-value",
+  "SegmentsRejectedCount": "example-value",
+  "BackendConnectionErrors": "example-value"
+}

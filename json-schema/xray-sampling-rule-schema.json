@@ -1,0 +1,151 @@
+{
+  "type": "object",
+  "required": [
+    "ResourceARN",
+    "Priority",
+    "FixedRate",
+    "ReservoirSize",
+    "ServiceName",
+    "ServiceType",
+    "Host",
+    "HTTPMethod",
+    "URLPath",
+    "Version"
+  ],
+  "properties": {
+    "RuleName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RuleName"
+        },
+        {
+          "description": "The name of the sampling rule. Specify a rule by either name or ARN, but not both."
+        }
+      ]
+    },
+    "RuleARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The ARN of the sampling rule. Specify a rule by either name or ARN, but not both."
+        }
+      ]
+    },
+    "ResourceARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceARN"
+        },
+        {
+          "description": "Matches the ARN of the Amazon Web Services resource on which the service runs."
+        }
+      ]
+    },
+    "Priority": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Priority"
+        },
+        {
+          "description": "The priority of the sampling rule."
+        }
+      ]
+    },
+    "FixedRate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FixedRate"
+        },
+        {
+          "description": "The percentage of matching requests to instrument, after the reservoir is exhausted."
+        }
+      ]
+    },
+    "ReservoirSize": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReservoirSize"
+        },
+        {
+          "description": "A fixed number of matching requests to instrument per second, prior to applying the fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively."
+        }
+      ]
+    },
+    "ServiceName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceName"
+        },
+        {
+          "description": "Matches the <code>name</code> that the service uses to identify itself in segments."
+        }
+      ]
+    },
+    "ServiceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceType"
+        },
+        {
+          "description": "Matches the <code>origin</code> that the service uses to identify its type in segments."
+        }
+      ]
+    },
+    "Host": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Host"
+        },
+        {
+          "description": "Matches the hostname from a request URL."
+        }
+      ]
+    },
+    "HTTPMethod": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HTTPMethod"
+        },
+        {
+          "description": "Matches the HTTP method of a request."
+        }
+      ]
+    },
+    "URLPath": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/URLPath"
+        },
+        {
+          "description": "Matches the path from a request URL."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Version"
+        },
+        {
+          "description": "The version of the sampling rule format (<code>1</code>)."
+        }
+      ]
+    },
+    "Attributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AttributeMap"
+        },
+        {
+          "description": "Matches attributes derived from the request."
+        }
+      ]
+    }
+  },
+  "description": "A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SamplingRule",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-sampling-rule-schema.json"
+}

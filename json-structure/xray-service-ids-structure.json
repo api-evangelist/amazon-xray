@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ServiceId"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ServiceIds",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-service-ids-structure.json",
+  "description": "ServiceIds schema from Amazon X-Ray API"
+}

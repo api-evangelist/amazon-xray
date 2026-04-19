@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "InsightId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightId"
+        },
+        {
+          "description": "The insight's unique identifier."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The provided start time."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The provided end time. "
+        }
+      ]
+    },
+    "ServiceGraphStartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time, in Unix seconds, at which the service graph started."
+        }
+      ]
+    },
+    "ServiceGraphEndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time, in Unix seconds, at which the service graph ended."
+        }
+      ]
+    },
+    "Services": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightImpactGraphServiceList"
+        },
+        {
+          "description": "The Amazon Web Services instrumented services related to the insight."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Token"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetInsightImpactGraphResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-insight-impact-graph-result-schema.json",
+  "description": "GetInsightImpactGraphResult schema from Amazon X-Ray API"
+}

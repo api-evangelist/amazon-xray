@@ -1,0 +1,6 @@
+{
+  "GroupName": "Example Service",
+  "GroupARN": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "FilterExpression": "example-value",
+  "InsightsConfiguration": "example-value"
+}

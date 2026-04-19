@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {},
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "UntagResourceResponse",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-untag-resource-response-structure.json",
+  "description": "UntagResourceResponse schema from Amazon X-Ray API"
+}

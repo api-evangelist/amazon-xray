@@ -1,0 +1,8 @@
+{
+  "Name": "Example Service",
+  "Names": "Example Service",
+  "Type": "AWS::Lambda::Function",
+  "AccountId": "trace-abc123def456",
+  "EntityPath": "example-value",
+  "Inferred": "example-value"
+}

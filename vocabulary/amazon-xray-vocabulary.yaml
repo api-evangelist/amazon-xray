@@ -1,0 +1,159 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Amazon X-Ray"
+  description: "Vocabulary for Amazon X-Ray distributed tracing service."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: xray
+      name: Amazon X-Ray API
+      version: "2016-04-12"
+      baseUrl: https://xray.amazonaws.com
+      status: active
+
+  resources:
+    - name: traces
+      api: xray
+      actions: [batch-get, put, get-summaries]
+    - name: service-graph
+      api: xray
+      actions: [get]
+    - name: sampling-rules
+      api: xray
+      actions: [get, create, update, delete]
+    - name: groups
+      api: xray
+      actions: [get, create, update, delete]
+    - name: insights
+      api: xray
+      actions: [get-summaries, get]
+    - name: encryption-config
+      api: xray
+      actions: [get, put]
+    - name: tags
+      api: xray
+      actions: [list, add, remove]
+
+  actions:
+    - name: get
+      httpMethods: [POST, GET]
+      pattern: read
+    - name: put
+      httpMethods: [POST]
+      pattern: write
+    - name: create
+      httpMethods: [POST]
+      pattern: write
+    - name: update
+      httpMethods: [POST]
+      pattern: write
+    - name: delete
+      httpMethods: [POST]
+      pattern: destructive
+
+  schemas:
+    core:
+      - name: Trace
+        description: An end-to-end distributed trace
+        key_properties: [Id, Duration, LimitExceeded, Segments]
+      - name: TraceSummary
+        description: A summary of a distributed trace
+        key_properties: [Id, Duration, ResponseTime, HasError, HasFault, AvailabilityZones]
+      - name: Service
+        description: A node in the service map
+        key_properties: [Name, Type, State, AccountId, StartTime, EndTime]
+      - name: SamplingRule
+        description: A rule controlling what percentage of requests to trace
+        key_properties: [RuleName, Priority, ReservoirSize, FixedRate, ServiceName, ResourceARN]
+      - name: Group
+        description: An X-Ray group for filtering traces
+        key_properties: [GroupName, GroupARN, FilterExpression]
+      - name: Insight
+        description: An insight identifying performance anomalies
+        key_properties: [InsightId, State, Summary, Categories]
+
+  enums:
+    insight-states:
+      - ACTIVE
+      - CLOSED
+    insight-categories:
+      - FAULT
+    encryption-types:
+      - NONE
+      - KMS
+
+  authentication:
+    schemes:
+      - name: HMAC
+        type: hmac
+        description: AWS Signature Version 4 signing
+
+capability:
+  workflows:
+    - name: Distributed Tracing
+      file: capabilities/distributed-tracing.yaml
+      description: >-
+        Workflow for developers and operations teams to analyze traces,
+        service maps, sampling rules, groups, and performance insights.
+      apis: [xray]
+      tool_count: 6
+      personas: [Developer, Site Reliability Engineer]
+      domains: [Observability, Application Performance, Debugging]
+
+  personas:
+    - id: developer
+      name: Developer
+      description: Analyzes traces to debug application issues.
+      workflows: [distributed-tracing]
+    - id: sre
+      name: Site Reliability Engineer
+      description: Monitors service health and performance using X-Ray.
+      workflows: [distributed-tracing]
+
+  domains:
+    - name: Observability
+      description: Application tracing and service map visualization
+    - name: Application Performance
+      description: Latency analysis and bottleneck identification
+    - name: Debugging
+      description: Root cause analysis using distributed trace data
+
+  namespaces:
+    consumed:
+      - xray
+    rest:
+      - name: distributed-tracing-api
+        port: 8080
+    mcp:
+      - name: distributed-tracing-mcp
+        port: 9090
+
+  binds:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - AWS_REGION
+
+crossReference:
+  - resource: traces
+    operations: [get-summaries, batch-get]
+    workflows: [distributed-tracing]
+    personas: [Developer, Site Reliability Engineer]
+  - resource: service-graph
+    operations: [get]
+    workflows: [distributed-tracing]
+    personas: [Developer, Site Reliability Engineer]
+  - resource: sampling-rules
+    operations: [get]
+    workflows: [distributed-tracing]
+    personas: [Site Reliability Engineer]
+  - resource: groups
+    operations: [get]
+    workflows: [distributed-tracing]
+    personas: [Developer, Site Reliability Engineer]
+  - resource: insights
+    operations: [get-summaries]
+    workflows: [distributed-tracing]
+    personas: [Site Reliability Engineer]

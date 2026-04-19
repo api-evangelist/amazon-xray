@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ErrorRootCause"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ErrorRootCauses",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-error-root-causes-structure.json",
+  "description": "ErrorRootCauses schema from Amazon X-Ray API"
+}

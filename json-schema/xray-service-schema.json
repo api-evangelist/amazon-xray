@@ -1,0 +1,139 @@
+{
+  "type": "object",
+  "properties": {
+    "ReferenceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "Identifier for the service. Unique within the service map."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The canonical name of the service."
+        }
+      ]
+    },
+    "Names": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceNames"
+        },
+        {
+          "description": "A list of names for the service, including the canonical name."
+        }
+      ]
+    },
+    "Root": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "Indicates that the service was the first service to process a request."
+        }
+      ]
+    },
+    "AccountId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Identifier of the Amazon Web Services account in which the service runs."
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p>The type of service.</p> <ul> <li> <p>Amazon Web Services Resource - The type of an Amazon Web Services resource. For example, <code>AWS::EC2::Instance</code> for an application running on Amazon EC2 or <code>AWS::DynamoDB::Table</code> for an Amazon DynamoDB table that the application used.</p> </li> <li> <p>Amazon Web Services Service - The type of an Amazon Web Services service. For example, <code>AWS::DynamoDB</code> for downstream calls to Amazon DynamoDB that didn't target a specific table.</p> </li> <li> <p> <code>client</code> - Represents the clients that sent requests to a root service.</p> </li> <li> <p> <code>remote</code> - A downstream service of indeterminate type.</p> </li> </ul>"
+        }
+      ]
+    },
+    "State": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The service's state."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start time of the first segment that the service generated."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The end time of the last segment that the service generated."
+        }
+      ]
+    },
+    "Edges": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EdgeList"
+        },
+        {
+          "description": "Connections to downstream services."
+        }
+      ]
+    },
+    "SummaryStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceStatistics"
+        },
+        {
+          "description": "Aggregated statistics for the service."
+        }
+      ]
+    },
+    "DurationHistogram": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Histogram"
+        },
+        {
+          "description": "A histogram that maps the spread of service durations."
+        }
+      ]
+    },
+    "ResponseTimeHistogram": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Histogram"
+        },
+        {
+          "description": "A histogram that maps the spread of service response times."
+        }
+      ]
+    }
+  },
+  "description": "Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Service",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-service-schema.json"
+}

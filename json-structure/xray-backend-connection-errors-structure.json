@@ -1,0 +1,69 @@
+{
+  "type": "object",
+  "properties": {
+    "TimeoutCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "ConnectionRefusedCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "HTTPCode4XXCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "HTTPCode5XXCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "UnknownHostCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "OtherCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    }
+  },
+  "description": "<p/>",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "BackendConnectionErrors",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-backend-connection-errors-structure.json"
+}

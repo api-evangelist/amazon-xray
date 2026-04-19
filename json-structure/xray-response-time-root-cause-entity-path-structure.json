@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ResponseTimeRootCauseEntity"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResponseTimeRootCauseEntityPath",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-response-time-root-cause-entity-path-structure.json",
+  "description": "ResponseTimeRootCauseEntityPath schema from Amazon X-Ray API"
+}

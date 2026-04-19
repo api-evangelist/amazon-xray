@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceId"
+        },
+        {
+          "description": "The unique identifier for the request that generated the trace's segments and subsegments."
+        }
+      ]
+    },
+    "Duration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "The length of time in seconds between the start time of the root segment and the end time of the last segment that completed."
+        }
+      ]
+    },
+    "LimitExceeded": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "LimitExceeded is set to true when the trace has exceeded the <code>Trace document size</code> limit. For more information about this limit and other X-Ray limits and quotas, see <a href=\"https://docs.aws.amazon.com/general/latest/gr/xray.html\">Amazon Web Services X-Ray endpoints and quotas</a>."
+        }
+      ]
+    },
+    "Segments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentList"
+        },
+        {
+          "description": "Segment documents for the segments and subsegments that comprise the trace."
+        }
+      ]
+    }
+  },
+  "description": "A collection of segment documents with matching trace IDs.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trace",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-trace-schema.json"
+}

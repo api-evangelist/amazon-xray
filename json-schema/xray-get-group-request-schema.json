@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "title": "GetGroupRequest",
+  "properties": {
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The case-sensitive name of the group."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The ARN of the group that was generated on creation."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-group-request-schema.json",
+  "description": "GetGroupRequest schema from Amazon X-Ray API"
+}

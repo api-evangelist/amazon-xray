@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "ResourcePolicy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourcePolicy"
+        },
+        {
+          "description": "The resource policy document, as provided in the <code>PutResourcePolicyRequest</code>."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PutResourcePolicyResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-put-resource-policy-result-schema.json",
+  "description": "PutResourcePolicyResult schema from Amazon X-Ray API"
+}

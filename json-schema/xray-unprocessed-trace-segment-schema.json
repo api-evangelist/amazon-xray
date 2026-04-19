@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The segment's ID."
+        }
+      ]
+    },
+    "ErrorCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The error that caused processing to fail."
+        }
+      ]
+    },
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The error message."
+        }
+      ]
+    }
+  },
+  "description": "Information about a segment that failed processing.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UnprocessedTraceSegment",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-unprocessed-trace-segment-schema.json"
+}

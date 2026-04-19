@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "RuleName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the sampling rule."
+        }
+      ]
+    },
+    "ErrorCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The error code."
+        }
+      ]
+    },
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The error message."
+        }
+      ]
+    }
+  },
+  "description": "Sampling statistics from a call to <a href=\"https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html\">GetSamplingTargets</a> that X-Ray could not process.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UnprocessedStatistics",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-unprocessed-statistics-schema.json"
+}

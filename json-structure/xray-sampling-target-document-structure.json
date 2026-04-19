@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "RuleName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the sampling rule."
+        }
+      ]
+    },
+    "FixedRate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The percentage of matching requests to instrument, after the reservoir is exhausted."
+        }
+      ]
+    },
+    "ReservoirQuota": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "The number of requests per second that X-Ray allocated for this service."
+        }
+      ]
+    },
+    "ReservoirQuotaTTL": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "When the reservoir quota expires."
+        }
+      ]
+    },
+    "Interval": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "The number of seconds for the service to wait before getting sampling targets again."
+        }
+      ]
+    }
+  },
+  "description": "Temporary changes to a sampling rule configuration. To meet the global sampling target for a rule, X-Ray calculates a new reservoir for each service based on the recent sampling results of all services that called <a href=\"https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html\">GetSamplingTargets</a>.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingTargetDocument",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-target-document-structure.json"
+}

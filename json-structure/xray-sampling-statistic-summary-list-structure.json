@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/SamplingStatisticSummary"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingStatisticSummaryList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-statistic-summary-list-structure.json",
+  "description": "SamplingStatisticSummaryList schema from Amazon X-Ray API"
+}

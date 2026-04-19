@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "required": [
+    "StartTime",
+    "EndTime"
+  ],
+  "name": "GetServiceGraphRequest",
+  "properties": {
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start of the time frame for which to generate a graph."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The end of the timeframe for which to generate a graph."
+        }
+      ]
+    },
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The name of a group based on which you want to generate a graph."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of a group based on which you want to generate a graph."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-service-graph-request-structure.json",
+  "description": "GetServiceGraphRequest schema from Amazon X-Ray API"
+}

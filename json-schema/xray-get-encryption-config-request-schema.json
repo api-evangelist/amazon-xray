@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "title": "GetEncryptionConfigRequest",
+  "properties": {},
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-encryption-config-request-schema.json",
+  "description": "GetEncryptionConfigRequest schema from Amazon X-Ray API"
+}

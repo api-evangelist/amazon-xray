@@ -1,0 +1,5 @@
+{
+  "InsightId": "trace-abc123def456",
+  "MaxResults": "example-value",
+  "NextToken": "example-value"
+}

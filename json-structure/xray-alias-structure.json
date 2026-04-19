@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The canonical name of the alias."
+        }
+      ]
+    },
+    "Names": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AliasNames"
+        },
+        {
+          "description": "A list of names for the alias, including the canonical name."
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The type of the alias."
+        }
+      ]
+    }
+  },
+  "description": "An alias for an edge.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Alias",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-alias-structure.json"
+}

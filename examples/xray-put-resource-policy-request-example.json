@@ -1,0 +1,6 @@
+{
+  "PolicyName": "Example Service",
+  "PolicyDocument": "example-value",
+  "PolicyRevisionId": "trace-abc123def456",
+  "BypassPolicyLockoutCheck": "example-value"
+}

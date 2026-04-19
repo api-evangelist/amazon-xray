@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "KeyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The ID of the KMS key used for encryption, if applicable."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionStatus"
+        },
+        {
+          "description": "The encryption status. While the status is <code>UPDATING</code>, X-Ray may encrypt data with a combination of the new and old settings."
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionType"
+        },
+        {
+          "description": "The type of encryption. Set to <code>KMS</code> for encryption with KMS keys. Set to <code>NONE</code> for default encryption."
+        }
+      ]
+    }
+  },
+  "description": "A configuration document that specifies encryption configuration settings.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "EncryptionConfig",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-encryption-config-structure.json"
+}

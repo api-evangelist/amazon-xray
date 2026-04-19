@@ -1,0 +1,7 @@
+{
+  "type": "boolean",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Boolean",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-boolean-schema.json",
+  "description": "Boolean schema from Amazon X-Ray API"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/TraceSummary"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TraceSummaryList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-trace-summary-list-structure.json",
+  "description": "TraceSummaryList schema from Amazon X-Ray API"
+}

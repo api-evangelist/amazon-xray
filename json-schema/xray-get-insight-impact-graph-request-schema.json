@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "required": [
+    "InsightId",
+    "StartTime",
+    "EndTime"
+  ],
+  "title": "GetInsightImpactGraphRequest",
+  "properties": {
+    "InsightId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightId"
+        },
+        {
+          "description": "The insight's unique identifier. Use the GetInsightSummaries action to retrieve an InsightId."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The estimated start time of the insight, in Unix time seconds. The StartTime is inclusive of the value provided and can't be more than 30 days old."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The estimated end time of the insight, in Unix time seconds. The EndTime is exclusive of the value provided. The time range between the start time and end time can't be more than six hours. "
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Token"
+        },
+        {
+          "description": "Specify the pagination token returned by a previous request to retrieve the next page of results. "
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-insight-impact-graph-request-schema.json",
+  "description": "GetInsightImpactGraphRequest schema from Amazon X-Ray API"
+}

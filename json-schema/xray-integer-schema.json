@@ -1,0 +1,7 @@
+{
+  "type": "integer",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Integer",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-integer-schema.json",
+  "description": "Integer schema from Amazon X-Ray API"
+}

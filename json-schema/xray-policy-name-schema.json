@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "pattern": "[\\w+=,.@-]+",
+  "minLength": 1,
+  "maxLength": 128,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PolicyName",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-policy-name-schema.json",
+  "description": "PolicyName schema from Amazon X-Ray API"
+}

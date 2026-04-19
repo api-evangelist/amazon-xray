@@ -1,0 +1,7 @@
+{
+  "Summary": "example-value",
+  "EventTime": "example-value",
+  "ClientRequestImpactStatistics": "example-value",
+  "RootCauseServiceRequestImpactStatistics": "example-value",
+  "TopAnomalousServices": "example-value"
+}

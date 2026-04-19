@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the exception."
+        }
+      ]
+    },
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The message of the exception."
+        }
+      ]
+    }
+  },
+  "description": "The exception associated with a root cause.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "RootCauseException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-root-cause-exception-structure.json"
+}

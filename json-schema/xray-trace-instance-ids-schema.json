@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/InstanceIdDetail"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TraceInstanceIds",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-trace-instance-ids-schema.json",
+  "description": "TraceInstanceIds schema from Amazon X-Ray API"
+}

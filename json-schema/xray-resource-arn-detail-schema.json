@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "ARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The ARN of a corresponding resource."
+        }
+      ]
+    }
+  },
+  "description": "A list of resources ARNs corresponding to the segments in a trace.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResourceARNDetail",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-resource-arn-detail-schema.json"
+}

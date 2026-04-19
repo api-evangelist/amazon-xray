@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AnnotationKey",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-annotation-key-schema.json",
+  "description": "AnnotationKey schema from Amazon X-Ray API"
+}

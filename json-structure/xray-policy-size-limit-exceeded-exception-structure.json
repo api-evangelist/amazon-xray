@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "PolicySizeLimitExceededException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-policy-size-limit-exceeded-exception-structure.json",
+  "description": "PolicySizeLimitExceededException schema from Amazon X-Ray API"
+}

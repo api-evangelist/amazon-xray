@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/TraceUser"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TraceUsers",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-trace-users-structure.json",
+  "description": "TraceUsers schema from Amazon X-Ray API"
+}

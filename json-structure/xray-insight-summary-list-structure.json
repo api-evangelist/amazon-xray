@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/InsightSummary"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InsightSummaryList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-insight-summary-list-structure.json",
+  "description": "InsightSummaryList schema from Amazon X-Ray API"
+}

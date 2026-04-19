@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "title": "DeleteSamplingRuleRequest",
+  "properties": {
+    "RuleName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the sampling rule. Specify a rule by either name or ARN, but not both."
+        }
+      ]
+    },
+    "RuleARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The ARN of the sampling rule. Specify a rule by either name or ARN, but not both."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-delete-sampling-rule-request-schema.json",
+  "description": "DeleteSamplingRuleRequest schema from Amazon X-Ray API"
+}

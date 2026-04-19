@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "Services": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceList"
+        },
+        {
+          "description": "The services that have processed one of the specified requests."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetTraceGraphResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-trace-graph-result-structure.json",
+  "description": "GetTraceGraphResult schema from Amazon X-Ray API"
+}

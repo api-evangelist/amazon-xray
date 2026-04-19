@@ -1,0 +1,6 @@
+{
+  "TelemetryRecords": "example-value",
+  "EC2InstanceId": "trace-abc123def456",
+  "Hostname": "Example Service",
+  "ResourceARN": "arn:aws:xray:us-east-1:123456789012:group/default"
+}

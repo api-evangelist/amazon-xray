@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "required": [
+    "StartTime",
+    "EndTime"
+  ],
+  "title": "GetTraceSummariesRequest",
+  "properties": {
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start of the time frame for which to retrieve traces."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The end of the time frame for which to retrieve traces."
+        }
+      ]
+    },
+    "TimeRangeType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TimeRangeType"
+        },
+        {
+          "description": "A parameter to indicate whether to query trace summaries by TraceId or Event time."
+        }
+      ]
+    },
+    "Sampling": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "Set to <code>true</code> to get summaries for only a subset of available traces."
+        }
+      ]
+    },
+    "SamplingStrategy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingStrategy"
+        },
+        {
+          "description": "A parameter to indicate whether to enable sampling on trace summaries. Input parameters are Name and Value."
+        }
+      ]
+    },
+    "FilterExpression": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FilterExpression"
+        },
+        {
+          "description": "Specify a filter expression to retrieve trace summaries for services or requests that meet certain requirements."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Specify the pagination token returned by a previous request to retrieve the next page of results."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-trace-summaries-request-schema.json",
+  "description": "GetTraceSummariesRequest schema from Amazon X-Ray API"
+}

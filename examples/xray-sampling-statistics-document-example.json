@@ -1,0 +1,8 @@
+{
+  "RuleName": "Example Service",
+  "ClientID": "trace-abc123def456",
+  "Timestamp": "example-value",
+  "RequestCount": "example-value",
+  "SampledCount": "example-value",
+  "BorrowCount": "example-value"
+}

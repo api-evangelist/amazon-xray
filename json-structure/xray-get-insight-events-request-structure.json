@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "required": [
+    "InsightId"
+  ],
+  "name": "GetInsightEventsRequest",
+  "properties": {
+    "InsightId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightId"
+        },
+        {
+          "description": "The insight's unique identifier. Use the GetInsightSummaries action to retrieve an InsightId."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GetInsightEventsMaxResults"
+        },
+        {
+          "description": "Used to retrieve at most the specified value of events."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Token"
+        },
+        {
+          "description": "Specify the pagination token returned by a previous request to retrieve the next page of events. "
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-insight-events-request-structure.json",
+  "description": "GetInsightEventsRequest schema from Amazon X-Ray API"
+}

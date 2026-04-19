@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/InsightImpactGraphEdge"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsightImpactGraphEdgeList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-insight-impact-graph-edge-list-schema.json",
+  "description": "InsightImpactGraphEdgeList schema from Amazon X-Ray API"
+}

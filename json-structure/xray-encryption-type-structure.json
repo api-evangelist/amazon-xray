@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "enum": [
+    "NONE",
+    "KMS"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "EncryptionType",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-encryption-type-structure.json",
+  "description": "EncryptionType schema from Amazon X-Ray API"
+}

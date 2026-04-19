@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "TraceIds"
+  ],
+  "title": "GetTraceGraphRequest",
+  "properties": {
+    "TraceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceIdList"
+        },
+        {
+          "description": "Trace IDs of requests for which to generate a service graph."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-trace-graph-request-schema.json",
+  "description": "GetTraceGraphRequest schema from Amazon X-Ray API"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/String"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "AliasNames",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-alias-names-structure.json",
+  "description": "AliasNames schema from Amazon X-Ray API"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "ReferenceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "Identifier of the edge. Unique within a service map."
+        }
+      ]
+    }
+  },
+  "description": "The connection between two service in an insight impact graph.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InsightImpactGraphEdge",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-insight-impact-graph-edge-structure.json"
+}

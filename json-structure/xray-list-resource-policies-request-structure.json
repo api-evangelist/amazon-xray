@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "name": "ListResourcePoliciesRequest",
+  "properties": {
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourcePolicyNextToken"
+        },
+        {
+          "description": "Not currently supported."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-list-resource-policies-request-structure.json",
+  "description": "ListResourcePoliciesRequest schema from Amazon X-Ray API"
+}

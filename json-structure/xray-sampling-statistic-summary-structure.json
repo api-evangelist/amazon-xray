@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "RuleName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the sampling rule."
+        }
+      ]
+    },
+    "Timestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start time of the reporting window."
+        }
+      ]
+    },
+    "RequestCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The number of requests that matched the rule."
+        }
+      ]
+    },
+    "BorrowCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The number of requests recorded with borrowed reservoir quota."
+        }
+      ]
+    },
+    "SampledCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The number of requests recorded."
+        }
+      ]
+    }
+  },
+  "description": "Aggregated request sampling data for a sampling rule across all services for a 10-second window.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingStatisticSummary",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-statistic-summary-structure.json"
+}

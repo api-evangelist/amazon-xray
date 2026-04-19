@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "FaultCountHigh": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The upper limit of fault counts for a service."
+        }
+      ]
+    },
+    "FaultCountLow": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The lower limit of fault counts for a service."
+        }
+      ]
+    }
+  },
+  "description": "The predicted high and low fault count. This is used to determine if a service has become anomalous and if an insight should be created.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ForecastStatistics",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-forecast-statistics-schema.json"
+}

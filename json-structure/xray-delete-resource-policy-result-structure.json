@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {},
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "DeleteResourcePolicyResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-delete-resource-policy-result-structure.json",
+  "description": "DeleteResourcePolicyResult schema from Amazon X-Ray API"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/ValuesWithServiceIds"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Annotations",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-annotations-structure.json",
+  "description": "Annotations schema from Amazon X-Ray API"
+}

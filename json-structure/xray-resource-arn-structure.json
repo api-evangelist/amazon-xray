@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "maxLength": 500,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResourceARN",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-resource-arn-structure.json",
+  "description": "ResourceARN schema from Amazon X-Ray API"
+}

@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "name": "DeleteGroupRequest",
+  "properties": {
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The case-sensitive name of the group."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The ARN of the group that was generated on creation."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-delete-group-request-structure.json",
+  "description": "DeleteGroupRequest schema from Amazon X-Ray API"
+}

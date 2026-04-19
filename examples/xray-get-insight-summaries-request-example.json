@@ -1,0 +1,9 @@
+{
+  "States": "example-value",
+  "GroupARN": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "GroupName": "Example Service",
+  "StartTime": "example-value",
+  "EndTime": "example-value",
+  "MaxResults": "example-value",
+  "NextToken": "example-value"
+}

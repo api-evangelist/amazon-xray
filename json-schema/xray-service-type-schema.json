@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "maxLength": 64,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ServiceType",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-service-type-schema.json",
+  "description": "ServiceType schema from Amazon X-Ray API"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "maxLength": 128,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URLPath",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-url-path-schema.json",
+  "description": "URLPath schema from Amazon X-Ray API"
+}

@@ -1,0 +1,7 @@
+{
+  "HttpURL": "example-value",
+  "HttpStatus": "ACTIVE",
+  "HttpMethod": "example-value",
+  "UserAgent": "example-value",
+  "ClientIp": "example-value"
+}

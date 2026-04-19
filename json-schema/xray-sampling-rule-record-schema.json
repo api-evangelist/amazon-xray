@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingRule": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingRule"
+        },
+        {
+          "description": "The sampling rule."
+        }
+      ]
+    },
+    "CreatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "When the rule was created."
+        }
+      ]
+    },
+    "ModifiedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "When the rule was last modified."
+        }
+      ]
+    }
+  },
+  "description": "A <a href=\"https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html\">SamplingRule</a> and its metadata.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SamplingRuleRecord",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-sampling-rule-record-schema.json"
+}

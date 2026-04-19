@@ -1,0 +1,6 @@
+{
+  "GroupName": "Example Service",
+  "FilterExpression": "example-value",
+  "InsightsConfiguration": "example-value",
+  "Tags": "example-value"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingRuleRecord": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingRuleRecord"
+        },
+        {
+          "description": "The deleted rule definition and metadata."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteSamplingRuleResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-delete-sampling-rule-result-schema.json",
+  "description": "DeleteSamplingRuleResult schema from Amazon X-Ray API"
+}

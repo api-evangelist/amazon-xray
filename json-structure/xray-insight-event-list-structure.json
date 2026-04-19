@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/InsightEvent"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InsightEventList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-insight-event-list-structure.json",
+  "description": "InsightEventList schema from Amazon X-Ray API"
+}

@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "PolicyName"
+  ],
+  "name": "DeleteResourcePolicyRequest",
+  "properties": {
+    "PolicyName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyName"
+        },
+        {
+          "description": "The name of the resource policy to delete."
+        }
+      ]
+    },
+    "PolicyRevisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyRevisionId"
+        },
+        {
+          "description": "Specifies a specific policy revision to delete. Provide a <code>PolicyRevisionId</code> to ensure an atomic delete operation. If the provided revision id does not match the latest policy revision id, an <code>InvalidPolicyRevisionIdException</code> exception is returned. "
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-delete-resource-policy-request-structure.json",
+  "description": "DeleteResourcePolicyRequest schema from Amazon X-Ray API"
+}

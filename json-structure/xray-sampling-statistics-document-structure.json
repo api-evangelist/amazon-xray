@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "required": [
+    "RuleName",
+    "ClientID",
+    "Timestamp",
+    "RequestCount",
+    "SampledCount"
+  ],
+  "properties": {
+    "RuleName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RuleName"
+        },
+        {
+          "description": "The name of the sampling rule."
+        }
+      ]
+    },
+    "ClientID": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientID"
+        },
+        {
+          "description": "A unique identifier for the service in hexadecimal."
+        }
+      ]
+    },
+    "Timestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The current time."
+        }
+      ]
+    },
+    "RequestCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RequestCount"
+        },
+        {
+          "description": "The number of requests that matched the rule."
+        }
+      ]
+    },
+    "SampledCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SampledCount"
+        },
+        {
+          "description": "The number of requests recorded."
+        }
+      ]
+    },
+    "BorrowCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BorrowCount"
+        },
+        {
+          "description": "The number of requests recorded with borrowed reservoir quota."
+        }
+      ]
+    }
+  },
+  "description": "Request sampling results for a single rule from a service. Results are for the last 10 seconds unless the service has been assigned a longer reporting interval after a previous call to <a href=\"https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html\">GetSamplingTargets</a>.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingStatisticsDocument",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-statistics-document-structure.json"
+}

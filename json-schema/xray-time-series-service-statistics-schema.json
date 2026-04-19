@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "Timestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "Timestamp of the window for which statistics are aggregated."
+        }
+      ]
+    },
+    "EdgeSummaryStatistics": {
+      "$ref": "#/components/schemas/EdgeStatistics"
+    },
+    "ServiceSummaryStatistics": {
+      "$ref": "#/components/schemas/ServiceStatistics"
+    },
+    "ServiceForecastStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ForecastStatistics"
+        },
+        {
+          "description": "The forecasted high and low fault count values."
+        }
+      ]
+    },
+    "ResponseTimeHistogram": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Histogram"
+        },
+        {
+          "description": "The response time histogram for the selected entities."
+        }
+      ]
+    }
+  },
+  "description": "A list of TimeSeriesStatistic structures.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeSeriesServiceStatistics",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-time-series-service-statistics-schema.json"
+}

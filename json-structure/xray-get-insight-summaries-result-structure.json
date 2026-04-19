@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "InsightSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightSummaryList"
+        },
+        {
+          "description": "The summary of each insight within the group matching the provided filters. The summary contains the InsightID, start and end time, the root cause service, the root cause and client impact statistics, the top anomalous services, and the status of the insight."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Token"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetInsightSummariesResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-insight-summaries-result-structure.json",
+  "description": "GetInsightSummariesResult schema from Amazon X-Ray API"
+}

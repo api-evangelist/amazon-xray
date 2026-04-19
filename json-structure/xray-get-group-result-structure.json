@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "Group": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Group"
+        },
+        {
+          "description": "The group that was requested. Contains the name of the group, the ARN of the group, the filter expression, and the insight configuration assigned to the group."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetGroupResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-group-result-structure.json",
+  "description": "GetGroupResult schema from Amazon X-Ray API"
+}

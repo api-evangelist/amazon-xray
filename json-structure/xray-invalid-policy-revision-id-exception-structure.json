@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InvalidPolicyRevisionIdException",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-invalid-policy-revision-id-exception-structure.json",
+  "description": "InvalidPolicyRevisionIdException schema from Amazon X-Ray API"
+}

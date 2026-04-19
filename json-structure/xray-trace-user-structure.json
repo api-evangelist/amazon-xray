@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "UserName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The user's name."
+        }
+      ]
+    },
+    "ServiceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceIds"
+        },
+        {
+          "description": "Services that the user's request hit."
+        }
+      ]
+    }
+  },
+  "description": "Information about a user recorded in segment documents.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TraceUser",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-trace-user-structure.json"
+}

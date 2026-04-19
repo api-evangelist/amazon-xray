@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ResourceARNDetail"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TraceResourceARNs",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-trace-resource-ar-ns-structure.json",
+  "description": "TraceResourceARNs schema from Amazon X-Ray API"
+}

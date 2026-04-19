@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "required": [
+    "Timestamp"
+  ],
+  "properties": {
+    "Timestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "SegmentsReceivedCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "SegmentsSentCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "SegmentsSpilloverCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "SegmentsRejectedCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "BackendConnectionErrors": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BackendConnectionErrors"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    }
+  },
+  "description": "<p/>",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TelemetryRecord",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-telemetry-record-structure.json"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/SamplingRuleRecord"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingRuleRecordList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-rule-record-list-structure.json",
+  "description": "SamplingRuleRecordList schema from Amazon X-Ray API"
+}

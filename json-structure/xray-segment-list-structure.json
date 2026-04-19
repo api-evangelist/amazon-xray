@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Segment"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SegmentList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-segment-list-structure.json",
+  "description": "SegmentList schema from Amazon X-Ray API"
+}

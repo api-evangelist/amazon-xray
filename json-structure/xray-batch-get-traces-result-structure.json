@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "Traces": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TraceList"
+        },
+        {
+          "description": "Full traces for the specified requests."
+        }
+      ]
+    },
+    "UnprocessedTraceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UnprocessedTraceIdList"
+        },
+        {
+          "description": "Trace IDs of requests that haven't been processed."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "BatchGetTracesResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-batch-get-traces-result-structure.json",
+  "description": "BatchGetTracesResult schema from Amazon X-Ray API"
+}

@@ -1,0 +1,8 @@
+{
+  "TimeoutCount": "example-value",
+  "ConnectionRefusedCount": "example-value",
+  "HTTPCode4XXCount": "example-value",
+  "HTTPCode5XXCount": "example-value",
+  "UnknownHostCount": "example-value",
+  "OtherCount": "example-value"
+}

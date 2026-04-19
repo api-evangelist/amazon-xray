@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "Groups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupSummaryList"
+        },
+        {
+          "description": "The collection of all active groups."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetGroupsResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-groups-result-structure.json",
+  "description": "GetGroupsResult schema from Amazon X-Ray API"
+}

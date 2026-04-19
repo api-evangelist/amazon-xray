@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "PolicyName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyName"
+        },
+        {
+          "description": "The name of the resource policy. Must be unique within a specific Amazon Web Services account."
+        }
+      ]
+    },
+    "PolicyDocument": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyDocument"
+        },
+        {
+          "description": "The resource policy document, which can be up to 5kb in size."
+        }
+      ]
+    },
+    "PolicyRevisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyRevisionId"
+        },
+        {
+          "description": "Returns the current policy revision id for this policy name."
+        }
+      ]
+    },
+    "LastUpdatedTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "When the policy was last updated, in Unix time seconds."
+        }
+      ]
+    }
+  },
+  "description": "A resource policy grants one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy is associated with a specific Amazon Web Services account.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResourcePolicy",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-resource-policy-structure.json"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "EncryptionConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionConfig"
+        },
+        {
+          "description": "The new encryption configuration."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "PutEncryptionConfigResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-put-encryption-config-result-structure.json",
+  "description": "PutEncryptionConfigResult schema from Amazon X-Ray API"
+}

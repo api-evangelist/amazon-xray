@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "TimeSeriesServiceStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TimeSeriesServiceStatisticsList"
+        },
+        {
+          "description": "The collection of statistics."
+        }
+      ]
+    },
+    "ContainsOldGroupVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "A flag indicating whether or not a group's filter expression has been consistent, or if a returned aggregation might show statistics from an older version of the group's filter expression."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetTimeSeriesServiceStatisticsResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-time-series-service-statistics-result-structure.json",
+  "description": "GetTimeSeriesServiceStatisticsResult schema from Amazon X-Ray API"
+}

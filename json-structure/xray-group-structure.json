@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The unique case-sensitive name of the group."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the group generated based on the GroupName."
+        }
+      ]
+    },
+    "FilterExpression": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The filter expression defining the parameters to include traces."
+        }
+      ]
+    },
+    "InsightsConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightsConfiguration"
+        },
+        {
+          "description": "<p>The structure containing configurations related to insights.</p> <ul> <li> <p>The InsightsEnabled boolean can be set to true to enable insights for the group or false to disable insights for the group.</p> </li> <li> <p>The NotificationsEnabled boolean can be set to true to enable insights notifications through Amazon EventBridge for the group.</p> </li> </ul>"
+        }
+      ]
+    }
+  },
+  "description": "Details and metadata for a group.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Group",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-group-structure.json"
+}

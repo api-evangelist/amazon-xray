@@ -1,0 +1,14 @@
+{
+  "RuleName": "Example Service",
+  "RuleARN": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "ResourceARN": "arn:aws:xray:us-east-1:123456789012:group/default",
+  "Priority": "example-value",
+  "FixedRate": "example-value",
+  "ReservoirSize": "example-value",
+  "Host": "example-value",
+  "ServiceName": "Example Service",
+  "ServiceType": "AWS::Lambda::Function",
+  "HTTPMethod": "example-value",
+  "URLPath": "example-value",
+  "Attributes": "example-value"
+}

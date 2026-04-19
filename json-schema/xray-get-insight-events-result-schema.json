@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "InsightEvents": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightEventList"
+        },
+        {
+          "description": "A detailed description of the event. This includes the time of the event, client and root cause impact statistics, and the top anomalous service at the time of the event."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Token"
+        },
+        {
+          "description": "Use this token to retrieve the next page of insight events."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetInsightEventsResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-insight-events-result-schema.json",
+  "description": "GetInsightEventsResult schema from Amazon X-Ray API"
+}

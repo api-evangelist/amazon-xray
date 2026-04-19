@@ -1,0 +1,7 @@
+{
+  "RuleName": "Example Service",
+  "FixedRate": "example-value",
+  "ReservoirQuota": "example-value",
+  "ReservoirQuotaTTL": "example-value",
+  "Interval": "example-value"
+}

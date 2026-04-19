@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "enum": [
+    "FAULT"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InsightCategory",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-insight-category-structure.json",
+  "description": "InsightCategory schema from Amazon X-Ray API"
+}

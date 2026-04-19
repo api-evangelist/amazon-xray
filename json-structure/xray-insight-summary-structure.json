@@ -1,0 +1,132 @@
+{
+  "type": "object",
+  "properties": {
+    "InsightId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightId"
+        },
+        {
+          "description": "The insights unique identifier. "
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the group that the insight belongs to."
+        }
+      ]
+    },
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The name of the group that the insight belongs to."
+        }
+      ]
+    },
+    "RootCauseServiceId": {
+      "$ref": "#/components/schemas/ServiceId"
+    },
+    "Categories": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightCategoryList"
+        },
+        {
+          "description": " Categories The categories that label and describe the type of insight."
+        }
+      ]
+    },
+    "State": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightState"
+        },
+        {
+          "description": "The current state of the insight."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time, in Unix seconds, at which the insight began."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time, in Unix seconds, at which the insight ended."
+        }
+      ]
+    },
+    "Summary": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightSummaryText"
+        },
+        {
+          "description": "A brief description of the insight."
+        }
+      ]
+    },
+    "ClientRequestImpactStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RequestImpactStatistics"
+        },
+        {
+          "description": "The impact statistics of the client side service. This includes the number of requests to the client service and whether the requests were faults or okay. "
+        }
+      ]
+    },
+    "RootCauseServiceRequestImpactStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RequestImpactStatistics"
+        },
+        {
+          "description": "The impact statistics of the root cause service. This includes the number of requests to the client service and whether the requests were faults or okay. "
+        }
+      ]
+    },
+    "TopAnomalousServices": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AnomalousServiceList"
+        },
+        {
+          "description": "The service within the insight that is most impacted by the incident."
+        }
+      ]
+    },
+    "LastUpdateTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time, in Unix seconds, that the insight was last updated."
+        }
+      ]
+    }
+  },
+  "description": "Information that describes an insight.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InsightSummary",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-insight-summary-structure.json"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "title": "GetGroupsRequest",
+  "properties": {
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GetGroupsNextToken"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-groups-request-schema.json",
+  "description": "GetGroupsRequest schema from Amazon X-Ray API"
+}

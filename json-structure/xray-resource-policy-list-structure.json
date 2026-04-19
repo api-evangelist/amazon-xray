@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ResourcePolicy"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResourcePolicyList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-resource-policy-list-structure.json",
+  "description": "ResourcePolicyList schema from Amazon X-Ray API"
+}

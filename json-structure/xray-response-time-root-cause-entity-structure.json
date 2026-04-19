@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the entity."
+        }
+      ]
+    },
+    "Coverage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "The type and messages of the exceptions."
+        }
+      ]
+    },
+    "Remote": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "A flag that denotes a remote subsegment."
+        }
+      ]
+    }
+  },
+  "description": "A collection of segments and corresponding subsegments associated to a response time warning.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResponseTimeRootCauseEntity",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-response-time-root-cause-entity-structure.json"
+}

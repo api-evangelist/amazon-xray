@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "Services": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResponseTimeRootCauseServices"
+        },
+        {
+          "description": "A list of corresponding services. A service identifies a segment and contains a name, account ID, type, and inferred flag."
+        }
+      ]
+    },
+    "ClientImpacting": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "A flag that denotes that the root cause impacts the trace client."
+        }
+      ]
+    }
+  },
+  "description": "The root cause information for a response time warning.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ResponseTimeRootCause",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-response-time-root-cause-structure.json"
+}

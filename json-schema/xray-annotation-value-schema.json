@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "NumberValue": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableDouble"
+        },
+        {
+          "description": "Value for a Number annotation."
+        }
+      ]
+    },
+    "BooleanValue": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "Value for a Boolean annotation."
+        }
+      ]
+    },
+    "StringValue": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Value for a String annotation."
+        }
+      ]
+    }
+  },
+  "description": "Value of a segment annotation. Has one of three value types: Number, Boolean, or String.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AnnotationValue",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-annotation-value-schema.json"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "integer",
+  "minimum": 0,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReservoirSize",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-reservoir-size-schema.json",
+  "description": "ReservoirSize schema from Amazon X-Ray API"
+}

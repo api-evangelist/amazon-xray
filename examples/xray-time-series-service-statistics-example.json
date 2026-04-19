@@ -1,0 +1,7 @@
+{
+  "Timestamp": "example-value",
+  "EdgeSummaryStatistics": "example-value",
+  "ServiceSummaryStatistics": "example-value",
+  "ServiceForecastStatistics": "example-value",
+  "ResponseTimeHistogram": "example-value"
+}

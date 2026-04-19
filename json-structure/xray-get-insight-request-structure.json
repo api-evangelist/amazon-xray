@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "InsightId"
+  ],
+  "name": "GetInsightRequest",
+  "properties": {
+    "InsightId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightId"
+        },
+        {
+          "description": "The insight's unique identifier. Use the GetInsightSummaries action to retrieve an InsightId."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-insight-request-structure.json",
+  "description": "GetInsightRequest schema from Amazon X-Ray API"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingTargetDocuments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingTargetDocumentList"
+        },
+        {
+          "description": "Updated rules that the service should use to sample requests."
+        }
+      ]
+    },
+    "LastRuleModification": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The last time a user changed the sampling rule configuration. If the sampling rule configuration changed since the service last retrieved it, the service should call <a href=\"https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingRules.html\">GetSamplingRules</a> to get the latest version."
+        }
+      ]
+    },
+    "UnprocessedStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UnprocessedStatisticsList"
+        },
+        {
+          "description": "Information about <a href=\"https://docs.aws.amazon.com/xray/latest/api/API_SamplingStatisticsDocument.html\">SamplingStatisticsDocument</a> that X-Ray could not process."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetSamplingTargetsResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-sampling-targets-result-schema.json",
+  "description": "GetSamplingTargetsResult schema from Amazon X-Ray API"
+}

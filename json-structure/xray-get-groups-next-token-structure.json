@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 100,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "GetGroupsNextToken",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-groups-next-token-structure.json",
+  "description": "GetGroupsNextToken schema from Amazon X-Ray API"
+}

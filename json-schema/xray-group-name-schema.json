@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 32,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupName",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-group-name-schema.json",
+  "description": "GroupName schema from Amazon X-Ray API"
+}

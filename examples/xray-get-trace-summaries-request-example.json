@@ -1,0 +1,9 @@
+{
+  "StartTime": "example-value",
+  "EndTime": "example-value",
+  "TimeRangeType": "AWS::Lambda::Function",
+  "Sampling": "example-value",
+  "SamplingStrategy": "example-value",
+  "FilterExpression": "example-value",
+  "NextToken": "example-value"
+}

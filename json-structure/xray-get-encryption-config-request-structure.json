@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "name": "GetEncryptionConfigRequest",
+  "properties": {},
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-encryption-config-request-structure.json",
+  "description": "GetEncryptionConfigRequest schema from Amazon X-Ray API"
+}

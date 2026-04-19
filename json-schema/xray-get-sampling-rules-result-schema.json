@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingRuleRecords": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingRuleRecordList"
+        },
+        {
+          "description": "Rule definitions and metadata."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetSamplingRulesResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-get-sampling-rules-result-schema.json",
+  "description": "GetSamplingRulesResult schema from Amazon X-Ray API"
+}

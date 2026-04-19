@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "required": [
+    "TelemetryRecords"
+  ],
+  "name": "PutTelemetryRecordsRequest",
+  "properties": {
+    "TelemetryRecords": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TelemetryRecordList"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "EC2InstanceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EC2InstanceId"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "Hostname": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Hostname"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    },
+    "ResourceARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceARN"
+        },
+        {
+          "description": "<p/>"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-put-telemetry-records-request-structure.json",
+  "description": "PutTelemetryRecordsRequest schema from Amazon X-Ray API"
+}

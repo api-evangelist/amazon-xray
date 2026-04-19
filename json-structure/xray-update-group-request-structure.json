@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "name": "UpdateGroupRequest",
+  "properties": {
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The case-sensitive name of the group."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The ARN that was generated upon creation."
+        }
+      ]
+    },
+    "FilterExpression": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FilterExpression"
+        },
+        {
+          "description": "The updated filter expression defining criteria by which to group traces."
+        }
+      ]
+    },
+    "InsightsConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InsightsConfiguration"
+        },
+        {
+          "description": "<p>The structure containing configurations related to insights.</p> <ul> <li> <p>The InsightsEnabled boolean can be set to true to enable insights for the group or false to disable insights for the group.</p> </li> <li> <p>The NotificationsEnabled boolean can be set to true to enable insights notifications for the group. Notifications can only be enabled on a group with InsightsEnabled set to true.</p> </li> </ul>"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-update-group-request-structure.json",
+  "description": "UpdateGroupRequest schema from Amazon X-Ray API"
+}

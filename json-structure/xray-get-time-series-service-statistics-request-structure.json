@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [
+    "StartTime",
+    "EndTime"
+  ],
+  "name": "GetTimeSeriesServiceStatisticsRequest",
+  "properties": {
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start of the time frame for which to aggregate statistics."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The end of the time frame for which to aggregate statistics."
+        }
+      ]
+    },
+    "GroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupName"
+        },
+        {
+          "description": "The case-sensitive name of the group for which to pull statistics from."
+        }
+      ]
+    },
+    "GroupARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GroupARN"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the group for which to pull statistics from."
+        }
+      ]
+    },
+    "EntitySelectorExpression": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EntitySelectorExpression"
+        },
+        {
+          "description": "A filter expression defining entities that will be aggregated for statistics. Supports ID, service, and edge functions. If no selector expression is specified, edge statistics are returned. "
+        }
+      ]
+    },
+    "Period": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "Aggregation period in seconds."
+        }
+      ]
+    },
+    "ForecastStatistics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableBoolean"
+        },
+        {
+          "description": "The forecasted high and low fault count values. Forecast enabled requests require the EntitySelectorExpression ID be provided."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Pagination token."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-get-time-series-service-statistics-request-structure.json",
+  "description": "GetTimeSeriesServiceStatisticsRequest schema from Amazon X-Ray API"
+}

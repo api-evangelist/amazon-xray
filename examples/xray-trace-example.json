@@ -1,0 +1,6 @@
+{
+  "Id": "trace-abc123def456",
+  "Duration": "example-value",
+  "LimitExceeded": "example-value",
+  "Segments": "example-value"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "UnprocessedTraceSegments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UnprocessedTraceSegmentList"
+        },
+        {
+          "description": "Segments that failed processing."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PutTraceSegmentsResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-put-trace-segments-result-schema.json",
+  "description": "PutTraceSegmentsResult schema from Amazon X-Ray API"
+}

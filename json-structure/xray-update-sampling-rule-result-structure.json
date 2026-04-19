@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "SamplingRuleRecord": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SamplingRuleRecord"
+        },
+        {
+          "description": "The updated rule definition and metadata."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "UpdateSamplingRuleResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-update-sampling-rule-result-structure.json",
+  "description": "UpdateSamplingRuleResult schema from Amazon X-Ray API"
+}

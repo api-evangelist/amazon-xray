@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {},
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteResourcePolicyResult",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-delete-resource-policy-result-schema.json",
+  "description": "DeleteResourcePolicyResult schema from Amazon X-Ray API"
+}

@@ -1,0 +1,7 @@
+{
+  "RuleName": "Example Service",
+  "Timestamp": "example-value",
+  "RequestCount": "example-value",
+  "BorrowCount": "example-value",
+  "SampledCount": "example-value"
+}

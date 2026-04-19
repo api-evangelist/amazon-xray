@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "HttpURL": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The request URL."
+        }
+      ]
+    },
+    "HttpStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableInteger"
+        },
+        {
+          "description": "The response status."
+        }
+      ]
+    },
+    "HttpMethod": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The request method."
+        }
+      ]
+    },
+    "UserAgent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The request's user agent string."
+        }
+      ]
+    },
+    "ClientIp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The IP address of the requestor."
+        }
+      ]
+    }
+  },
+  "description": "Information about an HTTP request.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Http",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-http-schema.json"
+}

@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "ResourceARN"
+  ],
+  "title": "ListTagsForResourceRequest",
+  "properties": {
+    "ResourceARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AmazonResourceName"
+        },
+        {
+          "description": "The Amazon Resource Number (ARN) of an X-Ray group or sampling rule."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "A pagination token. If multiple pages of results are returned, use the <code>NextToken</code> value returned with the current page of results as the value of this parameter to get the next page of results."
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-list-tags-for-resource-request-schema.json",
+  "description": "ListTagsForResourceRequest schema from Amazon X-Ray API"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "enum": [
+    "ACTIVE",
+    "CLOSED"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InsightState",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-insight-state-structure.json",
+  "description": "InsightState schema from Amazon X-Ray API"
+}

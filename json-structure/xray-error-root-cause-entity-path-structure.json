@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ErrorRootCauseEntity"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ErrorRootCauseEntityPath",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-error-root-cause-entity-path-structure.json",
+  "description": "ErrorRootCauseEntityPath schema from Amazon X-Ray API"
+}

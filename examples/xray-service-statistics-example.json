@@ -1,0 +1,7 @@
+{
+  "OkCount": "example-value",
+  "ErrorStatistics": "example-value",
+  "FaultStatistics": "example-value",
+  "TotalCount": "example-value",
+  "TotalResponseTime": "example-value"
+}

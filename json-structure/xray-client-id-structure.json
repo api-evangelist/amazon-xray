@@ -1,0 +1,9 @@
+{
+  "type": "string",
+  "minLength": 24,
+  "maxLength": 24,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ClientID",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-client-id-structure.json",
+  "description": "ClientID schema from Amazon X-Ray API"
+}

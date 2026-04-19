@@ -1,0 +1,11 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/SamplingStatisticsDocument"
+  },
+  "maxItems": 25,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SamplingStatisticsDocumentList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-sampling-statistics-document-list-structure.json",
+  "description": "SamplingStatisticsDocumentList schema from Amazon X-Ray API"
+}

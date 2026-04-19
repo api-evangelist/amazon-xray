@@ -1,0 +1,7 @@
+{
+  "type": "boolean",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Boolean",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-boolean-structure.json",
+  "description": "Boolean schema from Amazon X-Ray API"
+}

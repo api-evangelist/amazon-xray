@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The ID of a corresponding EC2 instance."
+        }
+      ]
+    }
+  },
+  "description": "A list of EC2 instance IDs corresponding to the segments in a trace. ",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "InstanceIdDetail",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-instance-id-detail-structure.json"
+}

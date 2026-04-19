@@ -1,0 +1,15 @@
+{
+  "ReferenceId": "trace-abc123def456",
+  "Name": "Example Service",
+  "Names": "Example Service",
+  "Root": "example-value",
+  "AccountId": "trace-abc123def456",
+  "Type": "AWS::Lambda::Function",
+  "State": "example-value",
+  "StartTime": "example-value",
+  "EndTime": "example-value",
+  "Edges": "example-value",
+  "SummaryStatistics": "example-value",
+  "DurationHistogram": "example-value",
+  "ResponseTimeHistogram": "example-value"
+}

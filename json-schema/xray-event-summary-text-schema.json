@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventSummaryText",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-event-summary-text-schema.json",
+  "description": "EventSummaryText schema from Amazon X-Ray API"
+}

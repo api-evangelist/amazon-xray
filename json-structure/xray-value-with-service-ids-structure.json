@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "AnnotationValue": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AnnotationValue"
+        },
+        {
+          "description": "Values of the annotation."
+        }
+      ]
+    },
+    "ServiceIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceIds"
+        },
+        {
+          "description": "Services to which the annotation applies."
+        }
+      ]
+    }
+  },
+  "description": "Information about a segment annotation.",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "ValueWithServiceIds",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-value-with-service-ids-structure.json"
+}

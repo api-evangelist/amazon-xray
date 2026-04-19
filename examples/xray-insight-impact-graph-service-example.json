@@ -1,0 +1,8 @@
+{
+  "ReferenceId": "trace-abc123def456",
+  "Type": "AWS::Lambda::Function",
+  "Name": "Example Service",
+  "Names": "Example Service",
+  "AccountId": "trace-abc123def456",
+  "Edges": "example-value"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "maxLength": 64,
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Host",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-host-structure.json",
+  "description": "Host schema from Amazon X-Ray API"
+}

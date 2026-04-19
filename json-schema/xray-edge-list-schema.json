@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Edge"
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EdgeList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-edge-list-schema.json",
+  "description": "EdgeList schema from Amazon X-Ray API"
+}

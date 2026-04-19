@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/TimeSeriesServiceStatistics"
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "TimeSeriesServiceStatisticsList",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-structure/xray-time-series-service-statistics-list-structure.json",
+  "description": "TimeSeriesServiceStatisticsList schema from Amazon X-Ray API"
+}

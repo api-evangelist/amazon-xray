@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "FaultCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The number of requests that have resulted in a fault,"
+        }
+      ]
+    },
+    "OkCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The number of successful requests."
+        }
+      ]
+    },
+    "TotalCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NullableLong"
+        },
+        {
+          "description": "The total number of requests to the service."
+        }
+      ]
+    }
+  },
+  "description": "Statistics that describe how the incident has impacted a service.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RequestImpactStatistics",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/json-schema/xray-request-impact-statistics-schema.json"
+}
