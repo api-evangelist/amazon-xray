@@ -1,0 +1,13 @@
+{
+  "repo": "amazon-xray",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/developer/",
+      "feed_url": "https://aws.amazon.com/blogs/developer/feed/",
+      "saved": 10,
+      "title": "AWS Developer Tools Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:21:55Z"
+}
