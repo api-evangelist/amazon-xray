@@ -1,151 +1,238 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Amazon X-Ray Distributed Tracing"
-  description: >-
-    Unified workflow for developers and operations teams to analyze distributed
-    traces, visualize service maps, manage sampling rules, and investigate
-    application performance insights using Amazon X-Ray.
+  label: Amazon X-Ray Distributed Tracing
+  description: Unified workflow for developers and operations teams to analyze distributed traces, visualize service maps,
+    manage sampling rules, and investigate application performance insights using Amazon X-Ray.
   tags:
-    - AWS
-    - Distributed Tracing
-    - Observability
-    - Application Performance
-    - Debugging
-  created: "2026-04-19"
-  modified: "2026-04-19"
-
+  - AWS
+  - Distributed Tracing
+  - Observability
+  - Application Performance
+  - Debugging
+  created: '2026-04-19'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
-      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
-      AWS_REGION: AWS_REGION
-
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
 capability:
   consumes:
-    - import: xray
-      location: ./shared/xray.yaml
-
+  - type: http
+    namespace: xray
+    baseUri: https://xray.us-east-1.amazonaws.com
+    description: Amazon X-Ray REST API for distributed tracing.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_ACCESS_KEY_ID}}'
+      placement: header
+    resources:
+    - name: traces
+      path: /Traces
+      description: Retrieve distributed trace data.
+      operations:
+      - name: batch-get-traces
+        method: POST
+        description: Retrieve trace documents for a list of trace IDs.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            TraceIds: '{{tools.trace_ids}}'
+    - name: trace-summaries
+      path: /TraceSummaries
+      description: Get trace summaries for a time range.
+      operations:
+      - name: get-trace-summaries
+        method: POST
+        description: Retrieve trace summaries for a specified time range.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            StartTime: '{{tools.start_time}}'
+            EndTime: '{{tools.end_time}}'
+    - name: service-graph
+      path: /ServiceGraph
+      description: Get service map for distributed applications.
+      operations:
+      - name: get-service-graph
+        method: POST
+        description: Get a document that describes the services connected in a request call chain.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            StartTime: '{{tools.start_time}}'
+            EndTime: '{{tools.end_time}}'
+    - name: sampling-rules
+      path: /GetSamplingRules
+      description: Manage trace sampling rules.
+      operations:
+      - name: get-sampling-rules
+        method: POST
+        description: Retrieve all sampling rules.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups
+      path: /GetGroups
+      description: Manage X-Ray groups for filtering traces.
+      operations:
+      - name: get-groups
+        method: POST
+        description: Retrieve all groups.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: insights
+      path: /GetInsightSummaries
+      description: Get X-Ray insights about application anomalies.
+      operations:
+      - name: get-insight-summaries
+        method: POST
+        description: Retrieve summaries of X-Ray insights.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: distributed-tracing-api
-      description: "Unified REST API for Amazon X-Ray distributed tracing analysis."
-      resources:
-        - path: /v1/traces
-          name: traces
-          description: "Trace data access and analysis."
-          operations:
-            - method: GET
-              name: get-trace-summaries
-              description: "Get trace summaries for a time range."
-              call: "xray.get-trace-summaries"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/service-map
-          name: service-map
-          description: "Service dependency visualization."
-          operations:
-            - method: GET
-              name: get-service-graph
-              description: "Get the service map."
-              call: "xray.get-service-graph"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/sampling-rules
-          name: sampling-rules
-          description: "Trace sampling configuration."
-          operations:
-            - method: GET
-              name: get-sampling-rules
-              description: "Get sampling rules."
-              call: "xray.get-sampling-rules"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/groups
-          name: groups
-          description: "Trace filtering groups."
-          operations:
-            - method: GET
-              name: get-groups
-              description: "Get trace groups."
-              call: "xray.get-groups"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/insights
-          name: insights
-          description: "Application performance insights."
-          operations:
-            - method: GET
-              name: get-insight-summaries
-              description: "Get insight summaries."
-              call: "xray.get-insight-summaries"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: distributed-tracing-mcp
-      transport: http
-      description: "MCP server for AI-assisted Amazon X-Ray distributed tracing analysis."
-      tools:
-        - name: get-trace-summaries
-          description: "Get summaries of distributed traces for a specified time range."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "xray.get-trace-summaries"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: batch-get-traces
-          description: "Retrieve complete trace documents for specific trace IDs."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "xray.batch-get-traces"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-service-graph
-          description: "Get the service map showing inter-service dependencies and request flow."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "xray.get-service-graph"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-sampling-rules
-          description: "Get all trace sampling rules to understand data collection configuration."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "xray.get-sampling-rules"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-groups
-          description: "Get X-Ray groups used to filter and organize traces."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "xray.get-groups"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-insight-summaries
-          description: "Get summaries of X-Ray insights identifying anomalies and performance issues."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "xray.get-insight-summaries"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: distributed-tracing-api
+    description: Unified REST API for Amazon X-Ray distributed tracing analysis.
+    resources:
+    - path: /v1/traces
+      name: traces
+      description: Trace data access and analysis.
+      operations:
+      - method: GET
+        name: get-trace-summaries
+        description: Get trace summaries for a time range.
+        call: xray.get-trace-summaries
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/service-map
+      name: service-map
+      description: Service dependency visualization.
+      operations:
+      - method: GET
+        name: get-service-graph
+        description: Get the service map.
+        call: xray.get-service-graph
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sampling-rules
+      name: sampling-rules
+      description: Trace sampling configuration.
+      operations:
+      - method: GET
+        name: get-sampling-rules
+        description: Get sampling rules.
+        call: xray.get-sampling-rules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups
+      name: groups
+      description: Trace filtering groups.
+      operations:
+      - method: GET
+        name: get-groups
+        description: Get trace groups.
+        call: xray.get-groups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/insights
+      name: insights
+      description: Application performance insights.
+      operations:
+      - method: GET
+        name: get-insight-summaries
+        description: Get insight summaries.
+        call: xray.get-insight-summaries
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: distributed-tracing-mcp
+    transport: http
+    description: MCP server for AI-assisted Amazon X-Ray distributed tracing analysis.
+    tools:
+    - name: get-trace-summaries
+      description: Get summaries of distributed traces for a specified time range.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: xray.get-trace-summaries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: batch-get-traces
+      description: Retrieve complete trace documents for specific trace IDs.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: xray.batch-get-traces
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-service-graph
+      description: Get the service map showing inter-service dependencies and request flow.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: xray.get-service-graph
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-sampling-rules
+      description: Get all trace sampling rules to understand data collection configuration.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: xray.get-sampling-rules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-groups
+      description: Get X-Ray groups used to filter and organize traces.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: xray.get-groups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-insight-summaries
+      description: Get summaries of X-Ray insights identifying anomalies and performance issues.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: xray.get-insight-summaries
+      outputParameters:
+      - type: object
+        mapping: $.
