@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon X-Ray API — Sampling
+  description: 'Amazon X-Ray API — Sampling. 1 operations. Lead operation: Amazon X-Ray Get sampling rules. Self-contained
+    Naftiko capability covering one Amazon Xray business surface.'
+  tags:
+  - Amazon Xray
+  - Sampling
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_XRAY_API_KEY: AMAZON_XRAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-xray-sampling
+    baseUri: https://xray.{region}.amazonaws.com
+    description: Amazon X-Ray API — Sampling business capability. Self-contained, no shared references.
+    resources:
+    - name: SamplingRules
+      path: /SamplingRules
+      operations:
+      - name: getsamplingrules
+        method: POST
+        description: Amazon X-Ray Get sampling rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_XRAY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-xray-sampling-rest
+    port: 8080
+    description: REST adapter for Amazon X-Ray API — Sampling. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/samplingrules
+      name: samplingrules
+      description: REST surface for SamplingRules.
+      operations:
+      - method: POST
+        name: getsamplingrules
+        description: Amazon X-Ray Get sampling rules
+        call: amazon-xray-sampling.getsamplingrules
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-xray-sampling-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon X-Ray API — Sampling. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: amazon-x-ray-get-sampling
+      description: Amazon X-Ray Get sampling rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-xray-sampling.getsamplingrules
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

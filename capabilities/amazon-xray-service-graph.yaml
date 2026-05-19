@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon X-Ray API — Service Graph
+  description: 'Amazon X-Ray API — Service Graph. 1 operations. Lead operation: Amazon X-Ray Get the service graph. Self-contained
+    Naftiko capability covering one Amazon Xray business surface.'
+  tags:
+  - Amazon Xray
+  - Service Graph
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_XRAY_API_KEY: AMAZON_XRAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-xray-service-graph
+    baseUri: https://xray.{region}.amazonaws.com
+    description: Amazon X-Ray API — Service Graph business capability. Self-contained, no shared references.
+    resources:
+    - name: ServiceGraph
+      path: /ServiceGraph
+      operations:
+      - name: getservicegraph
+        method: POST
+        description: Amazon X-Ray Get the service graph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_XRAY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-xray-service-graph-rest
+    port: 8080
+    description: REST adapter for Amazon X-Ray API — Service Graph. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/servicegraph
+      name: servicegraph
+      description: REST surface for ServiceGraph.
+      operations:
+      - method: POST
+        name: getservicegraph
+        description: Amazon X-Ray Get the service graph
+        call: amazon-xray-service-graph.getservicegraph
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-xray-service-graph-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon X-Ray API — Service Graph. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: amazon-x-ray-get-service
+      description: Amazon X-Ray Get the service graph
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-xray-service-graph.getservicegraph
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
