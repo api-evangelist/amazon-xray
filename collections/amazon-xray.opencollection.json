@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon X-Ray API",
+    "version": "2016-04-12"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon X-Ray Upload trace segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://xray.{region}.amazonaws.com/Traces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads segment documents to AWS X-Ray."
+        },
+        {
+          "info": {
+            "name": "Amazon X-Ray Get trace summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://xray.{region}.amazonaws.com/TraceSummaries",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves IDs and annotations for traces available for a specified time frame using an optional filter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service Graph",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon X-Ray Get the service graph",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://xray.{region}.amazonaws.com/ServiceGraph",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a document that describes services that process incoming requests."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sampling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon X-Ray Get sampling rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://xray.{region}.amazonaws.com/SamplingRules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves all sampling rules."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon X-Ray Get groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://xray.{region}.amazonaws.com/Groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves all active group details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
