@@ -5,7 +5,7 @@ description: >-
   end-to-end visibility into requests as they travel through the application. X-Ray provides service maps, trace
   analysis, sampling rules, group filtering, and AI-powered insights for identifying performance bottlenecks and errors
   across microservices and serverless architectures.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/apis.yml
 created: '2024-01-15'
 modified: '2026-05-19'
