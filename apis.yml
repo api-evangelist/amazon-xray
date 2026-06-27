@@ -47,7 +47,7 @@ apis:
         url: https://aws.amazon.com/xray/getting-started/
       - type: Authentication
         url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
       - type: StatusPage
         url: https://status.aws.amazon.com/
@@ -78,7 +78,7 @@ common:
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/xray/
-  - type: SignUp
+  - type: Signup
     url: https://signin.aws.amazon.com/signup?request_type=register
   - type: Login
     url: https://aws.amazon.com/console/
