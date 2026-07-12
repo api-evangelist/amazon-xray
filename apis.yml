@@ -60,6 +60,14 @@ apis:
       - type: Security
         url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
 common:
+  - type: TrustCenter
+    url: security/amazon-xray-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-xray-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-xray-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-xray-authentication.yml
   - type: Portal
     url: https://aws.amazon.com/
   - type: Website
