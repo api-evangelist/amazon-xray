@@ -1,4 +1,20 @@
-# Amazon X-Ray API Spectral Ruleset
+# amazon-xray — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 60% of servers already https (warn)
+#   - query-params-casing: pascal @ 100% (n=14)
+#   - operationid-casing: pascal @ 100% (n=35)
+#   - schema-names-casing: pascal @ 100% (n=235)
+#   - schema-properties-casing: pascal @ 100% (n=392)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - error-schema-defined: BackendConnectionErrors
+#   - merge: kept 15 existing, added 5 measured, upgraded 0
+#   - added: query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing, error-schema-defined
+extends:
+  - spectral:oas
 rules:
   info-title-format:
     description: API title should reference Amazon X-Ray
@@ -8,7 +24,7 @@ rules:
       field: title
       function: pattern
       functionOptions:
-        match: "^Amazon X-Ray"
+        match: ^Amazon X-Ray
   info-description-required:
     description: API info must have a description
     severity: error
@@ -31,7 +47,7 @@ rules:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\.0\\."
+        match: ^3\.0\.
   servers-defined:
     description: At least one server must be defined
     severity: error
@@ -47,7 +63,7 @@ rules:
       field: url
       function: pattern
       functionOptions:
-        match: "^https://"
+        match: ^https://
   operation-operationid-required:
     description: Every operation must have an operationId
     severity: error
@@ -70,7 +86,7 @@ rules:
       field: summary
       function: pattern
       functionOptions:
-        match: "^Amazon X-Ray"
+        match: ^Amazon X-Ray
   operation-tags-required:
     description: Every operation must have at least one tag
     severity: warn
@@ -99,7 +115,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: ".+"
+        match: .+
   security-schemes-defined:
     description: Security schemes should be defined in components
     severity: warn
@@ -113,4 +129,46 @@ rules:
     given: $.components
     then:
       field: schemas
+      function: truthy
+  query-params-casing:
+    description: Query parameters should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: pascal
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  error-schema-defined:
+    description: A shared error schema (BackendConnectionErrors) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: BackendConnectionErrors
       function: truthy
