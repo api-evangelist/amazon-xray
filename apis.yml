@@ -60,6 +60,8 @@ apis:
       - type: Security
         url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-xray-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-xray-trust-center.yml
   - type: VulnerabilityDisclosure
