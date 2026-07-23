@@ -1,0 +1,421 @@
+openapi: 3.0.0
+info:
+  version: '2016-04-12'
+  x-release: v4
+  title: AWS X-Ray CreateGroup InsightSummaries API
+  description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: xray
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: https://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: http://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+- url: https://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: InsightSummaries
+paths:
+  /InsightSummaries:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: GetInsightSummaries
+      description: Retrieves the summaries of all insights in the specified group matching the provided filter values.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInsightSummariesResult'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: ThrottledException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottledException'
+      parameters:
+      - name: MaxResults
+        in: query
+        schema:
+          type: string
+        description: Pagination limit
+        required: false
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - StartTime
+              - EndTime
+              properties:
+                States:
+                  description: 'The list of insight states. '
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/InsightState'
+                  minItems: 0
+                  maxItems: 1
+                GroupARN:
+                  description: The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't provided.
+                  type: string
+                  minLength: 1
+                  maxLength: 400
+                GroupName:
+                  description: The name of the group. Required if the GroupARN isn't provided.
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                StartTime:
+                  description: The beginning of the time frame in which the insights started. The start time can't be more than 30 days old.
+                  type: string
+                  format: date-time
+                EndTime:
+                  description: The end of the time frame in which the insights ended. The end time can't be more than 30 days old.
+                  type: string
+                  format: date-time
+                MaxResults:
+                  description: The maximum number of results to display.
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                NextToken:
+                  description: Pagination token.
+                  type: string
+                  minLength: 1
+                  maxLength: 2000
+      summary: Amazon X-Ray Get Insight Summaries
+      tags:
+      - InsightSummaries
+components:
+  schemas:
+    GetInsightSummariesResult:
+      type: object
+      properties:
+        InsightSummaries:
+          allOf:
+          - $ref: '#/components/schemas/InsightSummaryList'
+          - description: The summary of each insight within the group matching the provided filters. The summary contains the InsightID, start and end time, the root cause service, the root cause and client impact statistics, the top anomalous services, and the status of the insight.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/Token'
+          - description: Pagination token.
+    String:
+      type: string
+    InsightState:
+      type: string
+      enum:
+      - ACTIVE
+      - CLOSED
+    InsightSummaryText:
+      type: string
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    InsightCategoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightCategory'
+    AnomalousService:
+      type: object
+      properties:
+        ServiceId:
+          $ref: '#/components/schemas/ServiceId'
+      description: 'The service within the service graph that has anomalously high fault rates. '
+    Token:
+      type: string
+      minLength: 1
+      maxLength: 2000
+    ServiceId:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p/>
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/ServiceNames'
+          - description: <p/>
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p/>
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p/>
+      description: <p/>
+    InsightCategory:
+      type: string
+      enum:
+      - FAULT
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+    AnomalousServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnomalousService'
+    InsightSummary:
+      type: object
+      properties:
+        InsightId:
+          allOf:
+          - $ref: '#/components/schemas/InsightId'
+          - description: 'The insights unique identifier. '
+        GroupARN:
+          allOf:
+          - $ref: '#/components/schemas/GroupARN'
+          - description: The Amazon Resource Name (ARN) of the group that the insight belongs to.
+        GroupName:
+          allOf:
+          - $ref: '#/components/schemas/GroupName'
+          - description: The name of the group that the insight belongs to.
+        RootCauseServiceId:
+          $ref: '#/components/schemas/ServiceId'
+        Categories:
+          allOf:
+          - $ref: '#/components/schemas/InsightCategoryList'
+          - description: ' Categories The categories that label and describe the type of insight.'
+        State:
+          allOf:
+          - $ref: '#/components/schemas/InsightState'
+          - description: The current state of the insight.
+        StartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The time, in Unix seconds, at which the insight began.
+        EndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The time, in Unix seconds, at which the insight ended.
+        Summary:
+          allOf:
+          - $ref: '#/components/schemas/InsightSummaryText'
+          - description: A brief description of the insight.
+        ClientRequestImpactStatistics:
+          allOf:
+          - $ref: '#/components/schemas/RequestImpactStatistics'
+          - description: 'The impact statistics of the client side service. This includes the number of requests to the client service and whether the requests were faults or okay. '
+        RootCauseServiceRequestImpactStatistics:
+          allOf:
+          - $ref: '#/components/schemas/RequestImpactStatistics'
+          - description: 'The impact statistics of the root cause service. This includes the number of requests to the client service and whether the requests were faults or okay. '
+        TopAnomalousServices:
+          allOf:
+          - $ref: '#/components/schemas/AnomalousServiceList'
+          - description: The service within the insight that is most impacted by the incident.
+        LastUpdateTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The time, in Unix seconds, that the insight was last updated.
+      description: Information that describes an insight.
+    ThrottledException: {}
+    InvalidRequestException: {}
+    GroupName:
+      type: string
+      minLength: 1
+      maxLength: 32
+    Timestamp:
+      type: string
+      format: date-time
+    NullableLong:
+      type: integer
+    GroupARN:
+      type: string
+      minLength: 1
+      maxLength: 400
+    RequestImpactStatistics:
+      type: object
+      properties:
+        FaultCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that have resulted in a fault,
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of successful requests.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests to the service.
+      description: Statistics that describe how the incident has impacted a service.
+    InsightSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightSummary'
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/xray/

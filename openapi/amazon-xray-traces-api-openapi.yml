@@ -1,0 +1,338 @@
+openapi: 3.0.0
+info:
+  version: '2016-04-12'
+  x-release: v4
+  title: AWS X-Ray CreateGroup Traces API
+  description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: xray
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: https://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: http://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+- url: https://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Traces
+paths:
+  /Traces:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: BatchGetTraces
+      description: Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use <code>GetTraceSummaries</code> to get a list of trace IDs.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchGetTracesResult'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: ThrottledException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottledException'
+      parameters:
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - TraceIds
+              properties:
+                TraceIds:
+                  description: Specify the trace IDs of requests for which to retrieve segments.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TraceId'
+                NextToken:
+                  description: Pagination token.
+                  type: string
+      summary: Amazon X-Ray Batch Get Traces
+      tags:
+      - Traces
+  /TraceSummaries:
+    post:
+      operationId: GetTraceSummaries
+      summary: Amazon X-Ray Get trace summaries
+      description: Retrieves IDs and annotations for traces available for a specified time frame using an optional filter.
+      tags:
+      - Traces
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - StartTime
+              - EndTime
+              properties:
+                StartTime:
+                  type: string
+                  format: date-time
+                EndTime:
+                  type: string
+                  format: date-time
+                FilterExpression:
+                  type: string
+                Sampling:
+                  type: boolean
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response.
+components:
+  schemas:
+    TraceId:
+      type: string
+      minLength: 1
+      maxLength: 35
+    String:
+      type: string
+    Trace:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/TraceId'
+          - description: The unique identifier for the request that generated the trace's segments and subsegments.
+        Duration:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.
+        LimitExceeded:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: LimitExceeded is set to true when the trace has exceeded the <code>Trace document size</code> limit. For more information about this limit and other X-Ray limits and quotas, see <a href="https://docs.aws.amazon.com/general/latest/gr/xray.html">Amazon Web Services X-Ray endpoints and quotas</a>.
+        Segments:
+          allOf:
+          - $ref: '#/components/schemas/SegmentList'
+          - description: Segment documents for the segments and subsegments that comprise the trace.
+      description: A collection of segment documents with matching trace IDs.
+    NullableBoolean:
+      type: boolean
+    Segment:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/SegmentId'
+          - description: The segment's ID.
+        Document:
+          allOf:
+          - $ref: '#/components/schemas/SegmentDocument'
+          - description: The segment document.
+      description: <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a href="https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html">PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p> <p>For the full segment document schema, see <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">Amazon Web Services X-Ray Segment Documents</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>
+    SegmentId:
+      type: string
+    TraceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Trace'
+    SegmentDocument:
+      type: string
+      minLength: 1
+    NullableDouble:
+      type: number
+      format: double
+    ThrottledException: {}
+    InvalidRequestException: {}
+    BatchGetTracesResult:
+      type: object
+      properties:
+        Traces:
+          allOf:
+          - $ref: '#/components/schemas/TraceList'
+          - description: Full traces for the specified requests.
+        UnprocessedTraceIds:
+          allOf:
+          - $ref: '#/components/schemas/UnprocessedTraceIdList'
+          - description: Trace IDs of requests that haven't been processed.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
+    SegmentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Segment'
+    UnprocessedTraceIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceId'
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/xray/

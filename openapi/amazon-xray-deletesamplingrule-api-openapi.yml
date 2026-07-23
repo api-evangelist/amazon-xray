@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  version: '2016-04-12'
+  x-release: v4
+  title: AWS X-Ray CreateGroup DeleteSamplingRule API
+  description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: xray
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: https://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: http://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+- url: https://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: DeleteSamplingRule
+paths:
+  /DeleteSamplingRule:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: DeleteSamplingRule
+      description: Deletes a sampling rule.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteSamplingRuleResult'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: ThrottledException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottledException'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RuleName:
+                  description: The name of the sampling rule. Specify a rule by either name or ARN, but not both.
+                  type: string
+                RuleARN:
+                  description: The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
+                  type: string
+      summary: Amazon X-Ray Delete Sampling Rule
+      tags:
+      - DeleteSamplingRule
+components:
+  schemas:
+    ResourceARN:
+      type: string
+      maxLength: 500
+    ServiceType:
+      type: string
+      maxLength: 64
+    String:
+      type: string
+    DeleteSamplingRuleResult:
+      type: object
+      properties:
+        SamplingRuleRecord:
+          allOf:
+          - $ref: '#/components/schemas/SamplingRuleRecord'
+          - description: The deleted rule definition and metadata.
+    ReservoirSize:
+      type: integer
+      minimum: 0
+    FixedRate:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 1
+    AttributeMap:
+      type: object
+      maxProperties: 5
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
+    AttributeValue:
+      type: string
+      minLength: 1
+      maxLength: 32
+    RuleName:
+      type: string
+      minLength: 1
+      maxLength: 32
+    ServiceName:
+      type: string
+      maxLength: 64
+    SamplingRule:
+      type: object
+      required:
+      - ResourceARN
+      - Priority
+      - FixedRate
+      - ReservoirSize
+      - ServiceName
+      - ServiceType
+      - Host
+      - HTTPMethod
+      - URLPath
+      - Version
+      properties:
+        RuleName:
+          allOf:
+          - $ref: '#/components/schemas/RuleName'
+          - description: The name of the sampling rule. Specify a rule by either name or ARN, but not both.
+        RuleARN:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The ARN of the sampling rule. Specify a rule by either name or ARN, but not both.
+        ResourceARN:
+          allOf:
+          - $ref: '#/components/schemas/ResourceARN'
+          - description: Matches the ARN of the Amazon Web Services resource on which the service runs.
+        Priority:
+          allOf:
+          - $ref: '#/components/schemas/Priority'
+          - description: The priority of the sampling rule.
+        FixedRate:
+          allOf:
+          - $ref: '#/components/schemas/FixedRate'
+          - description: The percentage of matching requests to instrument, after the reservoir is exhausted.
+        ReservoirSize:
+          allOf:
+          - $ref: '#/components/schemas/ReservoirSize'
+          - description: A fixed number of matching requests to instrument per second, prior to applying the fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
+        ServiceName:
+          allOf:
+          - $ref: '#/components/schemas/ServiceName'
+          - description: Matches the <code>name</code> that the service uses to identify itself in segments.
+        ServiceType:
+          allOf:
+          - $ref: '#/components/schemas/ServiceType'
+          - description: Matches the <code>origin</code> that the service uses to identify its type in segments.
+        Host:
+          allOf:
+          - $ref: '#/components/schemas/Host'
+          - description: Matches the hostname from a request URL.
+        HTTPMethod:
+          allOf:
+          - $ref: '#/components/schemas/HTTPMethod'
+          - description: Matches the HTTP method of a request.
+        URLPath:
+          allOf:
+          - $ref: '#/components/schemas/URLPath'
+          - description: Matches the path from a request URL.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          - description: The version of the sampling rule format (<code>1</code>).
+        Attributes:
+          allOf:
+          - $ref: '#/components/schemas/AttributeMap'
+          - description: Matches attributes derived from the request.
+      description: A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.
+    Version:
+      type: integer
+      minimum: 1
+    URLPath:
+      type: string
+      maxLength: 128
+    Host:
+      type: string
+      maxLength: 64
+    ThrottledException: {}
+    InvalidRequestException: {}
+    Priority:
+      type: integer
+      minimum: 1
+      maximum: 9999
+    SamplingRuleRecord:
+      type: object
+      properties:
+        SamplingRule:
+          allOf:
+          - $ref: '#/components/schemas/SamplingRule'
+          - description: The sampling rule.
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the rule was created.
+        ModifiedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the rule was last modified.
+      description: A <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html">SamplingRule</a> and its metadata.
+    HTTPMethod:
+      type: string
+      maxLength: 10
+    Timestamp:
+      type: string
+      format: date-time
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/xray/

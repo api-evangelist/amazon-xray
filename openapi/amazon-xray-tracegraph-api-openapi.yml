@@ -1,0 +1,485 @@
+openapi: 3.0.0
+info:
+  version: '2016-04-12'
+  x-release: v4
+  title: AWS X-Ray CreateGroup TraceGraph API
+  description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: xray
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: https://xray.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS X-Ray multi-region endpoint
+- url: http://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+- url: https://xray.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: TraceGraph
+paths:
+  /TraceGraph:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: GetTraceGraph
+      description: Retrieves a service graph for one or more specific trace IDs.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTraceGraphResult'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: ThrottledException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottledException'
+      parameters:
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - TraceIds
+              properties:
+                TraceIds:
+                  description: Trace IDs of requests for which to generate a service graph.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TraceId'
+                NextToken:
+                  description: Pagination token.
+                  type: string
+      summary: Amazon X-Ray Get Trace Graph
+      tags:
+      - TraceGraph
+components:
+  schemas:
+    TraceId:
+      type: string
+      minLength: 1
+      maxLength: 35
+    String:
+      type: string
+    Service:
+      type: object
+      properties:
+        ReferenceId:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: Identifier for the service. Unique within the service map.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The canonical name of the service.
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/ServiceNames'
+          - description: A list of names for the service, including the canonical name.
+        Root:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: Indicates that the service was the first service to process a request.
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Identifier of the Amazon Web Services account in which the service runs.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p>The type of service.</p> <ul> <li> <p>Amazon Web Services Resource - The type of an Amazon Web Services resource. For example, <code>AWS::EC2::Instance</code> for an application running on Amazon EC2 or <code>AWS::DynamoDB::Table</code> for an Amazon DynamoDB table that the application used.</p> </li> <li> <p>Amazon Web Services Service - The type of an Amazon Web Services service. For example, <code>AWS::DynamoDB</code> for downstream calls to Amazon DynamoDB that didn't target a specific table.</p> </li> <li> <p> <code>client</code> - Represents the clients that sent requests to a root service.</p> </li> <li> <p> <code>remote</code> - A downstream service of indeterminate type.</p> </li> </ul>
+        State:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The service's state.
+        StartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The start time of the first segment that the service generated.
+        EndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The end time of the last segment that the service generated.
+        Edges:
+          allOf:
+          - $ref: '#/components/schemas/EdgeList'
+          - description: Connections to downstream services.
+        SummaryStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ServiceStatistics'
+          - description: Aggregated statistics for the service.
+        DurationHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: A histogram that maps the spread of service durations.
+        ResponseTimeHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: A histogram that maps the spread of service response times.
+      description: Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used.
+    NullableInteger:
+      type: integer
+    EdgeStatistics:
+      type: object
+      properties:
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that completed with a 2xx Success status code.
+        ErrorStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ErrorStatistics'
+          - description: Information about requests that failed with a 4xx Client Error status code.
+        FaultStatistics:
+          allOf:
+          - $ref: '#/components/schemas/FaultStatistics'
+          - description: Information about requests that failed with a 5xx Server Error status code.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of completed requests.
+        TotalResponseTime:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The aggregate response time of completed requests.
+      description: Response statistics for an edge.
+    AliasList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Alias'
+    EdgeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Edge'
+    NullableBoolean:
+      type: boolean
+    Histogram:
+      type: array
+      items:
+        $ref: '#/components/schemas/HistogramEntry'
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    Edge:
+      type: object
+      properties:
+        ReferenceId:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: Identifier of the edge. Unique within a service map.
+        StartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The start time of the first segment on the edge.
+        EndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The end time of the last segment on the edge.
+        SummaryStatistics:
+          allOf:
+          - $ref: '#/components/schemas/EdgeStatistics'
+          - description: Response statistics for segments on the edge.
+        ResponseTimeHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: A histogram that maps the spread of client response times on an edge. Only populated for synchronous edges.
+        Aliases:
+          allOf:
+          - $ref: '#/components/schemas/AliasList'
+          - description: Aliases for the edge.
+        EdgeType:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Describes an asynchronous connection, with a value of <code>link</code>.
+        ReceivedEventAgeHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: A histogram that maps the spread of event age when received by consumers. Age is calculated each time an event is received. Only populated when <i>EdgeType</i> is <code>link</code>.
+      description: Information about a connection between two services. An edge can be a synchronous connection, such as typical call between client and service, or an asynchronous link, such as a Lambda function which retrieves an event from an SNS queue.
+    ServiceStatistics:
+      type: object
+      properties:
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that completed with a 2xx Success status code.
+        ErrorStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ErrorStatistics'
+          - description: Information about requests that failed with a 4xx Client Error status code.
+        FaultStatistics:
+          allOf:
+          - $ref: '#/components/schemas/FaultStatistics'
+          - description: Information about requests that failed with a 5xx Server Error status code.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of completed requests.
+        TotalResponseTime:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The aggregate response time of completed requests.
+      description: Response statistics for a service.
+    GetTraceGraphResult:
+      type: object
+      properties:
+        Services:
+          allOf:
+          - $ref: '#/components/schemas/ServiceList'
+          - description: The services that have processed one of the specified requests.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
+    Double:
+      type: number
+      format: double
+    AliasNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    HistogramEntry:
+      type: object
+      properties:
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The value of the entry.
+        Count:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The prevalence of the entry.
+      description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
+    NullableDouble:
+      type: number
+      format: double
+    ThrottledException: {}
+    FaultStatistics:
+      type: object
+      properties:
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 5xx Server Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 5xx Server Error status code.
+      description: Information about requests that failed with a 5xx Server Error status code.
+    InvalidRequestException: {}
+    Alias:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The canonical name of the alias.
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/AliasNames'
+          - description: A list of names for the alias, including the canonical name.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The type of the alias.
+      description: An alias for an edge.
+    ErrorStatistics:
+      type: object
+      properties:
+        ThrottleCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with a 419 throttling status code.
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 4xx Client Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 4xx Client Error status code.
+      description: Information about requests that failed with a 4xx Client Error status code.
+    Integer:
+      type: integer
+    Timestamp:
+      type: string
+      format: date-time
+    ServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Service'
+    NullableLong:
+      type: integer
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/xray/
