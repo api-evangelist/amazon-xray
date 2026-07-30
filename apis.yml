@@ -5,7 +5,20 @@ description: >-
   end-to-end visibility into requests as they travel through the application. X-Ray provides service maps, trace
   analysis, sampling rules, group filtering, and AI-powered insights for identifying performance bottlenecks and errors
   across microservices and serverless architectures.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-xray.png
 url: https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/apis.yml
 created: '2024-01-15'
 modified: '2026-05-19'
@@ -19,47 +32,1101 @@ tags:
   - Monitoring
   - Observability
 apis:
-  - aid: amazon-xray:amazon-xray-rest-api
-    name: Amazon X-Ray REST API
-    description: >-
-      RESTful API for AWS X-Ray distributed tracing operations including trace retrieval, service map generation,
-      sampling rule management, group management, and insights analysis for application performance monitoring. 30
-      operations for traces, service graphs, sampling, groups, and insights.
-    humanURL: https://aws.amazon.com/xray/
-    baseURL: https://xray.amazonaws.com
-    tags:
-      - AWS
-      - Distributed Tracing
-      - Observability
-      - Tracing
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/xray/latest/api/
-      - type: OpenAPI
-        url: openapi/amazon-xray-openapi-original.yaml
-      - type: JSONSchema
-        url: json-schema/xray-trace-summary-schema.json
-      - type: JSONLD
-        url: json-ld/amazon-xray-context.jsonld
-      - type: Pricing
-        url: https://aws.amazon.com/xray/pricing/
-      - type: GettingStarted
-        url: https://aws.amazon.com/xray/getting-started/
-      - type: Authentication
-        url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
-      - type: SDKs
-        url: https://aws.amazon.com/tools/
-      - type: StatusPage
-        url: https://status.aws.amazon.com/
-      - type: FAQ
-        url: https://aws.amazon.com/xray/faqs/
-      - type: APIReference
-        url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
-      - type: CodeExamples
-        url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
-      - type: Security
-        url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-creategroup-api
+  name: Amazon X-Ray CreateGroup API
+  description: The CreateGroup API from Amazon X-Ray — 1 operation(s) for creategroup.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - CreateGroup
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-creategroup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-createsamplingrule-api
+  name: Amazon X-Ray CreateSamplingRule API
+  description: The CreateSamplingRule API from Amazon X-Ray — 1 operation(s) for createsamplingrule.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - CreateSamplingRule
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-createsamplingrule-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-deletegroup-api
+  name: Amazon X-Ray DeleteGroup API
+  description: The DeleteGroup API from Amazon X-Ray — 1 operation(s) for deletegroup.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - DeleteGroup
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-deletegroup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-deleteresourcepolicy-api
+  name: Amazon X-Ray DeleteResourcePolicy API
+  description: >-
+    The DeleteResourcePolicy API from Amazon X-Ray — 1 operation(s) for deleteresourcepolicy.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - DeleteResourcePolicy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-deleteresourcepolicy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-deletesamplingrule-api
+  name: Amazon X-Ray DeleteSamplingRule API
+  description: The DeleteSamplingRule API from Amazon X-Ray — 1 operation(s) for deletesamplingrule.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - DeleteSamplingRule
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-deletesamplingrule-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-encryptionconfig-api
+  name: Amazon X-Ray EncryptionConfig API
+  description: The EncryptionConfig API from Amazon X-Ray — 1 operation(s) for encryptionconfig.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - EncryptionConfig
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-encryptionconfig-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-getgroup-api
+  name: Amazon X-Ray GetGroup API
+  description: The GetGroup API from Amazon X-Ray — 1 operation(s) for getgroup.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - GetGroup
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-getgroup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-getsamplingrules-api
+  name: Amazon X-Ray GetSamplingRules API
+  description: The GetSamplingRules API from Amazon X-Ray — 1 operation(s) for getsamplingrules.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - GetSamplingRules
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-getsamplingrules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-groups-api
+  name: Amazon X-Ray Groups API
+  description: The Groups API from Amazon X-Ray — 1 operation(s) for groups.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-insight-api
+  name: Amazon X-Ray Insight API
+  description: The Insight API from Amazon X-Ray — 1 operation(s) for insight.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - Insight
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-insight-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-insightevents-api
+  name: Amazon X-Ray InsightEvents API
+  description: The InsightEvents API from Amazon X-Ray — 1 operation(s) for insightevents.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - InsightEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-insightevents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-insightimpactgraph-api
+  name: Amazon X-Ray InsightImpactGraph API
+  description: The InsightImpactGraph API from Amazon X-Ray — 1 operation(s) for insightimpactgraph.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - InsightImpactGraph
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-insightimpactgraph-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-insightsummaries-api
+  name: Amazon X-Ray InsightSummaries API
+  description: The InsightSummaries API from Amazon X-Ray — 1 operation(s) for insightsummaries.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - InsightSummaries
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-insightsummaries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-listresourcepolicies-api
+  name: Amazon X-Ray ListResourcePolicies API
+  description: >-
+    The ListResourcePolicies API from Amazon X-Ray — 1 operation(s) for listresourcepolicies.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - ListResourcePolicies
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-listresourcepolicies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-listtagsforresource-api
+  name: Amazon X-Ray ListTagsForResource API
+  description: The ListTagsForResource API from Amazon X-Ray — 1 operation(s) for listtagsforresource.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - ListTagsForResource
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-listtagsforresource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-putencryptionconfig-api
+  name: Amazon X-Ray PutEncryptionConfig API
+  description: The PutEncryptionConfig API from Amazon X-Ray — 1 operation(s) for putencryptionconfig.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - PutEncryptionConfig
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-putencryptionconfig-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-putresourcepolicy-api
+  name: Amazon X-Ray PutResourcePolicy API
+  description: The PutResourcePolicy API from Amazon X-Ray — 1 operation(s) for putresourcepolicy.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - PutResourcePolicy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-putresourcepolicy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-sampling-api
+  name: Amazon X-Ray Sampling API
+  description: The Sampling API from Amazon X-Ray — 1 operation(s) for sampling.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - Sampling
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-sampling-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-samplingstatisticsummaries-api
+  name: Amazon X-Ray SamplingStatisticSummaries API
+  description: >-
+    The SamplingStatisticSummaries API from Amazon X-Ray — 1 operation(s) for samplingstatisticsummaries.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - SamplingStatisticSummaries
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-samplingstatisticsummaries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-samplingtargets-api
+  name: Amazon X-Ray SamplingTargets API
+  description: The SamplingTargets API from Amazon X-Ray — 1 operation(s) for samplingtargets.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - SamplingTargets
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-samplingtargets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-service-graph-api
+  name: Amazon X-Ray Service Graph API
+  description: The Service Graph API from Amazon X-Ray — 1 operation(s) for service graph.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - Service Graph
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-service-graph-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-servicegraph-api
+  name: Amazon X-Ray ServiceGraph API
+  description: The ServiceGraph API from Amazon X-Ray — 1 operation(s) for servicegraph.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - ServiceGraph
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-servicegraph-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-tagresource-api
+  name: Amazon X-Ray TagResource API
+  description: The TagResource API from Amazon X-Ray — 1 operation(s) for tagresource.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - TagResource
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-tagresource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-telemetryrecords-api
+  name: Amazon X-Ray TelemetryRecords API
+  description: The TelemetryRecords API from Amazon X-Ray — 1 operation(s) for telemetryrecords.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - TelemetryRecords
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-telemetryrecords-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-timeseriesservicestatistics-api
+  name: Amazon X-Ray TimeSeriesServiceStatistics API
+  description: >-
+    The TimeSeriesServiceStatistics API from Amazon X-Ray — 1 operation(s) for timeseriesservicestatistics.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - TimeSeriesServiceStatistics
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-timeseriesservicestatistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-tracegraph-api
+  name: Amazon X-Ray TraceGraph API
+  description: The TraceGraph API from Amazon X-Ray — 1 operation(s) for tracegraph.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - TraceGraph
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-tracegraph-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-traces-api
+  name: Amazon X-Ray Traces API
+  description: The Traces API from Amazon X-Ray — 2 operation(s) for traces.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - Traces
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-traces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-tracesegments-api
+  name: Amazon X-Ray TraceSegments API
+  description: The TraceSegments API from Amazon X-Ray — 1 operation(s) for tracesegments.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - TraceSegments
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-tracesegments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-tracesummaries-api
+  name: Amazon X-Ray TraceSummaries API
+  description: The TraceSummaries API from Amazon X-Ray — 1 operation(s) for tracesummaries.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - TraceSummaries
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-tracesummaries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-untagresource-api
+  name: Amazon X-Ray UntagResource API
+  description: The UntagResource API from Amazon X-Ray — 1 operation(s) for untagresource.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - UntagResource
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-untagresource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-updategroup-api
+  name: Amazon X-Ray UpdateGroup API
+  description: The UpdateGroup API from Amazon X-Ray — 1 operation(s) for updategroup.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - UpdateGroup
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-updategroup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
+- aid: amazon-xray:amazon-xray-updatesamplingrule-api
+  name: Amazon X-Ray UpdateSamplingRule API
+  description: The UpdateSamplingRule API from Amazon X-Ray — 1 operation(s) for updatesamplingrule.
+  humanURL: https://aws.amazon.com/xray/
+  baseURL: https://xray.amazonaws.com
+  tags:
+  - UpdateSamplingRule
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-xray-updatesamplingrule-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/xray/latest/api/
+  - type: JSONSchema
+    url: json-schema/xray-trace-summary-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-xray-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/xray/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/xray/getting-started/
+  - type: Authentication
+    url: https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html
+  - type: SDKs
+    url: https://aws.amazon.com/tools/
+  - type: StatusPage
+    url: https://status.aws.amazon.com/
+  - type: FAQ
+    url: https://aws.amazon.com/xray/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/xray/latest/api/Welcome.html
+  - type: CodeExamples
+    url: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html
+  - type: Security
+    url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-x-ray/overview
   - type: AgenticAccess
     url: agentic-access/amazon-xray-agentic-access.yml
   - type: TrustCenter
