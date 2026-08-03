@@ -1,0 +1,374 @@
+{
+  "info": {
+    "_postman_id": "407747d9-134d-4f30-8657-3e85fb211057",
+    "name": "AWS X-Ray CreateGroup InsightImpactGraph API",
+    "description": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:50:56.000Z",
+    "updatedAt": "2026-07-28T10:50:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-407747d9-134d-4f30-8657-3e85fb211057"
+  },
+  "item": [
+    {
+      "name": "InsightImpactGraph",
+      "item": [
+        {
+          "name": "Amazon X-Ray Get Insight Impact Graph",
+          "id": "caac5a68-2e8c-456c-9f60-1618a9c17785",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"InsightId\": \"3e5B95f0-c13E-3ae1-9B2C-878e92CB5FDB\",\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/InsightImpactGraph",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "InsightImpactGraph"
+              ]
+            },
+            "description": "Retrieves a service graph structure filtered by the specified insight. The service graph is limited to only structural information. For a complete service graph, use this API with the GetServiceGraph API."
+          },
+          "response": [
+            {
+              "id": "ae462c08-7c1d-4f01-b02e-0b5a5343834c",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"InsightId\": \"3e5B95f0-c13E-3ae1-9B2C-878e92CB5FDB\",\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/InsightImpactGraph",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "InsightImpactGraph"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"InsightId\": \"F48db0dd-48FF-2f0f-Aa9b-E40Ab51e9f2f\",\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"ServiceGraphStartTime\": \"<dateTime>\",\n  \"ServiceGraphEndTime\": \"<dateTime>\",\n  \"Services\": [\n    {\n      \"ReferenceId\": \"<integer>\",\n      \"Type\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AccountId\": \"<string>\",\n      \"Edges\": [\n        {\n          \"ReferenceId\": \"<integer>\"\n        },\n        {\n          \"ReferenceId\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"ReferenceId\": \"<integer>\",\n      \"Type\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AccountId\": \"<string>\",\n      \"Edges\": [\n        {\n          \"ReferenceId\": \"<integer>\"\n        },\n        {\n          \"ReferenceId\": \"<integer>\"\n        }\n      ]\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:50:57.000Z",
+              "updatedAt": "2026-07-28T10:50:57.000Z",
+              "uid": "35240-ae462c08-7c1d-4f01-b02e-0b5a5343834c"
+            },
+            {
+              "id": "43abd8e0-7966-4756-a1d2-46b6751a3733",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"InsightId\": \"3e5B95f0-c13E-3ae1-9B2C-878e92CB5FDB\",\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/InsightImpactGraph",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "InsightImpactGraph"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:50:57.000Z",
+              "updatedAt": "2026-07-28T10:50:57.000Z",
+              "uid": "35240-43abd8e0-7966-4756-a1d2-46b6751a3733"
+            },
+            {
+              "id": "cf4e2ec9-c24b-4447-a140-5128423429ee",
+              "name": "ThrottledException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"InsightId\": \"3e5B95f0-c13E-3ae1-9B2C-878e92CB5FDB\",\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/InsightImpactGraph",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "InsightImpactGraph"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:50:57.000Z",
+              "updatedAt": "2026-07-28T10:50:57.000Z",
+              "uid": "35240-cf4e2ec9-c24b-4447-a140-5128423429ee"
+            }
+          ],
+          "createdAt": "2026-07-28T10:50:57.000Z",
+          "updatedAt": "2026-07-28T10:50:57.000Z",
+          "uid": "35240-caac5a68-2e8c-456c-9f60-1618a9c17785"
+        }
+      ],
+      "id": "9c6a597a-aa62-40d1-bb77-d5389350c3b3",
+      "createdAt": "2026-07-28T10:50:57.000Z",
+      "updatedAt": "2026-07-28T10:50:57.000Z",
+      "uid": "35240-9c6a597a-aa62-40d1-bb77-d5389350c3b3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://xray.{{region}}.amazonaws.com"
+    }
+  ]
+}

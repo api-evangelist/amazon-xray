@@ -1,0 +1,374 @@
+{
+  "info": {
+    "_postman_id": "5240e8bf-dae1-446e-bd17-bfedac3f87c4",
+    "name": "AWS X-Ray CreateGroup SamplingTargets API",
+    "description": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:51:21.000Z",
+    "updatedAt": "2026-07-28T10:51:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5240e8bf-dae1-446e-bd17-bfedac3f87c4"
+  },
+  "item": [
+    {
+      "name": "SamplingTargets",
+      "item": [
+        {
+          "name": "Amazon X-Ray Get Sampling Targets",
+          "id": "5da07916-cbb8-4269-bf4d-38825ac52785",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SamplingStatisticsDocuments\": [\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    },\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/SamplingTargets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "SamplingTargets"
+              ]
+            },
+            "description": "Requests a sampling quota for rules that the service is using to sample requests. "
+          },
+          "response": [
+            {
+              "id": "51a9a106-8dc5-439d-bc2f-d012ccc9fcd4",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SamplingStatisticsDocuments\": [\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    },\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SamplingTargets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SamplingTargets"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"SamplingTargetDocuments\": [\n    {\n      \"RuleName\": \"<string>\",\n      \"FixedRate\": \"<double>\",\n      \"ReservoirQuota\": \"<integer>\",\n      \"ReservoirQuotaTTL\": \"<dateTime>\",\n      \"Interval\": \"<integer>\"\n    },\n    {\n      \"RuleName\": \"<string>\",\n      \"FixedRate\": \"<double>\",\n      \"ReservoirQuota\": \"<integer>\",\n      \"ReservoirQuotaTTL\": \"<dateTime>\",\n      \"Interval\": \"<integer>\"\n    }\n  ],\n  \"LastRuleModification\": \"<dateTime>\",\n  \"UnprocessedStatistics\": [\n    {\n      \"RuleName\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"Message\": \"<string>\"\n    },\n    {\n      \"RuleName\": \"<string>\",\n      \"ErrorCode\": \"<string>\",\n      \"Message\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T10:51:22.000Z",
+              "updatedAt": "2026-07-28T10:51:22.000Z",
+              "uid": "35240-51a9a106-8dc5-439d-bc2f-d012ccc9fcd4"
+            },
+            {
+              "id": "8fb0f7a6-42b4-4324-b28a-fce45755c4c9",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SamplingStatisticsDocuments\": [\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    },\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SamplingTargets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SamplingTargets"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:22.000Z",
+              "updatedAt": "2026-07-28T10:51:22.000Z",
+              "uid": "35240-8fb0f7a6-42b4-4324-b28a-fce45755c4c9"
+            },
+            {
+              "id": "0763628f-54b5-4abf-ab84-776b9897b7f4",
+              "name": "ThrottledException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SamplingStatisticsDocuments\": [\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    },\n    {\n      \"RuleName\": \"<string>\",\n      \"ClientID\": \"<string>\",\n      \"Timestamp\": \"<dateTime>\",\n      \"RequestCount\": \"<integer>\",\n      \"SampledCount\": \"<integer>\",\n      \"BorrowCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SamplingTargets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SamplingTargets"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:22.000Z",
+              "updatedAt": "2026-07-28T10:51:22.000Z",
+              "uid": "35240-0763628f-54b5-4abf-ab84-776b9897b7f4"
+            }
+          ],
+          "createdAt": "2026-07-28T10:51:22.000Z",
+          "updatedAt": "2026-07-28T10:51:22.000Z",
+          "uid": "35240-5da07916-cbb8-4269-bf4d-38825ac52785"
+        }
+      ],
+      "id": "58dae504-dd7d-47d5-a25a-a1e343c1bc33",
+      "createdAt": "2026-07-28T10:51:22.000Z",
+      "updatedAt": "2026-07-28T10:51:22.000Z",
+      "uid": "35240-58dae504-dd7d-47d5-a25a-a1e343c1bc33"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://xray.{{region}}.amazonaws.com"
+    }
+  ]
+}

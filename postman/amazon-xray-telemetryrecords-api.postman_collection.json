@@ -1,0 +1,374 @@
+{
+  "info": {
+    "_postman_id": "ffa596d5-201f-47c6-8054-6e7e7fbec90d",
+    "name": "AWS X-Ray CreateGroup TelemetryRecords API",
+    "description": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:51:25.000Z",
+    "updatedAt": "2026-07-28T10:51:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ffa596d5-201f-47c6-8054-6e7e7fbec90d"
+  },
+  "item": [
+    {
+      "name": "TelemetryRecords",
+      "item": [
+        {
+          "name": "Amazon X-Ray Put Telemetry Records",
+          "id": "4ffe403d-7b11-47d1-828d-69b11c4fd6ea",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/TelemetryRecords",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "TelemetryRecords"
+              ]
+            },
+            "description": "Used by the Amazon Web Services X-Ray daemon to upload telemetry."
+          },
+          "response": [
+            {
+              "id": "029c0768-aae7-4918-9545-d6dc71b06465",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/TelemetryRecords",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TelemetryRecords"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:26.000Z",
+              "updatedAt": "2026-07-28T10:51:26.000Z",
+              "uid": "35240-029c0768-aae7-4918-9545-d6dc71b06465"
+            },
+            {
+              "id": "226b982f-d877-49e9-b7a9-2235edcb7b65",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/TelemetryRecords",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TelemetryRecords"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:26.000Z",
+              "updatedAt": "2026-07-28T10:51:26.000Z",
+              "uid": "35240-226b982f-d877-49e9-b7a9-2235edcb7b65"
+            },
+            {
+              "id": "18f1b982-136f-469b-aac7-3c343c5a5d36",
+              "name": "ThrottledException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/TelemetryRecords",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TelemetryRecords"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:26.000Z",
+              "updatedAt": "2026-07-28T10:51:26.000Z",
+              "uid": "35240-18f1b982-136f-469b-aac7-3c343c5a5d36"
+            }
+          ],
+          "createdAt": "2026-07-28T10:51:26.000Z",
+          "updatedAt": "2026-07-28T10:51:26.000Z",
+          "uid": "35240-4ffe403d-7b11-47d1-828d-69b11c4fd6ea"
+        }
+      ],
+      "id": "375f179e-2594-4b46-bd82-db83aa48d97b",
+      "createdAt": "2026-07-28T10:51:26.000Z",
+      "updatedAt": "2026-07-28T10:51:26.000Z",
+      "uid": "35240-375f179e-2594-4b46-bd82-db83aa48d97b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://xray.{{region}}.amazonaws.com"
+    }
+  ]
+}

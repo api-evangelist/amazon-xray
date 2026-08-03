@@ -1,0 +1,141 @@
+{
+  "info": {
+    "_postman_id": "a848a816-281a-47c5-aabf-9617b20b5ab5",
+    "name": "AWS X-Ray CreateGroup Service Graph API",
+    "description": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:51:22.000Z",
+    "updatedAt": "2026-07-28T10:51:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a848a816-281a-47c5-aabf-9617b20b5ab5"
+  },
+  "item": [
+    {
+      "name": "ServiceGraph",
+      "item": [
+        {
+          "name": "Amazon X-Ray Get the service graph",
+          "id": "8bd6b6f1-f677-4e56-a34f-755bc35894e8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"GroupName\": \"<string>\",\n  \"GroupARN\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ServiceGraph",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ServiceGraph"
+              ]
+            },
+            "description": "Retrieves a document that describes services that process incoming requests."
+          },
+          "response": [
+            {
+              "id": "5ce93ec8-d9ef-448c-afa2-853e28ddfd0b",
+              "name": "Successful response.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"GroupName\": \"<string>\",\n  \"GroupARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ServiceGraph",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ServiceGraph"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:51:23.000Z",
+              "updatedAt": "2026-07-28T10:51:23.000Z",
+              "uid": "35240-5ce93ec8-d9ef-448c-afa2-853e28ddfd0b"
+            }
+          ],
+          "createdAt": "2026-07-28T10:51:23.000Z",
+          "updatedAt": "2026-07-28T10:51:23.000Z",
+          "uid": "35240-8bd6b6f1-f677-4e56-a34f-755bc35894e8"
+        }
+      ],
+      "id": "040662d0-3ad7-459b-9810-12b11fd63501",
+      "createdAt": "2026-07-28T10:51:23.000Z",
+      "updatedAt": "2026-07-28T10:51:23.000Z",
+      "uid": "35240-040662d0-3ad7-459b-9810-12b11fd63501"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://xray.{{region}}.amazonaws.com"
+    }
+  ]
+}

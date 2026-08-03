@@ -1,0 +1,422 @@
+{
+  "info": {
+    "_postman_id": "39310de6-17d1-479c-aa80-7bc37eae3a74",
+    "name": "AWS X-Ray CreateGroup InsightSummaries API",
+    "description": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:50:58.000Z",
+    "updatedAt": "2026-07-28T10:50:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-39310de6-17d1-479c-aa80-7bc37eae3a74"
+  },
+  "item": [
+    {
+      "name": "InsightSummaries",
+      "item": [
+        {
+          "name": "Amazon X-Ray Get Insight Summaries",
+          "id": "b9f105f0-5666-488c-afc0-7b101a84d3f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"States\": [\n    \"ACTIVE\"\n  ],\n  \"GroupARN\": \"<string>\",\n  \"GroupName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/InsightSummaries?MaxResults=<string>&NextToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "InsightSummaries"
+              ],
+              "query": [
+                {
+                  "description": "Pagination limit",
+                  "key": "MaxResults",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Pagination token",
+                  "key": "NextToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves the summaries of all insights in the specified group matching the provided filter values."
+          },
+          "response": [
+            {
+              "id": "faba3b94-219f-403e-bca9-c89ed0c78110",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"States\": [\n    \"ACTIVE\"\n  ],\n  \"GroupARN\": \"<string>\",\n  \"GroupName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/InsightSummaries?MaxResults=<string>&NextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "InsightSummaries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination limit",
+                      "key": "MaxResults",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination token",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"InsightSummaries\": [\n    {\n      \"InsightId\": \"d7DC4aE6-59ca-4eA5-AD97-9Ff89d6de35B\",\n      \"GroupARN\": \"<string>\",\n      \"GroupName\": \"<string>\",\n      \"RootCauseServiceId\": {\n        \"Name\": \"<string>\",\n        \"Names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"AccountId\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      \"Categories\": [\n        \"FAULT\",\n        \"FAULT\"\n      ],\n      \"State\": \"ACTIVE\",\n      \"StartTime\": \"<dateTime>\",\n      \"EndTime\": \"<dateTime>\",\n      \"Summary\": \"<string>\",\n      \"ClientRequestImpactStatistics\": {\n        \"FaultCount\": \"<integer>\",\n        \"OkCount\": \"<integer>\",\n        \"TotalCount\": \"<integer>\"\n      },\n      \"RootCauseServiceRequestImpactStatistics\": {\n        \"FaultCount\": \"<integer>\",\n        \"OkCount\": \"<integer>\",\n        \"TotalCount\": \"<integer>\"\n      },\n      \"TopAnomalousServices\": [\n        {\n          \"ServiceId\": {\n            \"Name\": \"<string>\",\n            \"Names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"AccountId\": \"<string>\",\n            \"Type\": \"<string>\"\n          }\n        },\n        {\n          \"ServiceId\": {\n            \"Name\": \"<string>\",\n            \"Names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"AccountId\": \"<string>\",\n            \"Type\": \"<string>\"\n          }\n        }\n      ],\n      \"LastUpdateTime\": \"<dateTime>\"\n    },\n    {\n      \"InsightId\": \"90c338aB-8132-2B7c-aF0E-159F7fe0b8eA\",\n      \"GroupARN\": \"<string>\",\n      \"GroupName\": \"<string>\",\n      \"RootCauseServiceId\": {\n        \"Name\": \"<string>\",\n        \"Names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"AccountId\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      \"Categories\": [\n        \"FAULT\",\n        \"FAULT\"\n      ],\n      \"State\": \"CLOSED\",\n      \"StartTime\": \"<dateTime>\",\n      \"EndTime\": \"<dateTime>\",\n      \"Summary\": \"<string>\",\n      \"ClientRequestImpactStatistics\": {\n        \"FaultCount\": \"<integer>\",\n        \"OkCount\": \"<integer>\",\n        \"TotalCount\": \"<integer>\"\n      },\n      \"RootCauseServiceRequestImpactStatistics\": {\n        \"FaultCount\": \"<integer>\",\n        \"OkCount\": \"<integer>\",\n        \"TotalCount\": \"<integer>\"\n      },\n      \"TopAnomalousServices\": [\n        {\n          \"ServiceId\": {\n            \"Name\": \"<string>\",\n            \"Names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"AccountId\": \"<string>\",\n            \"Type\": \"<string>\"\n          }\n        },\n        {\n          \"ServiceId\": {\n            \"Name\": \"<string>\",\n            \"Names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"AccountId\": \"<string>\",\n            \"Type\": \"<string>\"\n          }\n        }\n      ],\n      \"LastUpdateTime\": \"<dateTime>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:50:58.000Z",
+              "updatedAt": "2026-07-28T10:50:58.000Z",
+              "uid": "35240-faba3b94-219f-403e-bca9-c89ed0c78110"
+            },
+            {
+              "id": "810bea03-9097-4803-9466-3d658ec9c91f",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"States\": [\n    \"ACTIVE\"\n  ],\n  \"GroupARN\": \"<string>\",\n  \"GroupName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/InsightSummaries?MaxResults=<string>&NextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "InsightSummaries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination limit",
+                      "key": "MaxResults",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination token",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:50:58.000Z",
+              "updatedAt": "2026-07-28T10:50:58.000Z",
+              "uid": "35240-810bea03-9097-4803-9466-3d658ec9c91f"
+            },
+            {
+              "id": "fa620b49-bea7-478d-856b-6bc3150bb50d",
+              "name": "ThrottledException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"States\": [\n    \"ACTIVE\"\n  ],\n  \"GroupARN\": \"<string>\",\n  \"GroupName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/InsightSummaries?MaxResults=<string>&NextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "InsightSummaries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination limit",
+                      "key": "MaxResults",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination token",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:50:58.000Z",
+              "updatedAt": "2026-07-28T10:50:58.000Z",
+              "uid": "35240-fa620b49-bea7-478d-856b-6bc3150bb50d"
+            }
+          ],
+          "createdAt": "2026-07-28T10:50:58.000Z",
+          "updatedAt": "2026-07-28T10:50:58.000Z",
+          "uid": "35240-b9f105f0-5666-488c-afc0-7b101a84d3f1"
+        }
+      ],
+      "id": "ceefa3fd-fac4-4d8b-b2ee-2aa43399f212",
+      "createdAt": "2026-07-28T10:50:58.000Z",
+      "updatedAt": "2026-07-28T10:50:58.000Z",
+      "uid": "35240-ceefa3fd-fac4-4d8b-b2ee-2aa43399f212"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://xray.{{region}}.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "info": {
+    "_postman_id": "6c28d5c6-9180-4fde-bed3-0fd8407861ad",
+    "name": "AWS X-Ray CreateGroup TraceSummaries API",
+    "description": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:51:30.000Z",
+    "updatedAt": "2026-07-28T10:51:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6c28d5c6-9180-4fde-bed3-0fd8407861ad"
+  },
+  "item": [
+    {
+      "name": "TraceSummaries",
+      "item": [
+        {
+          "name": "Amazon X-Ray Get Trace Summaries",
+          "id": "e4465385-8f10-452d-9721-3a700b9bede7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"TimeRangeType\": \"Event\",\n  \"Sampling\": \"<boolean>\",\n  \"SamplingStrategy\": {\n    \"Name\": \"FixedRate\",\n    \"Value\": \"<double>\"\n  },\n  \"FilterExpression\": \"<string>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/TraceSummaries?NextToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "TraceSummaries"
+              ],
+              "query": [
+                {
+                  "description": "Pagination token",
+                  "key": "NextToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "<p>Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to <code>BatchGetTraces</code>.</p> <p>A filter expression can target traced requests that hit specific service nodes or edges, have errors, or come from a known user. For example, the following filter expression targets traces that pass through <code>api.example.com</code>:</p> <p> <code>service(\"api.example.com\")</code> </p> <p>This filter expression finds traces that have an annotation named <code>account</code> with the value <code>12345</code>:</p> <p> <code>annotation.account = \"12345\"</code> </p> <p>For a full list of indexed fields and keywords that you can use in filter expressions, see <a href=\"https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html\">Using Filter Expressions</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>"
+          },
+          "response": [
+            {
+              "id": "93bcd040-3877-4868-a89a-4c36f0943601",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"TimeRangeType\": \"Event\",\n  \"Sampling\": \"<boolean>\",\n  \"SamplingStrategy\": {\n    \"Name\": \"FixedRate\",\n    \"Value\": \"<double>\"\n  },\n  \"FilterExpression\": \"<string>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/TraceSummaries?NextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TraceSummaries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"TraceSummaries\": [\n    {\n      \"Id\": \"<string>\",\n      \"Duration\": \"<double>\",\n      \"ResponseTime\": \"<double>\",\n      \"HasFault\": \"<boolean>\",\n      \"HasError\": \"<boolean>\",\n      \"HasThrottle\": \"<boolean>\",\n      \"IsPartial\": \"<boolean>\",\n      \"Http\": {\n        \"HttpURL\": \"<string>\",\n        \"HttpStatus\": \"<integer>\",\n        \"HttpMethod\": \"<string>\",\n        \"UserAgent\": \"<string>\",\n        \"ClientIp\": \"<string>\"\n      },\n      \"Annotations\": {\n        \"anim9b\": [\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"Users\": [\n        {\n          \"UserName\": \"<string>\",\n          \"ServiceIds\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"UserName\": \"<string>\",\n          \"ServiceIds\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"ServiceIds\": [\n        {\n          \"Name\": \"<string>\",\n          \"Names\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"AccountId\": \"<string>\",\n          \"Type\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Names\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"AccountId\": \"<string>\",\n          \"Type\": \"<string>\"\n        }\n      ],\n      \"ResourceARNs\": [\n        {\n          \"ARN\": \"<string>\"\n        },\n        {\n          \"ARN\": \"<string>\"\n        }\n      ],\n      \"InstanceIds\": [\n        {\n          \"Id\": \"<string>\"\n        },\n        {\n          \"Id\": \"<string>\"\n        }\n      ],\n      \"AvailabilityZones\": [\n        {\n          \"Name\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\"\n        }\n      ],\n      \"EntryPoint\": {\n        \"Name\": \"<string>\",\n        \"Names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"AccountId\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      \"FaultRootCauses\": [\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        },\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        }\n      ],\n      \"ErrorRootCauses\": [\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        },\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        }\n      ],\n      \"ResponseTimeRootCauses\": [\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        },\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        }\n      ],\n      \"Revision\": \"<integer>\",\n      \"MatchedEventTime\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Duration\": \"<double>\",\n      \"ResponseTime\": \"<double>\",\n      \"HasFault\": \"<boolean>\",\n      \"HasError\": \"<boolean>\",\n      \"HasThrottle\": \"<boolean>\",\n      \"IsPartial\": \"<boolean>\",\n      \"Http\": {\n        \"HttpURL\": \"<string>\",\n        \"HttpStatus\": \"<integer>\",\n        \"HttpMethod\": \"<string>\",\n        \"UserAgent\": \"<string>\",\n        \"ClientIp\": \"<string>\"\n      },\n      \"Annotations\": {\n        \"laborum7\": [\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"aliqua_e\": [\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"aliqua_e_\": [\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"AnnotationValue\": {\n              \"NumberValue\": \"<double>\",\n              \"BooleanValue\": \"<boolean>\",\n              \"StringValue\": \"<string>\"\n            },\n            \"ServiceIds\": [\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              },\n              {\n                \"Name\": \"<string>\",\n                \"Names\": [\n                  \"<string>\",\n                  \"<string>\"\n                ],\n                \"AccountId\": \"<string>\",\n                \"Type\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"Users\": [\n        {\n          \"UserName\": \"<string>\",\n          \"ServiceIds\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"UserName\": \"<string>\",\n          \"ServiceIds\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"AccountId\": \"<string>\",\n              \"Type\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"ServiceIds\": [\n        {\n          \"Name\": \"<string>\",\n          \"Names\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"AccountId\": \"<string>\",\n          \"Type\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Names\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"AccountId\": \"<string>\",\n          \"Type\": \"<string>\"\n        }\n      ],\n      \"ResourceARNs\": [\n        {\n          \"ARN\": \"<string>\"\n        },\n        {\n          \"ARN\": \"<string>\"\n        }\n      ],\n      \"InstanceIds\": [\n        {\n          \"Id\": \"<string>\"\n        },\n        {\n          \"Id\": \"<string>\"\n        }\n      ],\n      \"AvailabilityZones\": [\n        {\n          \"Name\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\"\n        }\n      ],\n      \"EntryPoint\": {\n        \"Name\": \"<string>\",\n        \"Names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"AccountId\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      \"FaultRootCauses\": [\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        },\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        }\n      ],\n      \"ErrorRootCauses\": [\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        },\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Exceptions\": [\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    },\n                    {\n                      \"Name\": \"<string>\",\n                      \"Message\": \"<string>\"\n                    }\n                  ],\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        }\n      ],\n      \"ResponseTimeRootCauses\": [\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        },\n        {\n          \"Services\": [\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            },\n            {\n              \"Name\": \"<string>\",\n              \"Names\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"Type\": \"<string>\",\n              \"AccountId\": \"<string>\",\n              \"EntityPath\": [\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                },\n                {\n                  \"Name\": \"<string>\",\n                  \"Coverage\": \"<double>\",\n                  \"Remote\": \"<boolean>\"\n                }\n              ],\n              \"Inferred\": \"<boolean>\"\n            }\n          ],\n          \"ClientImpacting\": \"<boolean>\"\n        }\n      ],\n      \"Revision\": \"<integer>\",\n      \"MatchedEventTime\": \"<dateTime>\"\n    }\n  ],\n  \"ApproximateTime\": \"<dateTime>\",\n  \"TracesProcessedCount\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:51:30.000Z",
+              "updatedAt": "2026-07-28T10:51:30.000Z",
+              "uid": "35240-93bcd040-3877-4868-a89a-4c36f0943601"
+            },
+            {
+              "id": "2e5f8f72-7875-4392-968d-b63b2c98b347",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"TimeRangeType\": \"Event\",\n  \"Sampling\": \"<boolean>\",\n  \"SamplingStrategy\": {\n    \"Name\": \"FixedRate\",\n    \"Value\": \"<double>\"\n  },\n  \"FilterExpression\": \"<string>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/TraceSummaries?NextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TraceSummaries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:30.000Z",
+              "updatedAt": "2026-07-28T10:51:30.000Z",
+              "uid": "35240-2e5f8f72-7875-4392-968d-b63b2c98b347"
+            },
+            {
+              "id": "754e3e23-2415-4ae8-924a-52a9224f94b4",
+              "name": "ThrottledException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\",\n  \"TimeRangeType\": \"Event\",\n  \"Sampling\": \"<boolean>\",\n  \"SamplingStrategy\": {\n    \"Name\": \"FixedRate\",\n    \"Value\": \"<double>\"\n  },\n  \"FilterExpression\": \"<string>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/TraceSummaries?NextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TraceSummaries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:51:30.000Z",
+              "updatedAt": "2026-07-28T10:51:30.000Z",
+              "uid": "35240-754e3e23-2415-4ae8-924a-52a9224f94b4"
+            }
+          ],
+          "createdAt": "2026-07-28T10:51:30.000Z",
+          "updatedAt": "2026-07-28T10:51:30.000Z",
+          "uid": "35240-e4465385-8f10-452d-9721-3a700b9bede7"
+        }
+      ],
+      "id": "a8daa987-9e1e-46de-a43b-6f52d4599af2",
+      "createdAt": "2026-07-28T10:51:30.000Z",
+      "updatedAt": "2026-07-28T10:51:30.000Z",
+      "uid": "35240-a8daa987-9e1e-46de-a43b-6f52d4599af2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://xray.{{region}}.amazonaws.com"
+    }
+  ]
+}
