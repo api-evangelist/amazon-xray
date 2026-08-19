@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS X-Ray CreateGroup TelemetryRecords API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TelemetryRecords",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon X-Ray Put Telemetry Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://xray.{region}.amazonaws.com/TelemetryRecords",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Used by the Amazon Web Services X-Ray daemon to upload telemetry."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

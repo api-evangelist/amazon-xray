@@ -1,0 +1,453 @@
+{
+  "item": [
+    {
+      "id": "32b0b4b9-3da7-4e9a-a10a-0a7f670b5837",
+      "name": "TelemetryRecords",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac650578-40c2-4f9f-8a42-8a8f646a052c",
+          "name": "Amazon X-Ray Put Telemetry Records",
+          "request": {
+            "name": "Amazon X-Ray Put Telemetry Records",
+            "description": {
+              "content": "Used by the Amazon Web Services X-Ray daemon to upload telemetry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "TelemetryRecords"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-south-1,af-south-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-east-1,ap-south-1,sa-east-1,me-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Amz-Date",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Amz-Algorithm",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Amz-Credential",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Amz-Security-Token",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Amz-Signature",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6cc1668f-e025-46d9-a04d-7fc495c2bede",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryRecords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-south-1,af-south-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-east-1,ap-south-1,sa-east-1,me-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Date",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Credential",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1532bc9-4982-4aa0-8aaa-94a3cdaf7874",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryRecords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-south-1,af-south-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-east-1,ap-south-1,sa-east-1,me-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Date",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Credential",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 480,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01c56336-67c3-403c-b35f-8a0b67d957ab",
+              "name": "ThrottledException",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryRecords"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-south-1,af-south-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-east-1,ap-south-1,sa-east-1,me-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Date",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Credential",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-Signature",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TelemetryRecords\": [\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    },\n    {\n      \"Timestamp\": \"<dateTime>\",\n      \"SegmentsReceivedCount\": \"<integer>\",\n      \"SegmentsSentCount\": \"<integer>\",\n      \"SegmentsSpilloverCount\": \"<integer>\",\n      \"SegmentsRejectedCount\": \"<integer>\",\n      \"BackendConnectionErrors\": {\n        \"TimeoutCount\": \"<integer>\",\n        \"ConnectionRefusedCount\": \"<integer>\",\n        \"HTTPCode4XXCount\": \"<integer>\",\n        \"HTTPCode5XXCount\": \"<integer>\",\n        \"UnknownHostCount\": \"<integer>\",\n        \"OtherCount\": \"<integer>\"\n      }\n    }\n  ],\n  \"EC2InstanceId\": \"<string>\",\n  \"Hostname\": \"<string>\",\n  \"ResourceARN\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 481,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,us-gov-west-1,us-gov-east-1,ca-central-1,eu-north-1,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-south-1,af-south-1,ap-northeast-1,ap-northeast-2,ap-northeast-3,ap-southeast-1,ap-southeast-2,ap-east-1,ap-south-1,sa-east-1,me-south-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "http://xray.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0fd7cd22-5408-48d5-a7e3-989b12f361ea",
+    "name": "AWS X-Ray CreateGroup TelemetryRecords API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+      "type": "text/plain"
+    }
+  }
+}
