@@ -311,6 +311,8 @@ apis:
   humanURL: https://aws.amazon.com/xray/
   baseURL: https://xray.amazonaws.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -755,6 +757,8 @@ apis:
   humanURL: https://aws.amazon.com/xray/
   baseURL: https://xray.amazonaws.com
   tags:
+  - Service Graph
+  tags_raw:
   - ServiceGraph
   properties:
   - type: OpenAPI
