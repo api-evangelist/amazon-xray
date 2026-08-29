@@ -1141,6 +1141,9 @@ apis:
   - type: Security
     url: https://docs.aws.amazon.com/xray/latest/devguide/security.html
 common:
+  - type: CapabilityMap
+    url: capabilities/amazon-xray-capability-edges.yml
+    name: Amazon X-Ray Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-x-ray/overview
   - type: AgenticAccess
