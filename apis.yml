@@ -769,7 +769,7 @@ apis:
   humanURL: https://aws.amazon.com/xray/
   baseURL: https://xray.amazonaws.com
   tags:
-  - ServiceGraph
+  - Service Graph
   tags_raw:
   - ServiceGraph
   properties:
