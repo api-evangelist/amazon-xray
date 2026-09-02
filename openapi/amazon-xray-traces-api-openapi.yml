@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
   title: AWS X-Ray CreateGroup Traces API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
@@ -204,13 +204,102 @@ paths:
         '200':
           description: Successful response.
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    NullableBoolean:
+      type: boolean
+    TraceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Trace'
     TraceId:
       type: string
       minLength: 1
       maxLength: 35
-    String:
+    InvalidRequestException: {}
+    SegmentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Segment'
+    Segment:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/SegmentId'
+          - description: The segment's ID.
+        Document:
+          allOf:
+          - $ref: '#/components/schemas/SegmentDocument'
+          - description: The segment document.
+      description: <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a href="https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html">PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p> <p>For the full segment document schema, see <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">Amazon Web Services X-Ray Segment Documents</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>
+    SegmentId:
       type: string
+    BatchGetTracesResult:
+      type: object
+      properties:
+        Traces:
+          allOf:
+          - $ref: '#/components/schemas/TraceList'
+          - description: Full traces for the specified requests.
+        UnprocessedTraceIds:
+          allOf:
+          - $ref: '#/components/schemas/UnprocessedTraceIdList'
+          - description: Trace IDs of requests that haven't been processed.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
+    SegmentDocument:
+      type: string
+      minLength: 1
+    ThrottledException: {}
+    UnprocessedTraceIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceId'
     Trace:
       type: object
       properties:
@@ -231,100 +320,11 @@ components:
           - $ref: '#/components/schemas/SegmentList'
           - description: Segment documents for the segments and subsegments that comprise the trace.
       description: A collection of segment documents with matching trace IDs.
-    NullableBoolean:
-      type: boolean
-    Segment:
-      type: object
-      properties:
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/SegmentId'
-          - description: The segment's ID.
-        Document:
-          allOf:
-          - $ref: '#/components/schemas/SegmentDocument'
-          - description: The segment document.
-      description: <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a href="https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html">PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p> <p>For the full segment document schema, see <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">Amazon Web Services X-Ray Segment Documents</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>
-    SegmentId:
+    String:
       type: string
-    TraceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Trace'
-    SegmentDocument:
-      type: string
-      minLength: 1
     NullableDouble:
       type: number
       format: double
-    ThrottledException: {}
-    InvalidRequestException: {}
-    BatchGetTracesResult:
-      type: object
-      properties:
-        Traces:
-          allOf:
-          - $ref: '#/components/schemas/TraceList'
-          - description: Full traces for the specified requests.
-        UnprocessedTraceIds:
-          allOf:
-          - $ref: '#/components/schemas/UnprocessedTraceIdList'
-          - description: Trace IDs of requests that haven't been processed.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
-    SegmentList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Segment'
-    UnprocessedTraceIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TraceId'
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey

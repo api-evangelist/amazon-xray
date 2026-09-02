@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: AWS X-Ray CreateGroup InsightImpactGraph API
+  title: AWS X-Ray CreateGroup Insight Impact Graph API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -178,14 +178,46 @@ paths:
       - InsightImpactGraph
 components:
   schemas:
-    String:
-      type: string
-    NullableInteger:
-      type: integer
+    InsightImpactGraphService:
+      type: object
+      properties:
+        ReferenceId:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: Identifier for the service. Unique within the service map.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p>Identifier for the service. Unique within the service map.</p> <ul> <li> <p>Amazon Web Services Resource - The type of an Amazon Web Services resource. For example, AWS::EC2::Instance for an application running on Amazon EC2 or AWS::DynamoDB::Table for an Amazon DynamoDB table that the application used. </p> </li> <li> <p>Amazon Web Services Service - The type of an Amazon Web Services service. For example, AWS::DynamoDB for downstream calls to Amazon DynamoDB that didn't target a specific table. </p> </li> <li> <p>Amazon Web Services Service - The type of an Amazon Web Services service. For example, AWS::DynamoDB for downstream calls to Amazon DynamoDB that didn't target a specific table. </p> </li> <li> <p>remote - A downstream service of indeterminate type.</p> </li> </ul>
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The canonical name of the service.
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/ServiceNames'
+          - description: A list of names for the service, including the canonical name.
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Identifier of the Amazon Web Services account in which the service runs.
+        Edges:
+          allOf:
+          - $ref: '#/components/schemas/InsightImpactGraphEdgeList'
+          - description: Connections to downstream services.
+      description: 'Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used. '
     ServiceNames:
       type: array
       items:
         $ref: '#/components/schemas/String'
+    InsightImpactGraphServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphService'
+    InvalidRequestException: {}
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
     GetInsightImpactGraphResult:
       type: object
       properties:
@@ -217,43 +249,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Token'
           - description: Pagination token.
-    Token:
-      type: string
-      minLength: 1
-      maxLength: 2000
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
     ThrottledException: {}
-    InvalidRequestException: {}
-    InsightImpactGraphService:
-      type: object
-      properties:
-        ReferenceId:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: Identifier for the service. Unique within the service map.
-        Type:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: <p>Identifier for the service. Unique within the service map.</p> <ul> <li> <p>Amazon Web Services Resource - The type of an Amazon Web Services resource. For example, AWS::EC2::Instance for an application running on Amazon EC2 or AWS::DynamoDB::Table for an Amazon DynamoDB table that the application used. </p> </li> <li> <p>Amazon Web Services Service - The type of an Amazon Web Services service. For example, AWS::DynamoDB for downstream calls to Amazon DynamoDB that didn't target a specific table. </p> </li> <li> <p>Amazon Web Services Service - The type of an Amazon Web Services service. For example, AWS::DynamoDB for downstream calls to Amazon DynamoDB that didn't target a specific table. </p> </li> <li> <p>remote - A downstream service of indeterminate type.</p> </li> </ul>
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The canonical name of the service.
-        Names:
-          allOf:
-          - $ref: '#/components/schemas/ServiceNames'
-          - description: A list of names for the service, including the canonical name.
-        AccountId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Identifier of the Amazon Web Services account in which the service runs.
-        Edges:
-          allOf:
-          - $ref: '#/components/schemas/InsightImpactGraphEdgeList'
-          - description: Connections to downstream services.
-      description: 'Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used. '
+    Timestamp:
+      type: string
+      format: date-time
     InsightImpactGraphEdge:
       type: object
       properties:
@@ -262,13 +261,14 @@ components:
           - $ref: '#/components/schemas/NullableInteger'
           - description: Identifier of the edge. Unique within a service map.
       description: The connection between two service in an insight impact graph.
-    InsightImpactGraphServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphService'
-    Timestamp:
+    NullableInteger:
+      type: integer
+    Token:
       type: string
-      format: date-time
+      minLength: 1
+      maxLength: 2000
+    String:
+      type: string
     InsightImpactGraphEdgeList:
       type: array
       items:
@@ -280,14 +280,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -298,20 +292,26 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string

@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: AWS X-Ray CreateGroup PutEncryptionConfig API
+  title: AWS X-Ray CreateGroup Put Encryption Config API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -170,10 +170,9 @@ paths:
       - PutEncryptionConfig
 components:
   schemas:
-    ThrottledException: {}
-    InvalidRequestException: {}
     String:
       type: string
+    InvalidRequestException: {}
     PutEncryptionConfigResult:
       type: object
       properties:
@@ -181,6 +180,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/EncryptionConfig'
           - description: The new encryption configuration.
+    EncryptionType:
+      type: string
+      enum:
+      - NONE
+      - KMS
+    ThrottledException: {}
     EncryptionConfig:
       type: object
       properties:
@@ -197,17 +202,18 @@ components:
           - $ref: '#/components/schemas/EncryptionType'
           - description: The type of encryption. Set to <code>KMS</code> for encryption with KMS keys. Set to <code>NONE</code> for default encryption.
       description: A configuration document that specifies encryption configuration settings.
-    EncryptionType:
-      type: string
-      enum:
-      - NONE
-      - KMS
     EncryptionStatus:
       type: string
       enum:
       - UPDATING
       - ACTIVE
   parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
       in: header
@@ -220,8 +226,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -232,20 +238,14 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
       in: header
       schema:
         type: string

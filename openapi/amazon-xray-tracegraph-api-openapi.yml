@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: AWS X-Ray CreateGroup TraceGraph API
+  title: AWS X-Ray CreateGroup Trace Graph API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -172,13 +172,229 @@ paths:
       tags:
       - TraceGraph
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    NullableBoolean:
+      type: boolean
+    AliasList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Alias'
+    ServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Service'
     TraceId:
       type: string
       minLength: 1
       maxLength: 35
+    InvalidRequestException: {}
+    GetTraceGraphResult:
+      type: object
+      properties:
+        Services:
+          allOf:
+          - $ref: '#/components/schemas/ServiceList'
+          - description: The services that have processed one of the specified requests.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
+    ServiceStatistics:
+      type: object
+      properties:
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that completed with a 2xx Success status code.
+        ErrorStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ErrorStatistics'
+          - description: Information about requests that failed with a 4xx Client Error status code.
+        FaultStatistics:
+          allOf:
+          - $ref: '#/components/schemas/FaultStatistics'
+          - description: Information about requests that failed with a 5xx Server Error status code.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of completed requests.
+        TotalResponseTime:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The aggregate response time of completed requests.
+      description: Response statistics for a service.
+    FaultStatistics:
+      type: object
+      properties:
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 5xx Server Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 5xx Server Error status code.
+      description: Information about requests that failed with a 5xx Server Error status code.
+    NullableLong:
+      type: integer
+    AliasNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    Edge:
+      type: object
+      properties:
+        ReferenceId:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: Identifier of the edge. Unique within a service map.
+        StartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The start time of the first segment on the edge.
+        EndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The end time of the last segment on the edge.
+        SummaryStatistics:
+          allOf:
+          - $ref: '#/components/schemas/EdgeStatistics'
+          - description: Response statistics for segments on the edge.
+        ResponseTimeHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: A histogram that maps the spread of client response times on an edge. Only populated for synchronous edges.
+        Aliases:
+          allOf:
+          - $ref: '#/components/schemas/AliasList'
+          - description: Aliases for the edge.
+        EdgeType:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Describes an asynchronous connection, with a value of <code>link</code>.
+        ReceivedEventAgeHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: A histogram that maps the spread of event age when received by consumers. Age is calculated each time an event is received. Only populated when <i>EdgeType</i> is <code>link</code>.
+      description: Information about a connection between two services. An edge can be a synchronous connection, such as typical call between client and service, or an asynchronous link, such as a Lambda function which retrieves an event from an SNS queue.
+    ThrottledException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    HistogramEntry:
+      type: object
+      properties:
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The value of the entry.
+        Count:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The prevalence of the entry.
+      description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
+    Histogram:
+      type: array
+      items:
+        $ref: '#/components/schemas/HistogramEntry'
+    NullableInteger:
+      type: integer
+    ErrorStatistics:
+      type: object
+      properties:
+        ThrottleCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with a 419 throttling status code.
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 4xx Client Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 4xx Client Error status code.
+      description: Information about requests that failed with a 4xx Client Error status code.
     String:
       type: string
+    EdgeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Edge'
+    EdgeStatistics:
+      type: object
+      properties:
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that completed with a 2xx Success status code.
+        ErrorStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ErrorStatistics'
+          - description: Information about requests that failed with a 4xx Client Error status code.
+        FaultStatistics:
+          allOf:
+          - $ref: '#/components/schemas/FaultStatistics'
+          - description: Information about requests that failed with a 5xx Server Error status code.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of completed requests.
+        TotalResponseTime:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The aggregate response time of completed requests.
+      description: Response statistics for an edge.
+    NullableDouble:
+      type: number
+      format: double
     Service:
       type: object
       properties:
@@ -235,157 +451,11 @@ components:
           - $ref: '#/components/schemas/Histogram'
           - description: A histogram that maps the spread of service response times.
       description: Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used.
-    NullableInteger:
+    Integer:
       type: integer
-    EdgeStatistics:
-      type: object
-      properties:
-        OkCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that completed with a 2xx Success status code.
-        ErrorStatistics:
-          allOf:
-          - $ref: '#/components/schemas/ErrorStatistics'
-          - description: Information about requests that failed with a 4xx Client Error status code.
-        FaultStatistics:
-          allOf:
-          - $ref: '#/components/schemas/FaultStatistics'
-          - description: Information about requests that failed with a 5xx Server Error status code.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of completed requests.
-        TotalResponseTime:
-          allOf:
-          - $ref: '#/components/schemas/NullableDouble'
-          - description: The aggregate response time of completed requests.
-      description: Response statistics for an edge.
-    AliasList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Alias'
-    EdgeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Edge'
-    NullableBoolean:
-      type: boolean
-    Histogram:
-      type: array
-      items:
-        $ref: '#/components/schemas/HistogramEntry'
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    Edge:
-      type: object
-      properties:
-        ReferenceId:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: Identifier of the edge. Unique within a service map.
-        StartTime:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The start time of the first segment on the edge.
-        EndTime:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The end time of the last segment on the edge.
-        SummaryStatistics:
-          allOf:
-          - $ref: '#/components/schemas/EdgeStatistics'
-          - description: Response statistics for segments on the edge.
-        ResponseTimeHistogram:
-          allOf:
-          - $ref: '#/components/schemas/Histogram'
-          - description: A histogram that maps the spread of client response times on an edge. Only populated for synchronous edges.
-        Aliases:
-          allOf:
-          - $ref: '#/components/schemas/AliasList'
-          - description: Aliases for the edge.
-        EdgeType:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Describes an asynchronous connection, with a value of <code>link</code>.
-        ReceivedEventAgeHistogram:
-          allOf:
-          - $ref: '#/components/schemas/Histogram'
-          - description: A histogram that maps the spread of event age when received by consumers. Age is calculated each time an event is received. Only populated when <i>EdgeType</i> is <code>link</code>.
-      description: Information about a connection between two services. An edge can be a synchronous connection, such as typical call between client and service, or an asynchronous link, such as a Lambda function which retrieves an event from an SNS queue.
-    ServiceStatistics:
-      type: object
-      properties:
-        OkCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that completed with a 2xx Success status code.
-        ErrorStatistics:
-          allOf:
-          - $ref: '#/components/schemas/ErrorStatistics'
-          - description: Information about requests that failed with a 4xx Client Error status code.
-        FaultStatistics:
-          allOf:
-          - $ref: '#/components/schemas/FaultStatistics'
-          - description: Information about requests that failed with a 5xx Server Error status code.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of completed requests.
-        TotalResponseTime:
-          allOf:
-          - $ref: '#/components/schemas/NullableDouble'
-          - description: The aggregate response time of completed requests.
-      description: Response statistics for a service.
-    GetTraceGraphResult:
-      type: object
-      properties:
-        Services:
-          allOf:
-          - $ref: '#/components/schemas/ServiceList'
-          - description: The services that have processed one of the specified requests.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
     Double:
       type: number
       format: double
-    AliasNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    HistogramEntry:
-      type: object
-      properties:
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: The value of the entry.
-        Count:
-          allOf:
-          - $ref: '#/components/schemas/Integer'
-          - description: The prevalence of the entry.
-      description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
-    NullableDouble:
-      type: number
-      format: double
-    ThrottledException: {}
-    FaultStatistics:
-      type: object
-      properties:
-        OtherCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with untracked 5xx Server Error status codes.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests that failed with a 5xx Server Error status code.
-      description: Information about requests that failed with a 5xx Server Error status code.
-    InvalidRequestException: {}
     Alias:
       type: object
       properties:
@@ -402,76 +472,6 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The type of the alias.
       description: An alias for an edge.
-    ErrorStatistics:
-      type: object
-      properties:
-        ThrottleCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with a 419 throttling status code.
-        OtherCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with untracked 4xx Client Error status codes.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests that failed with a 4xx Client Error status code.
-      description: Information about requests that failed with a 4xx Client Error status code.
-    Integer:
-      type: integer
-    Timestamp:
-      type: string
-      format: date-time
-    ServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Service'
-    NullableLong:
-      type: integer
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey

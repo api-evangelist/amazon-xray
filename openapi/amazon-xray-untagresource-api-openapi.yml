@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: AWS X-Ray CreateGroup UntagResource API
+  title: AWS X-Ray CreateGroup Untag Resource API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -177,18 +177,13 @@ paths:
       tags:
       - UntagResource
 components:
-  schemas:
-    ThrottledException: {}
-    InvalidRequestException: {}
-    ResourceNotFoundException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    TagKey:
-      type: string
-      minLength: 1
-      maxLength: 128
   parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
       in: header
@@ -201,14 +196,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -219,18 +208,29 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
+  schemas:
+    InvalidRequestException: {}
+    TagKey:
+      type: string
+      minLength: 1
+      maxLength: 128
+    ThrottledException: {}
+    UntagResourceResponse:
+      type: object
+      properties: {}
+    ResourceNotFoundException: {}
   securitySchemes:
     hmac:
       type: apiKey

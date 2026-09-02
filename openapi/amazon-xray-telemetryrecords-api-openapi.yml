@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: AWS X-Ray CreateGroup TelemetryRecords API
+  title: AWS X-Ray CreateGroup Telemetry Records API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -176,8 +176,37 @@ paths:
       - TelemetryRecords
 components:
   schemas:
-    ThrottledException: {}
+    NullableInteger:
+      type: integer
     InvalidRequestException: {}
+    BackendConnectionErrors:
+      type: object
+      properties:
+        TimeoutCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        ConnectionRefusedCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        HTTPCode4XXCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        HTTPCode5XXCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        UnknownHostCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+      description: <p/>
     TelemetryRecord:
       type: object
       required:
@@ -208,43 +237,20 @@ components:
           - $ref: '#/components/schemas/BackendConnectionErrors'
           - description: <p/>
       description: <p/>
-    PutTelemetryRecordsResult:
-      type: object
-      properties: {}
+    ThrottledException: {}
     Timestamp:
       type: string
       format: date-time
-    NullableInteger:
-      type: integer
-    BackendConnectionErrors:
+    PutTelemetryRecordsResult:
       type: object
-      properties:
-        TimeoutCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        ConnectionRefusedCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        HTTPCode4XXCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        HTTPCode5XXCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        UnknownHostCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        OtherCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-      description: <p/>
+      properties: {}
   parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
       in: header
@@ -257,14 +263,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -275,14 +275,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

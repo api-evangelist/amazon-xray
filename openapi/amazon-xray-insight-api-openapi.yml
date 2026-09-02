@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
   title: AWS X-Ray CreateGroup Insight API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
@@ -162,14 +162,87 @@ paths:
       tags:
       - Insight
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    String:
-      type: string
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    RequestImpactStatistics:
+      type: object
+      properties:
+        FaultCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that have resulted in a fault,
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of successful requests.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests to the service.
+      description: Statistics that describe how the incident has impacted a service.
+    InsightCategoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightCategory'
+    InvalidRequestException: {}
     InsightState:
       type: string
       enum:
       - ACTIVE
       - CLOSED
+    GroupName:
+      type: string
+      minLength: 1
+      maxLength: 32
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
     Insight:
       type: object
       properties:
@@ -220,22 +293,6 @@ components:
           - $ref: '#/components/schemas/AnomalousServiceList'
           - description: The service within the insight that is most impacted by the incident.
       description: When fault rates go outside of the expected range, X-Ray creates an insight. Insights tracks emergent issues within your applications.
-    InsightSummaryText:
-      type: string
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    InsightCategoryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightCategory'
-    AnomalousService:
-      type: object
-      properties:
-        ServiceId:
-          $ref: '#/components/schemas/ServiceId'
-      description: 'The service within the service graph that has anomalously high fault rates. '
     GetInsightResult:
       type: object
       properties:
@@ -243,6 +300,34 @@ components:
           allOf:
           - $ref: '#/components/schemas/Insight'
           - description: The summary information of an insight.
+    AnomalousService:
+      type: object
+      properties:
+        ServiceId:
+          $ref: '#/components/schemas/ServiceId'
+      description: 'The service within the service graph that has anomalously high fault rates. '
+    NullableLong:
+      type: integer
+    ThrottledException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    String:
+      type: string
+    InsightCategory:
+      type: string
+      enum:
+      - FAULT
+    GroupARN:
+      type: string
+      minLength: 1
+      maxLength: 400
+    AnomalousServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnomalousService'
+    InsightSummaryText:
+      type: string
     ServiceId:
       type: object
       properties:
@@ -263,91 +348,6 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p/>
       description: <p/>
-    InsightCategory:
-      type: string
-      enum:
-      - FAULT
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
-    AnomalousServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnomalousService'
-    ThrottledException: {}
-    InvalidRequestException: {}
-    GroupName:
-      type: string
-      minLength: 1
-      maxLength: 32
-    Timestamp:
-      type: string
-      format: date-time
-    NullableLong:
-      type: integer
-    GroupARN:
-      type: string
-      minLength: 1
-      maxLength: 400
-    RequestImpactStatistics:
-      type: object
-      properties:
-        FaultCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that have resulted in a fault,
-        OkCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of successful requests.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests to the service.
-      description: Statistics that describe how the incident has impacted a service.
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey
