@@ -14,7 +14,8 @@ capability_model:
 edge_count: 18
 edges:
 - tag: ServiceGraph
-  spec_file: amazon-xray-servicegraph-api-openapi.yml
+  spec_file: amazon-xray-service-graph-api-openapi.yml
+  reanchored_from: amazon-xray-servicegraph-api-openapi.yml
   capability_id: BC-4220.20
   capability_id_l1: BC-4220
   capability_name: Observability Management
@@ -147,7 +148,8 @@ edges:
   reason: Agents upload telemetry records about trace collection health to the tracing backend — service
     observability instrumentation, not product usage telemetry.
 - tag: GetGroup
-  spec_file: amazon-xray-getgroup-api-openapi.yml
+  spec_file: amazon-xray-get-group-api-openapi.yml
+  reanchored_from: amazon-xray-getgroup-api-openapi.yml
   capability_id: BC-4220.20
   capability_id_l1: BC-4220
   capability_name: Observability Management
