@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Delete Group API
+  title: AWS X-Ray Delete Group API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -111,7 +112,7 @@ servers:
 security:
 - hmac: []
 tags:
-- name: DeleteGroup
+- name: Delete Group
 paths:
   /DeleteGroup:
     parameters:
@@ -164,21 +165,9 @@ paths:
                   maxLength: 400
       summary: Amazon X-Ray Delete Group
       tags:
-      - DeleteGroup
+      - Delete Group
 components:
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -191,6 +180,24 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
       in: header
@@ -199,12 +206,6 @@ components:
       required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

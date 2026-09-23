@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Create Sampling Rule API
+  title: AWS X-Ray Create Sampling Rule API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -124,7 +125,7 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateSamplingRule
-      description: Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with <a href="https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingRules.html">GetSamplingRules</a>, and evaluate each rule in ascending order of <i>priority</i> for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with <a href="https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html">GetSamplingTargets</a> to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
+      description: Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with GetSamplingRules, and evaluate each rule in ascending order of priority for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with GetSamplingTargets to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
       responses:
         '200':
           description: Success
@@ -227,58 +228,27 @@ paths:
       tags:
       - CreateSamplingRule
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
     ServiceName:
       type: string
       maxLength: 64
-    AttributeMap:
-      type: object
-      maxProperties: 5
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeValue'
+    String:
+      type: string
+    TagKey:
+      type: string
+      minLength: 1
+      maxLength: 128
+    HTTPMethod:
+      type: string
+      maxLength: 10
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    AttributeValue:
+      type: string
+      minLength: 1
+      maxLength: 32
     Tag:
       type: object
       required:
@@ -294,6 +264,45 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: 'An optional tag value, such as <code>Production</code> or <code>test-only</code>. The value can be a maximum of 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
       description: '<p>A map that contains tag keys and tag values to attach to an Amazon Web Services X-Ray group or sampling rule. For more information about ways to use tags, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a> in the <i>Amazon Web Services General Reference</i>.</p> <p>The following restrictions apply to tags:</p> <ul> <li> <p>Maximum number of user-applied tags per resource: 50</p> </li> <li> <p>Tag keys and values are case sensitive.</p> </li> <li> <p>Don''t use <code>aws:</code> as a prefix for keys; it''s reserved for Amazon Web Services use. You cannot edit or delete system tags.</p> </li> </ul>'
+    SamplingRuleRecord:
+      type: object
+      properties:
+        SamplingRule:
+          allOf:
+          - $ref: '#/components/schemas/SamplingRule'
+          - description: The sampling rule.
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the rule was created.
+        ModifiedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the rule was last modified.
+      description: A <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html">SamplingRule</a> and its metadata.
+    AttributeMap:
+      type: object
+      maxProperties: 5
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
+    CreateSamplingRuleResult:
+      type: object
+      properties:
+        SamplingRuleRecord:
+          allOf:
+          - $ref: '#/components/schemas/SamplingRuleRecord'
+          - description: The saved rule definition and metadata.
+    ResourceARN:
+      type: string
+      maxLength: 500
+    Version:
+      type: integer
+      minimum: 1
+    Priority:
+      type: integer
+      minimum: 1
+      maximum: 9999
+    ThrottledException: {}
     FixedRate:
       type: number
       format: double
@@ -303,44 +312,9 @@ components:
       type: string
       minLength: 1
       maxLength: 32
-    InvalidRequestException: {}
-    CreateSamplingRuleResult:
-      type: object
-      properties:
-        SamplingRuleRecord:
-          allOf:
-          - $ref: '#/components/schemas/SamplingRuleRecord'
-          - description: The saved rule definition and metadata.
-    HTTPMethod:
+    URLPath:
       type: string
-      maxLength: 10
-    Priority:
-      type: integer
-      minimum: 1
-      maximum: 9999
-    ResourceARN:
-      type: string
-      maxLength: 500
-    ReservoirSize:
-      type: integer
-      minimum: 0
-    Host:
-      type: string
-      maxLength: 64
-    AttributeValue:
-      type: string
-      minLength: 1
-      maxLength: 32
-    ServiceType:
-      type: string
-      maxLength: 64
-    ThrottledException: {}
-    Timestamp:
-      type: string
-      format: date-time
-    Version:
-      type: integer
-      minimum: 1
+      maxLength: 128
     SamplingRule:
       type: object
       required:
@@ -408,36 +382,63 @@ components:
           - $ref: '#/components/schemas/AttributeMap'
           - description: Matches attributes derived from the request.
       description: A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.
-    String:
+    ReservoirSize:
+      type: integer
+      minimum: 0
+    InvalidRequestException: {}
+    Host:
       type: string
-    TagValue:
+      maxLength: 64
+    ServiceType:
       type: string
-      minLength: 0
-      maxLength: 256
-    SamplingRuleRecord:
-      type: object
-      properties:
-        SamplingRule:
-          allOf:
-          - $ref: '#/components/schemas/SamplingRule'
-          - description: The sampling rule.
-        CreatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: When the rule was created.
-        ModifiedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: When the rule was last modified.
-      description: A <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html">SamplingRule</a> and its metadata.
-    URLPath:
-      type: string
-      maxLength: 128
-    TagKey:
-      type: string
-      minLength: 1
-      maxLength: 128
+      maxLength: 64
     RuleLimitExceededException: {}
+    Timestamp:
+      type: string
+      format: date-time
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

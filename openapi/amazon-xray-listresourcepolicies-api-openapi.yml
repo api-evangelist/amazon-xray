@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup List Resource Policies API
+  title: AWS X-Ray List Resource Policies API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -167,59 +168,37 @@ paths:
       tags:
       - ListResourcePolicies
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
     ResourcePolicyNextToken:
       type: string
       minLength: 1
       maxLength: 100
     InvalidRequestException: {}
+    PolicyRevisionId:
+      type: string
     ResourcePolicyList:
       type: array
       items:
         $ref: '#/components/schemas/ResourcePolicy'
+    ThrottledException: {}
+    PolicyDocument:
+      type: string
+    PolicyName:
+      type: string
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
+    ListResourcePoliciesResult:
+      type: object
+      properties:
+        ResourcePolicies:
+          allOf:
+          - $ref: '#/components/schemas/ResourcePolicyList'
+          - description: The list of resource policies in the target Amazon Web Services account.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/ResourcePolicyNextToken'
+          - description: Pagination token. Not currently supported.
     ResourcePolicy:
       type: object
       properties:
@@ -240,30 +219,52 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: When the policy was last updated, in Unix time seconds.
       description: A resource policy grants one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy is associated with a specific Amazon Web Services account.
-    PolicyRevisionId:
-      type: string
-    ThrottledException: {}
     Timestamp:
       type: string
       format: date-time
-    PolicyName:
-      type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
-    ListResourcePoliciesResult:
-      type: object
-      properties:
-        ResourcePolicies:
-          allOf:
-          - $ref: '#/components/schemas/ResourcePolicyList'
-          - description: The list of resource policies in the target Amazon Web Services account.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/ResourcePolicyNextToken'
-          - description: Pagination token. Not currently supported.
-    PolicyDocument:
-      type: string
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

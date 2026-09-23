@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Put Resource Policy API
+  title: AWS X-Ray Put Resource Policy API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -124,7 +125,7 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: PutResourcePolicy
-      description: ' Sets the resource policy to grant one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy will be associated with a specific Amazon Web Services account. Each Amazon Web Services account can have a maximum of 5 resource policies, and each policy name must be unique within that account. The maximum size of each resource policy is 5KB. '
+      description: Sets the resource policy to grant one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy will be associated with a specific Amazon Web Services account. Each Amazon Web Services account can have a maximum of 5 resource policies, and each policy name must be unique within that account. The maximum size of each resource policy is 5KB.
       responses:
         '200':
           description: Success
@@ -198,50 +199,24 @@ paths:
       tags:
       - PutResourcePolicy
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
+    MalformedPolicyDocumentException: {}
+    PolicyRevisionId:
+      type: string
+    InvalidPolicyRevisionIdException: {}
+    PolicyDocument:
+      type: string
+    PolicyCountLimitExceededException: {}
+    LockoutPreventionException: {}
+    PolicySizeLimitExceededException: {}
+    ThrottledException: {}
+    PutResourcePolicyResult:
+      type: object
+      properties:
+        ResourcePolicy:
+          allOf:
+          - $ref: '#/components/schemas/ResourcePolicy'
+          - description: The resource policy document, as provided in the <code>PutResourcePolicyRequest</code>.
     ResourcePolicy:
       type: object
       properties:
@@ -262,31 +237,57 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: When the policy was last updated, in Unix time seconds.
       description: A resource policy grants one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy is associated with a specific Amazon Web Services account.
-    PolicyRevisionId:
-      type: string
-    MalformedPolicyDocumentException: {}
-    PolicyCountLimitExceededException: {}
-    ThrottledException: {}
-    Timestamp:
-      type: string
-      format: date-time
-    InvalidPolicyRevisionIdException: {}
-    LockoutPreventionException: {}
-    PolicyDocument:
-      type: string
-    PolicySizeLimitExceededException: {}
     PolicyName:
       type: string
       pattern: '[\w+=,.@-]+'
       minLength: 1
       maxLength: 128
-    PutResourcePolicyResult:
-      type: object
-      properties:
-        ResourcePolicy:
-          allOf:
-          - $ref: '#/components/schemas/ResourcePolicy'
-          - description: The resource policy document, as provided in the <code>PutResourcePolicyRequest</code>.
+    Timestamp:
+      type: string
+      format: date-time
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Sampling Statistic Summaries API
+  title: AWS X-Ray Sampling Statistic Summaries API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -166,6 +167,14 @@ paths:
       - SamplingStatisticSummaries
 components:
   schemas:
+    SamplingStatisticSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SamplingStatisticSummary'
+    String:
+      type: string
+    InvalidRequestException: {}
+    ThrottledException: {}
     SamplingStatisticSummary:
       type: object
       properties:
@@ -190,13 +199,6 @@ components:
           - $ref: '#/components/schemas/Integer'
           - description: The number of requests recorded.
       description: Aggregated request sampling data for a sampling rule across all services for a 10-second window.
-    String:
-      type: string
-    InvalidRequestException: {}
-    SamplingStatisticSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SamplingStatisticSummary'
     GetSamplingStatisticSummariesResult:
       type: object
       properties:
@@ -210,19 +212,12 @@ components:
           - description: Pagination token.
     Integer:
       type: integer
-    ThrottledException: {}
     Timestamp:
       type: string
       format: date-time
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -233,8 +228,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -247,12 +254,6 @@ components:
       required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

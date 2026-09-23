@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Insight Impact Graph API
+  title: AWS X-Ray Insight Impact Graph API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -178,6 +179,30 @@ paths:
       - InsightImpactGraph
 components:
   schemas:
+    InsightImpactGraphEdge:
+      type: object
+      properties:
+        ReferenceId:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: Identifier of the edge. Unique within a service map.
+      description: The connection between two service in an insight impact graph.
+    String:
+      type: string
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    InsightImpactGraphEdgeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphEdge'
+    NullableInteger:
+      type: integer
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+    ThrottledException: {}
     InsightImpactGraphService:
       type: object
       properties:
@@ -206,18 +231,11 @@ components:
           - $ref: '#/components/schemas/InsightImpactGraphEdgeList'
           - description: Connections to downstream services.
       description: 'Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used. '
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    InsightImpactGraphServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphService'
-    InvalidRequestException: {}
-    InsightId:
+    Token:
       type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+      minLength: 1
+      maxLength: 2000
+    InvalidRequestException: {}
     GetInsightImpactGraphResult:
       type: object
       properties:
@@ -249,51 +267,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/Token'
           - description: Pagination token.
-    ThrottledException: {}
+    InsightImpactGraphServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphService'
     Timestamp:
       type: string
       format: date-time
-    InsightImpactGraphEdge:
-      type: object
-      properties:
-        ReferenceId:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: Identifier of the edge. Unique within a service map.
-      description: The connection between two service in an insight impact graph.
-    NullableInteger:
-      type: integer
-    Token:
-      type: string
-      minLength: 1
-      maxLength: 2000
-    String:
-      type: string
-    InsightImpactGraphEdgeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphEdge'
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -304,8 +287,26 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

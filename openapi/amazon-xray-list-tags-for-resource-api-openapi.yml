@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup List Tags For Resource API
+  title: AWS X-Ray List Tags For Resource API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -111,7 +112,7 @@ servers:
 security:
 - hmac: []
 tags:
-- name: ListTagsForResource
+- name: List Tags For Resource
 paths:
   /ListTagsForResource:
     parameters:
@@ -176,16 +177,76 @@ paths:
                   type: string
       summary: Amazon X-Ray List Tags for Resource
       tags:
-      - ListTagsForResource
+      - List Tags For Resource
 components:
+  parameters:
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     String:
       type: string
-    InvalidRequestException: {}
     TagKey:
       type: string
       minLength: 1
       maxLength: 128
+    InvalidRequestException: {}
+    ResourceNotFoundException: {}
+    ThrottledException: {}
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/TagList'
+          - description: A list of tags, as key and value pairs, that is associated with the specified X-Ray group or sampling rule.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: A pagination token. If multiple pages of results are returned, use the <code>NextToken</code> value returned with the current page of results to get the next page of results.
     Tag:
       type: object
       required:
@@ -201,72 +262,12 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: 'An optional tag value, such as <code>Production</code> or <code>test-only</code>. The value can be a maximum of 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
       description: '<p>A map that contains tag keys and tag values to attach to an Amazon Web Services X-Ray group or sampling rule. For more information about ways to use tags, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a> in the <i>Amazon Web Services General Reference</i>.</p> <p>The following restrictions apply to tags:</p> <ul> <li> <p>Maximum number of user-applied tags per resource: 50</p> </li> <li> <p>Tag keys and values are case sensitive.</p> </li> <li> <p>Don''t use <code>aws:</code> as a prefix for keys; it''s reserved for Amazon Web Services use. You cannot edit or delete system tags.</p> </li> </ul>'
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    ThrottledException: {}
-    ListTagsForResourceResponse:
-      type: object
-      properties:
-        Tags:
-          allOf:
-          - $ref: '#/components/schemas/TagList'
-          - description: A list of tags, as key and value pairs, that is associated with the specified X-Ray group or sampling rule.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: A pagination token. If multiple pages of results are returned, use the <code>NextToken</code> value returned with the current page of results to get the next page of results.
-    ResourceNotFoundException: {}
     TagList:
       type: array
       items:
         $ref: '#/components/schemas/Tag'
       minItems: 0
       maxItems: 200
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey

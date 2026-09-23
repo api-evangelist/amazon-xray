@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Time Series Service Statistics API
+  title: AWS X-Ray Time Series Service Statistics API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -197,73 +198,9 @@ paths:
       tags:
       - TimeSeriesServiceStatistics
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    Boolean:
-      type: boolean
-    TimeSeriesServiceStatistics:
-      type: object
-      properties:
-        Timestamp:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: Timestamp of the window for which statistics are aggregated.
-        EdgeSummaryStatistics:
-          $ref: '#/components/schemas/EdgeStatistics'
-        ServiceSummaryStatistics:
-          $ref: '#/components/schemas/ServiceStatistics'
-        ServiceForecastStatistics:
-          allOf:
-          - $ref: '#/components/schemas/ForecastStatistics'
-          - description: The forecasted high and low fault count values.
-        ResponseTimeHistogram:
-          allOf:
-          - $ref: '#/components/schemas/Histogram'
-          - description: The response time histogram for the selected entities.
-      description: A list of TimeSeriesStatistic structures.
-    InvalidRequestException: {}
+    String:
+      type: string
     GetTimeSeriesServiceStatisticsResult:
       type: object
       properties:
@@ -279,6 +216,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: Pagination token.
+    Boolean:
+      type: boolean
     ServiceStatistics:
       type: object
       properties:
@@ -303,6 +242,10 @@ components:
           - $ref: '#/components/schemas/NullableDouble'
           - description: The aggregate response time of completed requests.
       description: Response statistics for a service.
+    Histogram:
+      type: array
+      items:
+        $ref: '#/components/schemas/HistogramEntry'
     ForecastStatistics:
       type: object
       properties:
@@ -315,24 +258,6 @@ components:
           - $ref: '#/components/schemas/NullableLong'
           - description: The lower limit of fault counts for a service.
       description: The predicted high and low fault count. This is used to determine if a service has become anomalous and if an insight should be created.
-    FaultStatistics:
-      type: object
-      properties:
-        OtherCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with untracked 5xx Server Error status codes.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests that failed with a 5xx Server Error status code.
-      description: Information about requests that failed with a 5xx Server Error status code.
-    NullableLong:
-      type: integer
-    ThrottledException: {}
-    Timestamp:
-      type: string
-      format: date-time
     HistogramEntry:
       type: object
       properties:
@@ -345,28 +270,26 @@ components:
           - $ref: '#/components/schemas/Integer'
           - description: The prevalence of the entry.
       description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
-    Histogram:
-      type: array
-      items:
-        $ref: '#/components/schemas/HistogramEntry'
-    ErrorStatistics:
+    TimeSeriesServiceStatistics:
       type: object
       properties:
-        ThrottleCount:
+        Timestamp:
           allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with a 419 throttling status code.
-        OtherCount:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: Timestamp of the window for which statistics are aggregated.
+        EdgeSummaryStatistics:
+          $ref: '#/components/schemas/EdgeStatistics'
+        ServiceSummaryStatistics:
+          $ref: '#/components/schemas/ServiceStatistics'
+        ServiceForecastStatistics:
           allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with untracked 4xx Client Error status codes.
-        TotalCount:
+          - $ref: '#/components/schemas/ForecastStatistics'
+          - description: The forecasted high and low fault count values.
+        ResponseTimeHistogram:
           allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests that failed with a 4xx Client Error status code.
-      description: Information about requests that failed with a 4xx Client Error status code.
-    String:
-      type: string
+          - $ref: '#/components/schemas/Histogram'
+          - description: The response time histogram for the selected entities.
+      description: A list of TimeSeriesStatistic structures.
     EdgeStatistics:
       type: object
       properties:
@@ -391,18 +314,96 @@ components:
           - $ref: '#/components/schemas/NullableDouble'
           - description: The aggregate response time of completed requests.
       description: Response statistics for an edge.
+    ThrottledException: {}
     TimeSeriesServiceStatisticsList:
       type: array
       items:
         $ref: '#/components/schemas/TimeSeriesServiceStatistics'
+    NullableLong:
+      type: integer
+    Integer:
+      type: integer
+    ErrorStatistics:
+      type: object
+      properties:
+        ThrottleCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with a 419 throttling status code.
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 4xx Client Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 4xx Client Error status code.
+      description: Information about requests that failed with a 4xx Client Error status code.
+    InvalidRequestException: {}
     NullableDouble:
       type: number
       format: double
-    Integer:
-      type: integer
+    FaultStatistics:
+      type: object
+      properties:
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 5xx Server Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 5xx Server Error status code.
+      description: Information about requests that failed with a 5xx Server Error status code.
     Double:
       type: number
       format: double
+    Timestamp:
+      type: string
+      format: date-time
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

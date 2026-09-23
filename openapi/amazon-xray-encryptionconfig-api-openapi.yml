@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Encryption Config API
+  title: AWS X-Ray Encryption Config API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -150,15 +151,14 @@ paths:
       - EncryptionConfig
 components:
   schemas:
+    EncryptionStatus:
+      type: string
+      enum:
+      - UPDATING
+      - ACTIVE
     String:
       type: string
     InvalidRequestException: {}
-    EncryptionType:
-      type: string
-      enum:
-      - NONE
-      - KMS
-    ThrottledException: {}
     EncryptionConfig:
       type: object
       properties:
@@ -175,6 +175,7 @@ components:
           - $ref: '#/components/schemas/EncryptionType'
           - description: The type of encryption. Set to <code>KMS</code> for encryption with KMS keys. Set to <code>NONE</code> for default encryption.
       description: A configuration document that specifies encryption configuration settings.
+    ThrottledException: {}
     GetEncryptionConfigResult:
       type: object
       properties:
@@ -182,24 +183,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/EncryptionConfig'
           - description: The encryption configuration document.
-    EncryptionStatus:
+    EncryptionType:
       type: string
       enum:
-      - UPDATING
-      - ACTIVE
+      - NONE
+      - KMS
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -212,8 +201,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -224,8 +213,20 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

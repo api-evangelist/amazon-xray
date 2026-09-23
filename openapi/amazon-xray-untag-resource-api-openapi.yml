@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Tag Resource API
+  title: AWS X-Ray Untag Resource API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -111,9 +112,9 @@ servers:
 security:
 - hmac: []
 tags:
-- name: TagResource
+- name: Untag Resource
 paths:
-  /TagResource:
+  /UntagResource:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
     - $ref: '#/components/parameters/X-Amz-Date'
@@ -123,15 +124,15 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
-      operationId: TagResource
-      description: Applies tags to an existing Amazon Web Services X-Ray group or sampling rule.
+      operationId: UntagResource
+      description: 'Removes tags from an Amazon Web Services X-Ray group or sampling rule. You cannot edit or delete system tags (those with an aws: prefix).'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagResourceResponse'
+                $ref: '#/components/schemas/UntagResourceResponse'
         '480':
           description: InvalidRequestException
           content:
@@ -150,12 +151,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceNotFoundException'
-        '483':
-          description: TooManyTagsException
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TooManyTagsException'
       parameters: []
       requestBody:
         required: true
@@ -165,27 +160,33 @@ paths:
               type: object
               required:
               - ResourceARN
-              - Tags
+              - TagKeys
               properties:
                 ResourceARN:
                   description: The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
                   type: string
                   minLength: 1
                   maxLength: 1011
-                Tags:
-                  description: '<p>A map that contains one or more tag keys and tag values to attach to an X-Ray group or sampling rule. For more information about ways to use tags, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a> in the <i>Amazon Web Services General Reference</i>.</p> <p>The following restrictions apply to tags:</p> <ul> <li> <p>Maximum number of user-applied tags per resource: 50</p> </li> <li> <p>Maximum tag key length: 128 Unicode characters</p> </li> <li> <p>Maximum tag value length: 256 Unicode characters</p> </li> <li> <p>Valid values for key and value: a-z, A-Z, 0-9, space, and the following characters: _ . : / = + - and @</p> </li> <li> <p>Tag keys and values are case sensitive.</p> </li> <li> <p>Don''t use <code>aws:</code> as a prefix for keys; it''s reserved for Amazon Web Services use. You cannot edit or delete system tags.</p> </li> </ul>'
+                TagKeys:
+                  description: Keys for one or more tags that you want to remove from an X-Ray group or sampling rule.
                   type: array
                   items:
-                    $ref: '#/components/schemas/Tag'
+                    $ref: '#/components/schemas/TagKey'
                   minItems: 0
                   maxItems: 200
-      summary: Amazon X-Ray Tag Resource
+      summary: Amazon X-Ray Untag Resource
       tags:
-      - TagResource
+      - Untag Resource
 components:
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -196,14 +197,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -220,43 +221,17 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    InvalidRequestException: {}
     TagKey:
       type: string
       minLength: 1
       maxLength: 128
-    TooManyTagsException: {}
-    TagResourceResponse:
+    InvalidRequestException: {}
+    ResourceNotFoundException: {}
+    ThrottledException: {}
+    UntagResourceResponse:
       type: object
       properties: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      - Value
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: 'A tag key, such as <code>Stage</code> or <code>Name</code>. A tag key cannot be empty. The key can be a maximum of 128 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: 'An optional tag value, such as <code>Production</code> or <code>test-only</code>. The value can be a maximum of 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
-      description: '<p>A map that contains tag keys and tag values to attach to an Amazon Web Services X-Ray group or sampling rule. For more information about ways to use tags, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a> in the <i>Amazon Web Services General Reference</i>.</p> <p>The following restrictions apply to tags:</p> <ul> <li> <p>Maximum number of user-applied tags per resource: 50</p> </li> <li> <p>Tag keys and values are case sensitive.</p> </li> <li> <p>Don''t use <code>aws:</code> as a prefix for keys; it''s reserved for Amazon Web Services use. You cannot edit or delete system tags.</p> </li> </ul>'
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    ThrottledException: {}
-    ResourceNotFoundException: {}
   securitySchemes:
     hmac:
       type: apiKey

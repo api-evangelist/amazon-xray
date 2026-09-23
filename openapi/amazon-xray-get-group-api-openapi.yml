@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-04-12'
   x-release: v4
-  title: AWS X-Ray CreateGroup Update Group API
+  title: AWS X-Ray Get Group API
   description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -23,6 +23,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -111,9 +112,9 @@ servers:
 security:
 - hmac: []
 tags:
-- name: UpdateGroup
+- name: Get Group
 paths:
-  /UpdateGroup:
+  /GetGroup:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
     - $ref: '#/components/parameters/X-Amz-Date'
@@ -123,15 +124,15 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
-      operationId: UpdateGroup
-      description: Updates a group resource.
+      operationId: GetGroup
+      description: Retrieves group resource details.
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateGroupResult'
+                $ref: '#/components/schemas/GetGroupResult'
         '480':
           description: InvalidRequestException
           content:
@@ -158,55 +159,68 @@ paths:
                   minLength: 1
                   maxLength: 32
                 GroupARN:
-                  description: The ARN that was generated upon creation.
+                  description: The ARN of the group that was generated on creation.
                   type: string
                   minLength: 1
                   maxLength: 400
-                FilterExpression:
-                  description: The updated filter expression defining criteria by which to group traces.
-                  type: string
-                InsightsConfiguration:
-                  description: The structure containing configurations related to insights.
-                  type: object
-                  properties:
-                    InsightsEnabled:
-                      allOf:
-                      - $ref: '#/components/schemas/NullableBoolean'
-                      - description: Set the InsightsEnabled value to true to enable insights or false to disable insights.
-                    NotificationsEnabled:
-                      allOf:
-                      - $ref: '#/components/schemas/NullableBoolean'
-                      - description: Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.
-      summary: Amazon X-Ray Update Group
+      summary: Amazon X-Ray Get Group
       tags:
-      - UpdateGroup
+      - Get Group
 components:
+  parameters:
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     String:
       type: string
     InvalidRequestException: {}
-    UpdateGroupResult:
+    GetGroupResult:
       type: object
       properties:
         Group:
           allOf:
           - $ref: '#/components/schemas/Group'
-          - description: The group that was updated. Contains the name of the group that was updated, the ARN of the group that was updated, the updated filter expression, and the updated insight configuration assigned to the group.
-    NullableBoolean:
-      type: boolean
-    ThrottledException: {}
-    InsightsConfiguration:
-      type: object
-      properties:
-        InsightsEnabled:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: Set the InsightsEnabled value to true to enable insights or false to disable insights.
-        NotificationsEnabled:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.
-      description: The structure containing configurations related to insights.
+          - description: The group that was requested. Contains the name of the group, the ARN of the group, the filter expression, and the insight configuration assigned to the group.
     Group:
       type: object
       properties:
@@ -227,49 +241,21 @@ components:
           - $ref: '#/components/schemas/InsightsConfiguration'
           - description: <p>The structure containing configurations related to insights.</p> <ul> <li> <p>The InsightsEnabled boolean can be set to true to enable insights for the group or false to disable insights for the group.</p> </li> <li> <p>The NotificationsEnabled boolean can be set to true to enable insights notifications through Amazon EventBridge for the group.</p> </li> </ul>
       description: Details and metadata for a group.
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
+    ThrottledException: {}
+    InsightsConfiguration:
+      type: object
+      properties:
+        InsightsEnabled:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: Set the InsightsEnabled value to true to enable insights or false to disable insights.
+        NotificationsEnabled:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.
+      description: The structure containing configurations related to insights.
+    NullableBoolean:
+      type: boolean
   securitySchemes:
     hmac:
       type: apiKey

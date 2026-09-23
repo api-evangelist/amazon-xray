@@ -1,34 +1,18 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
-  x-release: v4
-  title: AWS X-Ray CreateGroup Groups API
-  description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.
-  x-logo:
-    url: https://twitter.com/awscloud/profile_image?size=original
-    backgroundColor: '#FFFFFF'
+  title: Amazon Xray Groups API
+  version: '2016-04-12'
   termsOfService: https://aws.amazon.com/service-terms/
-  contact:
-    name: Mike Ralphson
-    email: mike.ralphson@gmail.com
-    url: https://github.com/mermade/aws2openapi
-    x-twitter: PermittedSoc
-  license:
-    name: Apache 2.0 License
-    url: http://www.apache.org/licenses/
-  x-providerName: amazonaws.com
-  x-serviceName: xray
-  x-origin:
-  - contentType: application/json
-    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/xray-2016-04-12.normal.json
-    converter:
-      url: https://github.com/mermade/aws2openapi
-    x-apisguru-driver: external
-  x-apiClientRegistration:
-    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
-  x-apisguru-categories:
-  - cloud
-  x-preferred: true
+  x-refined-note:
+  - x-apiClientRegistration differs across the merged source definitions and was not carried
+  - x-apisguru-categories differs across the merged source definitions and was not carried
+  - x-logo differs across the merged source definitions and was not carried
+  - x-origin differs across the merged source definitions and was not carried
+  - x-preferred differs across the merged source definitions and was not carried
+  - x-providerName differs across the merged source definitions and was not carried
+  - x-release differs across the merged source definitions and was not carried
+  - x-serviceName differs across the merged source definitions and was not carried
+  description: 'Operations tagged Groups across 2 of this provider''s published API definitions: amazon-xray-openapi-original.yaml, amazon-xray-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: http://xray.{region}.amazonaws.com
   variables:
@@ -108,8 +92,6 @@ servers:
       - cn-northwest-1
       default: cn-north-1
   description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
-security:
-- hmac: []
 tags:
 - name: Groups
 paths:
@@ -166,13 +148,135 @@ paths:
       summary: Amazon X-Ray Get Groups
       tags:
       - Groups
+      security:
+      - hmac: []
+    servers:
+    - url: http://xray.{region}.amazonaws.com
+      variables:
+        region:
+          description: The AWS region
+          enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - us-gov-west-1
+          - us-gov-east-1
+          - ca-central-1
+          - eu-north-1
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-central-1
+          - eu-south-1
+          - af-south-1
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-east-1
+          - ap-south-1
+          - sa-east-1
+          - me-south-1
+          default: us-east-1
+      description: The AWS X-Ray multi-region endpoint
+    - url: https://xray.{region}.amazonaws.com
+      variables:
+        region:
+          description: The AWS region
+          enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - us-gov-west-1
+          - us-gov-east-1
+          - ca-central-1
+          - eu-north-1
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-central-1
+          - eu-south-1
+          - af-south-1
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-east-1
+          - ap-south-1
+          - sa-east-1
+          - me-south-1
+          default: us-east-1
+      description: The AWS X-Ray multi-region endpoint
+    - url: http://xray.{region}.amazonaws.com.cn
+      variables:
+        region:
+          description: The AWS region
+          enum:
+          - cn-north-1
+          - cn-northwest-1
+          default: cn-north-1
+      description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
+    - url: https://xray.{region}.amazonaws.com.cn
+      variables:
+        region:
+          description: The AWS region
+          enum:
+          - cn-north-1
+          - cn-northwest-1
+          default: cn-north-1
+      description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
 components:
+  parameters:
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     String:
       type: string
     InvalidRequestException: {}
-    NullableBoolean:
-      type: boolean
     GroupSummary:
       type: object
       properties:
@@ -193,10 +297,6 @@ components:
           - $ref: '#/components/schemas/InsightsConfiguration'
           - description: <p>The structure containing configurations related to insights.</p> <ul> <li> <p>The InsightsEnabled boolean can be set to true to enable insights for the group or false to disable insights for the group.</p> </li> <li> <p>The NotificationsEnabled boolean can be set to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.</p> </li> </ul>
       description: Details for a group without metadata.
-    GroupSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GroupSummary'
     ThrottledException: {}
     InsightsConfiguration:
       type: object
@@ -210,6 +310,10 @@ components:
           - $ref: '#/components/schemas/NullableBoolean'
           - description: Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.
       description: The structure containing configurations related to insights.
+    GroupSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GroupSummary'
     GetGroupsResult:
       type: object
       properties:
@@ -221,49 +325,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: Pagination token.
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
+    NullableBoolean:
+      type: boolean
   securitySchemes:
     hmac:
       type: apiKey
@@ -271,6 +334,11 @@ components:
       in: header
       description: Amazon Signature authorization v4
       x-amazon-apigateway-authtype: awsSigv4
-externalDocs:
-  description: Amazon Web Services documentation
-  url: https://docs.aws.amazon.com/xray/
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication.
+x-refined-from:
+- amazon-xray-openapi-original.yaml
+- amazon-xray-openapi.yml
