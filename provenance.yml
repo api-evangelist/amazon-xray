@@ -25,11 +25,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-createsamplingrule-api
   collections/amazon-xray-deletegroup-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-deletegroup-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-deletegroup-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-deletegroup-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-deleteresourcepolicy-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-xray-deleteresourcepolicy-api
@@ -49,11 +49,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-encryptionconfig-api
   collections/amazon-xray-getgroup-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-getgroup-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-getgroup-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-getgroup-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-getsamplingrules-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-xray-getsamplingrules-api
@@ -97,11 +97,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-listresourcepolicies-api
   collections/amazon-xray-listtagsforresource-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-listtagsforresource-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-listtagsforresource-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-listtagsforresource-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-putencryptionconfig-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-xray-putencryptionconfig-api
@@ -139,17 +139,17 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-service-graph-api
   collections/amazon-xray-servicegraph-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-servicegraph-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-servicegraph-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-servicegraph-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-tagresource-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-tagresource-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-tagresource-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-tagresource-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-telemetryrecords-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-xray-telemetryrecords-api
@@ -187,17 +187,17 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-tracesummaries-api
   collections/amazon-xray-untagresource-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-untagresource-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-untagresource-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-untagresource-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-updategroup-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-xray-updategroup-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-updategroup-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-updategroup-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-xray-updatesamplingrule-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-xray-updatesamplingrule-api
@@ -540,6 +540,9 @@ artifacts:
   finops/amazon-xray-finops.yml:
     method: generated
     evidence: declared in the artifact
+  front-door-ai/2026-09-17.yml:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/amazon-xray-context.jsonld:
     method: unknown
     evidence: no authorship recorded
@@ -1938,55 +1941,7 @@ artifacts:
   json-structure/xray-version-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -2073,19 +2028,138 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   openapi/_original/amazon-xray-openapi-original.yaml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/_original/amazon-xray-openapi.yml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/amazon-xray-creategroup-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-xray-createsamplingrule-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-deletegroup-api-openapi.yml:
+  openapi/amazon-xray-delete-group-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-xray-deleteresourcepolicy-api-openapi.yml:
@@ -2097,7 +2171,7 @@ artifacts:
   openapi/amazon-xray-encryptionconfig-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-getgroup-api-openapi.yml:
+  openapi/amazon-xray-get-group-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-xray-getsamplingrules-api-openapi.yml:
@@ -2118,10 +2192,10 @@ artifacts:
   openapi/amazon-xray-insightsummaries-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-listresourcepolicies-api-openapi.yml:
+  openapi/amazon-xray-list-tags-for-resource-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-listtagsforresource-api-openapi.yml:
+  openapi/amazon-xray-listresourcepolicies-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-xray-putencryptionconfig-api-openapi.yml:
@@ -2142,10 +2216,7 @@ artifacts:
   openapi/amazon-xray-service-graph-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-servicegraph-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-tagresource-api-openapi.yml:
+  openapi/amazon-xray-tag-resource-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-xray-telemetryrecords-api-openapi.yml:
@@ -2166,10 +2237,10 @@ artifacts:
   openapi/amazon-xray-tracesummaries-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-untagresource-api-openapi.yml:
+  openapi/amazon-xray-untag-resource-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-xray-updategroup-api-openapi.yml:
+  openapi/amazon-xray-update-group-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-xray-updatesamplingrule-api-openapi.yml:
@@ -2185,8 +2256,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-createsamplingrule-api
   postman/amazon-xray-deletegroup-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-deletegroup-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-deleteresourcepolicy-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-xray-deleteresourcepolicy-api
@@ -2197,8 +2268,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-encryptionconfig-api
   postman/amazon-xray-getgroup-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-getgroup-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-getsamplingrules-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-xray-getsamplingrules-api
@@ -2221,8 +2292,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-listresourcepolicies-api
   postman/amazon-xray-listtagsforresource-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-listtagsforresource-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-putencryptionconfig-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-xray-putencryptionconfig-api
@@ -2242,11 +2313,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-service-graph-api
   postman/amazon-xray-servicegraph-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-servicegraph-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-tagresource-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-tagresource-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-telemetryrecords-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-xray-telemetryrecords-api
@@ -2266,11 +2337,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-xray-tracesummaries-api
   postman/amazon-xray-untagresource-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-untagresource-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-updategroup-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-xray-updategroup-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-xray-updatesamplingrule-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-xray-updatesamplingrule-api
