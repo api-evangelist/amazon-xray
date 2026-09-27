@@ -178,7 +178,67 @@ paths:
       tags:
       - InsightImpactGraph
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    Timestamp:
+      type: string
+      format: date-time
+    String:
+      type: string
+    InsightImpactGraphServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphService'
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+    InvalidRequestException: {}
+    InsightImpactGraphEdgeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphEdge'
     InsightImpactGraphEdge:
       type: object
       properties:
@@ -187,22 +247,8 @@ components:
           - $ref: '#/components/schemas/NullableInteger'
           - description: Identifier of the edge. Unique within a service map.
       description: The connection between two service in an insight impact graph.
-    String:
-      type: string
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    InsightImpactGraphEdgeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphEdge'
     NullableInteger:
       type: integer
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
-    ThrottledException: {}
     InsightImpactGraphService:
       type: object
       properties:
@@ -231,11 +277,15 @@ components:
           - $ref: '#/components/schemas/InsightImpactGraphEdgeList'
           - description: Connections to downstream services.
       description: 'Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used. '
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
     Token:
       type: string
       minLength: 1
       maxLength: 2000
-    InvalidRequestException: {}
+    ThrottledException: {}
     GetInsightImpactGraphResult:
       type: object
       properties:
@@ -267,56 +317,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/Token'
           - description: Pagination token.
-    InsightImpactGraphServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphService'
-    Timestamp:
-      type: string
-      format: date-time
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey

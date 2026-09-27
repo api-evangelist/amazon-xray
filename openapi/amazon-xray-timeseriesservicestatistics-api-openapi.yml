@@ -199,25 +199,52 @@ paths:
       - TimeSeriesServiceStatistics
 components:
   schemas:
-    String:
-      type: string
-    GetTimeSeriesServiceStatisticsResult:
+    FaultStatistics:
       type: object
       properties:
-        TimeSeriesServiceStatistics:
+        OtherCount:
           allOf:
-          - $ref: '#/components/schemas/TimeSeriesServiceStatisticsList'
-          - description: The collection of statistics.
-        ContainsOldGroupVersions:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 5xx Server Error status codes.
+        TotalCount:
           allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: A flag indicating whether or not a group's filter expression has been consistent, or if a returned aggregation might show statistics from an older version of the group's filter expression.
-        NextToken:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 5xx Server Error status code.
+      description: Information about requests that failed with a 5xx Server Error status code.
+    Timestamp:
+      type: string
+      format: date-time
+    String:
+      type: string
+    TimeSeriesServiceStatisticsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TimeSeriesServiceStatistics'
+    TimeSeriesServiceStatistics:
+      type: object
+      properties:
+        Timestamp:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
+          - $ref: '#/components/schemas/Timestamp'
+          - description: Timestamp of the window for which statistics are aggregated.
+        EdgeSummaryStatistics:
+          $ref: '#/components/schemas/EdgeStatistics'
+        ServiceSummaryStatistics:
+          $ref: '#/components/schemas/ServiceStatistics'
+        ServiceForecastStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ForecastStatistics'
+          - description: The forecasted high and low fault count values.
+        ResponseTimeHistogram:
+          allOf:
+          - $ref: '#/components/schemas/Histogram'
+          - description: The response time histogram for the selected entities.
+      description: A list of TimeSeriesStatistic structures.
+    NullableLong:
+      type: integer
     Boolean:
       type: boolean
+    InvalidRequestException: {}
     ServiceStatistics:
       type: object
       properties:
@@ -246,50 +273,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/HistogramEntry'
-    ForecastStatistics:
-      type: object
-      properties:
-        FaultCountHigh:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The upper limit of fault counts for a service.
-        FaultCountLow:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The lower limit of fault counts for a service.
-      description: The predicted high and low fault count. This is used to determine if a service has become anomalous and if an insight should be created.
-    HistogramEntry:
-      type: object
-      properties:
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: The value of the entry.
-        Count:
-          allOf:
-          - $ref: '#/components/schemas/Integer'
-          - description: The prevalence of the entry.
-      description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
-    TimeSeriesServiceStatistics:
-      type: object
-      properties:
-        Timestamp:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: Timestamp of the window for which statistics are aggregated.
-        EdgeSummaryStatistics:
-          $ref: '#/components/schemas/EdgeStatistics'
-        ServiceSummaryStatistics:
-          $ref: '#/components/schemas/ServiceStatistics'
-        ServiceForecastStatistics:
-          allOf:
-          - $ref: '#/components/schemas/ForecastStatistics'
-          - description: The forecasted high and low fault count values.
-        ResponseTimeHistogram:
-          allOf:
-          - $ref: '#/components/schemas/Histogram'
-          - description: The response time histogram for the selected entities.
-      description: A list of TimeSeriesStatistic structures.
     EdgeStatistics:
       type: object
       properties:
@@ -314,15 +297,36 @@ components:
           - $ref: '#/components/schemas/NullableDouble'
           - description: The aggregate response time of completed requests.
       description: Response statistics for an edge.
-    ThrottledException: {}
-    TimeSeriesServiceStatisticsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TimeSeriesServiceStatistics'
-    NullableLong:
-      type: integer
-    Integer:
-      type: integer
+    GetTimeSeriesServiceStatisticsResult:
+      type: object
+      properties:
+        TimeSeriesServiceStatistics:
+          allOf:
+          - $ref: '#/components/schemas/TimeSeriesServiceStatisticsList'
+          - description: The collection of statistics.
+        ContainsOldGroupVersions:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: A flag indicating whether or not a group's filter expression has been consistent, or if a returned aggregation might show statistics from an older version of the group's filter expression.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
+    HistogramEntry:
+      type: object
+      properties:
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The value of the entry.
+        Count:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The prevalence of the entry.
+      description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
+    NullableDouble:
+      type: number
+      format: double
     ErrorStatistics:
       type: object
       properties:
@@ -339,28 +343,24 @@ components:
           - $ref: '#/components/schemas/NullableLong'
           - description: The total number of requests that failed with a 4xx Client Error status code.
       description: Information about requests that failed with a 4xx Client Error status code.
-    InvalidRequestException: {}
-    NullableDouble:
-      type: number
-      format: double
-    FaultStatistics:
+    ForecastStatistics:
       type: object
       properties:
-        OtherCount:
+        FaultCountHigh:
           allOf:
           - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with untracked 5xx Server Error status codes.
-        TotalCount:
+          - description: The upper limit of fault counts for a service.
+        FaultCountLow:
           allOf:
           - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests that failed with a 5xx Server Error status code.
-      description: Information about requests that failed with a 5xx Server Error status code.
+          - description: The lower limit of fault counts for a service.
+      description: The predicted high and low fault count. This is used to determine if a service has become anomalous and if an insight should be created.
+    Integer:
+      type: integer
     Double:
       type: number
       format: double
-    Timestamp:
-      type: string
-      format: date-time
+    ThrottledException: {}
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
@@ -368,14 +368,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -392,14 +386,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
     X-Amz-Date:
       name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

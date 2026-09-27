@@ -203,24 +203,54 @@ paths:
       tags:
       - TraceSegments
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     TraceSegmentDocument:
       type: string
     String:
       type: string
-    InvalidRequestException: {}
-    PutTraceSegmentsResult:
-      type: object
-      properties:
-        UnprocessedTraceSegments:
-          allOf:
-          - $ref: '#/components/schemas/UnprocessedTraceSegmentList'
-          - description: Segments that failed processing.
-    ThrottledException: {}
-    UnprocessedTraceSegmentList:
-      type: array
-      items:
-        $ref: '#/components/schemas/UnprocessedTraceSegment'
     UnprocessedTraceSegment:
       type: object
       properties:
@@ -237,49 +267,19 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The error message.
       description: Information about a segment that failed processing.
-  parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
+    InvalidRequestException: {}
+    ThrottledException: {}
+    UnprocessedTraceSegmentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/UnprocessedTraceSegment'
+    PutTraceSegmentsResult:
+      type: object
+      properties:
+        UnprocessedTraceSegments:
+          allOf:
+          - $ref: '#/components/schemas/UnprocessedTraceSegmentList'
+          - description: Segments that failed processing.
   securitySchemes:
     hmac:
       type: apiKey

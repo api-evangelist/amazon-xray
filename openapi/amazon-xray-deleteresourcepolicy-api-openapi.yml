@@ -175,8 +175,14 @@ paths:
       - DeleteResourcePolicy
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -187,8 +193,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -205,25 +211,19 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
   schemas:
-    InvalidRequestException: {}
-    ThrottledException: {}
-    InvalidPolicyRevisionIdException: {}
     DeleteResourcePolicyResult:
       type: object
       properties: {}
+    InvalidPolicyRevisionIdException: {}
+    InvalidRequestException: {}
+    ThrottledException: {}
   securitySchemes:
     hmac:
       type: apiKey

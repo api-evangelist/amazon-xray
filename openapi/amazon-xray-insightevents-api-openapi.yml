@@ -185,13 +185,57 @@ paths:
       tags:
       - InsightEvents
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    Timestamp:
+      type: string
+      format: date-time
     String:
       type: string
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    NullableLong:
+      type: integer
     ServiceId:
       type: object
       properties:
@@ -212,12 +256,32 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p/>
       description: <p/>
+    InsightEventList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightEvent'
+    GetInsightEventsResult:
+      type: object
+      properties:
+        InsightEvents:
+          allOf:
+          - $ref: '#/components/schemas/InsightEventList'
+          - description: A detailed description of the event. This includes the time of the event, client and root cause impact statistics, and the top anomalous service at the time of the event.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/Token'
+          - description: Use this token to retrieve the next page of insight events.
+    InvalidRequestException: {}
     AnomalousService:
       type: object
       properties:
         ServiceId:
           $ref: '#/components/schemas/ServiceId'
       description: 'The service within the service graph that has anomalously high fault rates. '
+    AnomalousServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnomalousService'
     RequestImpactStatistics:
       type: object
       properties:
@@ -258,81 +322,17 @@ components:
           - $ref: '#/components/schemas/AnomalousServiceList'
           - description: The service during the event that is most impacted by the incident.
       description: X-Ray reevaluates insights periodically until they are resolved, and records each intermediate state in an event. You can review incident events in the Impact Timeline on the Inspect page in the X-Ray console.
-    GetInsightEventsResult:
-      type: object
-      properties:
-        InsightEvents:
-          allOf:
-          - $ref: '#/components/schemas/InsightEventList'
-          - description: A detailed description of the event. This includes the time of the event, client and root cause impact statistics, and the top anomalous service at the time of the event.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/Token'
-          - description: Use this token to retrieve the next page of insight events.
-    InsightEventList:
+    ServiceNames:
       type: array
       items:
-        $ref: '#/components/schemas/InsightEvent'
-    ThrottledException: {}
-    NullableLong:
-      type: integer
-    AnomalousServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnomalousService'
+        $ref: '#/components/schemas/String'
+    EventSummaryText:
+      type: string
     Token:
       type: string
       minLength: 1
       maxLength: 2000
-    EventSummaryText:
-      type: string
-    InvalidRequestException: {}
-    Timestamp:
-      type: string
-      format: date-time
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
+    ThrottledException: {}
   securitySchemes:
     hmac:
       type: apiKey

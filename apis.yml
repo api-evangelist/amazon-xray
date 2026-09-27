@@ -908,8 +908,6 @@ apis:
   humanURL: https://aws.amazon.com/xray/
   baseURL: https://xray.amazonaws.com
   tags:
-  - DeleteGroup
-  tags_raw:
   - Delete Group
   properties:
   - type: OpenAPI
@@ -944,8 +942,6 @@ apis:
   humanURL: https://aws.amazon.com/xray/
   baseURL: https://xray.amazonaws.com
   tags:
-  - GetGroup
-  tags_raw:
   - Get Group
   properties:
   - type: OpenAPI
@@ -1083,8 +1079,6 @@ apis:
   humanURL: https://aws.amazon.com/xray/
   baseURL: https://xray.amazonaws.com
   tags:
-  - UpdateGroup
-  tags_raw:
   - Update Group
   properties:
   - type: OpenAPI
@@ -1218,5 +1212,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

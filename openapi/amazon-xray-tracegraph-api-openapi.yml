@@ -174,8 +174,18 @@ paths:
       - TraceGraph
 components:
   schemas:
-    String:
-      type: string
+    FaultStatistics:
+      type: object
+      properties:
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that failed with untracked 5xx Server Error status codes.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests that failed with a 5xx Server Error status code.
+      description: Information about requests that failed with a 5xx Server Error status code.
     Service:
       type: object
       properties:
@@ -232,10 +242,32 @@ components:
           - $ref: '#/components/schemas/Histogram'
           - description: A histogram that maps the spread of service response times.
       description: Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used.
-    TraceId:
+    Timestamp:
       type: string
-      minLength: 1
-      maxLength: 35
+      format: date-time
+    String:
+      type: string
+    NullableLong:
+      type: integer
+    EdgeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Edge'
+    ServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Service'
+    AliasNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    AliasList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Alias'
+    NullableBoolean:
+      type: boolean
+    InvalidRequestException: {}
     ServiceStatistics:
       type: object
       properties:
@@ -260,24 +292,45 @@ components:
           - $ref: '#/components/schemas/NullableDouble'
           - description: The aggregate response time of completed requests.
       description: Response statistics for a service.
-    NullableBoolean:
-      type: boolean
-    AliasNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
     Histogram:
       type: array
       items:
         $ref: '#/components/schemas/HistogramEntry'
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    AliasList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Alias'
+    EdgeStatistics:
+      type: object
+      properties:
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that completed with a 2xx Success status code.
+        ErrorStatistics:
+          allOf:
+          - $ref: '#/components/schemas/ErrorStatistics'
+          - description: Information about requests that failed with a 4xx Client Error status code.
+        FaultStatistics:
+          allOf:
+          - $ref: '#/components/schemas/FaultStatistics'
+          - description: Information about requests that failed with a 5xx Server Error status code.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of completed requests.
+        TotalResponseTime:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The aggregate response time of completed requests.
+      description: Response statistics for an edge.
+    GetTraceGraphResult:
+      type: object
+      properties:
+        Services:
+          allOf:
+          - $ref: '#/components/schemas/ServiceList'
+          - description: The services that have processed one of the specified requests.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
     Alias:
       type: object
       properties:
@@ -294,10 +347,6 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The type of the alias.
       description: An alias for an edge.
-    ServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Service'
     HistogramEntry:
       type: object
       properties:
@@ -310,10 +359,15 @@ components:
           - $ref: '#/components/schemas/Integer'
           - description: The prevalence of the entry.
       description: An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.
-    EdgeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Edge'
+    TraceId:
+      type: string
+      minLength: 1
+      maxLength: 35
+    NullableInteger:
+      type: integer
+    NullableDouble:
+      type: number
+      format: double
     Edge:
       type: object
       properties:
@@ -350,48 +404,6 @@ components:
           - $ref: '#/components/schemas/Histogram'
           - description: A histogram that maps the spread of event age when received by consumers. Age is calculated each time an event is received. Only populated when <i>EdgeType</i> is <code>link</code>.
       description: Information about a connection between two services. An edge can be a synchronous connection, such as typical call between client and service, or an asynchronous link, such as a Lambda function which retrieves an event from an SNS queue.
-    NullableInteger:
-      type: integer
-    GetTraceGraphResult:
-      type: object
-      properties:
-        Services:
-          allOf:
-          - $ref: '#/components/schemas/ServiceList'
-          - description: The services that have processed one of the specified requests.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
-    EdgeStatistics:
-      type: object
-      properties:
-        OkCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that completed with a 2xx Success status code.
-        ErrorStatistics:
-          allOf:
-          - $ref: '#/components/schemas/ErrorStatistics'
-          - description: Information about requests that failed with a 4xx Client Error status code.
-        FaultStatistics:
-          allOf:
-          - $ref: '#/components/schemas/FaultStatistics'
-          - description: Information about requests that failed with a 5xx Server Error status code.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of completed requests.
-        TotalResponseTime:
-          allOf:
-          - $ref: '#/components/schemas/NullableDouble'
-          - description: The aggregate response time of completed requests.
-      description: Response statistics for an edge.
-    ThrottledException: {}
-    NullableLong:
-      type: integer
-    Integer:
-      type: integer
     ErrorStatistics:
       type: object
       properties:
@@ -408,28 +420,16 @@ components:
           - $ref: '#/components/schemas/NullableLong'
           - description: The total number of requests that failed with a 4xx Client Error status code.
       description: Information about requests that failed with a 4xx Client Error status code.
-    InvalidRequestException: {}
-    NullableDouble:
-      type: number
-      format: double
-    FaultStatistics:
-      type: object
-      properties:
-        OtherCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that failed with untracked 5xx Server Error status codes.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests that failed with a 5xx Server Error status code.
-      description: Information about requests that failed with a 5xx Server Error status code.
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    Integer:
+      type: integer
     Double:
       type: number
       format: double
-    Timestamp:
-      type: string
-      format: date-time
+    ThrottledException: {}
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
@@ -437,14 +437,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -461,14 +455,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
     X-Amz-Date:
       name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

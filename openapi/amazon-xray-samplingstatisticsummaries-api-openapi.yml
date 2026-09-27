@@ -171,10 +171,11 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SamplingStatisticSummary'
+    Timestamp:
+      type: string
+      format: date-time
     String:
       type: string
-    InvalidRequestException: {}
-    ThrottledException: {}
     SamplingStatisticSummary:
       type: object
       properties:
@@ -199,6 +200,8 @@ components:
           - $ref: '#/components/schemas/Integer'
           - description: The number of requests recorded.
       description: Aggregated request sampling data for a sampling rule across all services for a 10-second window.
+    Integer:
+      type: integer
     GetSamplingStatisticSummariesResult:
       type: object
       properties:
@@ -210,20 +213,17 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: Pagination token.
-    Integer:
-      type: integer
-    Timestamp:
-      type: string
-      format: date-time
+    InvalidRequestException: {}
+    ThrottledException: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -234,26 +234,26 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Date:
       name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string

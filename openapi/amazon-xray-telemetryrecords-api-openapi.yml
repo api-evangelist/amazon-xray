@@ -177,14 +177,8 @@ paths:
       - TelemetryRecords
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -195,20 +189,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -219,37 +201,28 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    InvalidRequestException: {}
-    ThrottledException: {}
-    BackendConnectionErrors:
-      type: object
-      properties:
-        TimeoutCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        ConnectionRefusedCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        HTTPCode4XXCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        HTTPCode5XXCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        UnknownHostCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-        OtherCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: <p/>
-      description: <p/>
+    Timestamp:
+      type: string
+      format: date-time
     NullableInteger:
       type: integer
     TelemetryRecord:
@@ -285,9 +258,36 @@ components:
     PutTelemetryRecordsResult:
       type: object
       properties: {}
-    Timestamp:
-      type: string
-      format: date-time
+    InvalidRequestException: {}
+    ThrottledException: {}
+    BackendConnectionErrors:
+      type: object
+      properties:
+        TimeoutCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        ConnectionRefusedCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        HTTPCode4XXCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        HTTPCode5XXCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        UnknownHostCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+        OtherCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: <p/>
+      description: <p/>
   securitySchemes:
     hmac:
       type: apiKey

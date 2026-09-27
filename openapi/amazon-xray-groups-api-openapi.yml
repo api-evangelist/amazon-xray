@@ -231,14 +231,26 @@ paths:
       description: The AWS X-Ray endpoint for China (Beijing) and China (Ningxia)
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
     X-Amz-Credential:
       name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -255,28 +267,46 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
   schemas:
+    GroupSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GroupSummary'
+    InsightsConfiguration:
+      type: object
+      properties:
+        InsightsEnabled:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: Set the InsightsEnabled value to true to enable insights or false to disable insights.
+        NotificationsEnabled:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.
+      description: The structure containing configurations related to insights.
     String:
       type: string
+    NullableBoolean:
+      type: boolean
     InvalidRequestException: {}
+    ThrottledException: {}
+    GetGroupsResult:
+      type: object
+      properties:
+        Groups:
+          allOf:
+          - $ref: '#/components/schemas/GroupSummaryList'
+          - description: The collection of all active groups.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
     GroupSummary:
       type: object
       properties:
@@ -297,36 +327,6 @@ components:
           - $ref: '#/components/schemas/InsightsConfiguration'
           - description: <p>The structure containing configurations related to insights.</p> <ul> <li> <p>The InsightsEnabled boolean can be set to true to enable insights for the group or false to disable insights for the group.</p> </li> <li> <p>The NotificationsEnabled boolean can be set to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.</p> </li> </ul>
       description: Details for a group without metadata.
-    ThrottledException: {}
-    InsightsConfiguration:
-      type: object
-      properties:
-        InsightsEnabled:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: Set the InsightsEnabled value to true to enable insights or false to disable insights.
-        NotificationsEnabled:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: Set the NotificationsEnabled value to true to enable insights notifications. Notifications can only be enabled on a group with InsightsEnabled set to true.
-      description: The structure containing configurations related to insights.
-    GroupSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GroupSummary'
-    GetGroupsResult:
-      type: object
-      properties:
-        Groups:
-          allOf:
-          - $ref: '#/components/schemas/GroupSummaryList'
-          - description: The collection of all active groups.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
-    NullableBoolean:
-      type: boolean
   securitySchemes:
     hmac:
       type: apiKey

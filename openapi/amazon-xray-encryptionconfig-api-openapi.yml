@@ -150,47 +150,15 @@ paths:
       tags:
       - EncryptionConfig
 components:
-  schemas:
-    EncryptionStatus:
-      type: string
-      enum:
-      - UPDATING
-      - ACTIVE
-    String:
-      type: string
-    InvalidRequestException: {}
-    EncryptionConfig:
-      type: object
-      properties:
-        KeyId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The ID of the KMS key used for encryption, if applicable.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionStatus'
-          - description: The encryption status. While the status is <code>UPDATING</code>, X-Ray may encrypt data with a combination of the new and old settings.
-        Type:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionType'
-          - description: The type of encryption. Set to <code>KMS</code> for encryption with KMS keys. Set to <code>NONE</code> for default encryption.
-      description: A configuration document that specifies encryption configuration settings.
-    ThrottledException: {}
-    GetEncryptionConfigResult:
-      type: object
-      properties:
-        EncryptionConfig:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionConfig'
-          - description: The encryption configuration document.
-    EncryptionType:
-      type: string
-      enum:
-      - NONE
-      - KMS
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -207,30 +175,62 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Date:
       name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+  schemas:
+    EncryptionConfig:
+      type: object
+      properties:
+        KeyId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The ID of the KMS key used for encryption, if applicable.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionStatus'
+          - description: The encryption status. While the status is <code>UPDATING</code>, X-Ray may encrypt data with a combination of the new and old settings.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionType'
+          - description: The type of encryption. Set to <code>KMS</code> for encryption with KMS keys. Set to <code>NONE</code> for default encryption.
+      description: A configuration document that specifies encryption configuration settings.
+    EncryptionType:
+      type: string
+      enum:
+      - NONE
+      - KMS
+    String:
+      type: string
+    GetEncryptionConfigResult:
+      type: object
+      properties:
+        EncryptionConfig:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionConfig'
+          - description: The encryption configuration document.
+    EncryptionStatus:
+      type: string
+      enum:
+      - UPDATING
+      - ACTIVE
+    InvalidRequestException: {}
+    ThrottledException: {}
   securitySchemes:
     hmac:
       type: apiKey

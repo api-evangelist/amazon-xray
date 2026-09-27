@@ -199,17 +199,59 @@ paths:
       tags:
       - PutResourcePolicy
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    Timestamp:
+      type: string
+      format: date-time
     MalformedPolicyDocumentException: {}
-    PolicyRevisionId:
-      type: string
     InvalidPolicyRevisionIdException: {}
-    PolicyDocument:
-      type: string
-    PolicyCountLimitExceededException: {}
     LockoutPreventionException: {}
     PolicySizeLimitExceededException: {}
-    ThrottledException: {}
+    PolicyRevisionId:
+      type: string
     PutResourcePolicyResult:
       type: object
       properties:
@@ -217,6 +259,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/ResourcePolicy'
           - description: The resource policy document, as provided in the <code>PutResourcePolicyRequest</code>.
+    PolicyName:
+      type: string
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
     ResourcePolicy:
       type: object
       properties:
@@ -237,57 +284,10 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: When the policy was last updated, in Unix time seconds.
       description: A resource policy grants one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy is associated with a specific Amazon Web Services account.
-    PolicyName:
+    PolicyDocument:
       type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
-    Timestamp:
-      type: string
-      format: date-time
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
+    PolicyCountLimitExceededException: {}
+    ThrottledException: {}
   securitySchemes:
     hmac:
       type: apiKey
