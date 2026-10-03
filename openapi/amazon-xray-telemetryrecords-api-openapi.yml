@@ -176,55 +176,16 @@ paths:
       tags:
       - TelemetryRecords
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
+    PutTelemetryRecordsResult:
+      type: object
+      properties: {}
+    NullableInteger:
+      type: integer
+    InvalidRequestException: {}
     Timestamp:
       type: string
       format: date-time
-    NullableInteger:
-      type: integer
     TelemetryRecord:
       type: object
       required:
@@ -255,11 +216,6 @@ components:
           - $ref: '#/components/schemas/BackendConnectionErrors'
           - description: <p/>
       description: <p/>
-    PutTelemetryRecordsResult:
-      type: object
-      properties: {}
-    InvalidRequestException: {}
-    ThrottledException: {}
     BackendConnectionErrors:
       type: object
       properties:
@@ -288,6 +244,50 @@ components:
           - $ref: '#/components/schemas/NullableInteger'
           - description: <p/>
       description: <p/>
+    ThrottledException: {}
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

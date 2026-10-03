@@ -171,11 +171,18 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SamplingStatisticSummary'
-    Timestamp:
-      type: string
-      format: date-time
-    String:
-      type: string
+    GetSamplingStatisticSummariesResult:
+      type: object
+      properties:
+        SamplingStatisticSummaries:
+          allOf:
+          - $ref: '#/components/schemas/SamplingStatisticSummaryList'
+          - description: Information about the number of requests instrumented for each sampling rule.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
+    InvalidRequestException: {}
     SamplingStatisticSummary:
       type: object
       properties:
@@ -200,30 +207,17 @@ components:
           - $ref: '#/components/schemas/Integer'
           - description: The number of requests recorded.
       description: Aggregated request sampling data for a sampling rule across all services for a 10-second window.
+    String:
+      type: string
+    Timestamp:
+      type: string
+      format: date-time
+    ThrottledException: {}
     Integer:
       type: integer
-    GetSamplingStatisticSummariesResult:
-      type: object
-      properties:
-        SamplingStatisticSummaries:
-          allOf:
-          - $ref: '#/components/schemas/SamplingStatisticSummaryList'
-          - description: Information about the number of requests instrumented for each sampling rule.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
-    InvalidRequestException: {}
-    ThrottledException: {}
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -234,14 +228,20 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -252,8 +252,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

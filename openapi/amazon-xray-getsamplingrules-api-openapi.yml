@@ -167,28 +167,11 @@ paths:
       - GetSamplingRules
 components:
   schemas:
-    Host:
-      type: string
-      maxLength: 64
-    ServiceName:
-      type: string
-      maxLength: 64
-    Timestamp:
-      type: string
-      format: date-time
-    RuleName:
-      type: string
-      minLength: 1
-      maxLength: 32
-    String:
-      type: string
-    URLPath:
-      type: string
-      maxLength: 128
-    Priority:
-      type: integer
-      minimum: 1
-      maximum: 9999
+    AttributeMap:
+      type: object
+      maxProperties: 5
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
     GetSamplingRulesResult:
       type: object
       properties:
@@ -200,10 +183,59 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: Pagination token.
-    SamplingRuleRecordList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SamplingRuleRecord'
+    Priority:
+      type: integer
+      minimum: 1
+      maximum: 9999
+    ResourceARN:
+      type: string
+      maxLength: 500
+    InvalidRequestException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    RuleName:
+      type: string
+      minLength: 1
+      maxLength: 32
+    Host:
+      type: string
+      maxLength: 64
+    FixedRate:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 1
+    SamplingRuleRecord:
+      type: object
+      properties:
+        SamplingRule:
+          allOf:
+          - $ref: '#/components/schemas/SamplingRule'
+          - description: The sampling rule.
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the rule was created.
+        ModifiedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the rule was last modified.
+      description: A <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html">SamplingRule</a> and its metadata.
+    ServiceType:
+      type: string
+      maxLength: 64
+    ServiceName:
+      type: string
+      maxLength: 64
+    String:
+      type: string
+    ReservoirSize:
+      type: integer
+      minimum: 0
+    HTTPMethod:
+      type: string
+      maxLength: 10
     SamplingRule:
       type: object
       required:
@@ -271,78 +303,22 @@ components:
           - $ref: '#/components/schemas/AttributeMap'
           - description: Matches attributes derived from the request.
       description: A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.
-    ResourceARN:
-      type: string
-      maxLength: 500
     AttributeValue:
       type: string
       minLength: 1
       maxLength: 32
-    InvalidRequestException: {}
-    ServiceType:
-      type: string
-      maxLength: 64
-    AttributeMap:
-      type: object
-      maxProperties: 5
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeValue'
-    FixedRate:
-      type: number
-      format: double
-      minimum: 0
-      maximum: 1
-    ReservoirSize:
-      type: integer
-      minimum: 0
-    SamplingRuleRecord:
-      type: object
-      properties:
-        SamplingRule:
-          allOf:
-          - $ref: '#/components/schemas/SamplingRule'
-          - description: The sampling rule.
-        CreatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: When the rule was created.
-        ModifiedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: When the rule was last modified.
-      description: A <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html">SamplingRule</a> and its metadata.
+    SamplingRuleRecordList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SamplingRuleRecord'
     Version:
       type: integer
       minimum: 1
-    HTTPMethod:
-      type: string
-      maxLength: 10
     ThrottledException: {}
+    URLPath:
+      type: string
+      maxLength: 128
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
       in: header
@@ -355,8 +331,32 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string

@@ -290,14 +290,26 @@ paths:
           - ca-central-1
 components:
   parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -314,45 +326,42 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
   schemas:
+    Segment:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/SegmentId'
+          - description: The segment's ID.
+        Document:
+          allOf:
+          - $ref: '#/components/schemas/SegmentDocument'
+          - description: The segment document.
+      description: <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a href="https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html">PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p> <p>For the full segment document schema, see <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">Amazon Web Services X-Ray Segment Documents</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>
+    InvalidRequestException: {}
+    NullableBoolean:
+      type: boolean
+    UnprocessedTraceIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceId'
     TraceList:
       type: array
       items:
         $ref: '#/components/schemas/Trace'
-    String:
-      type: string
-    SegmentList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Segment'
-    NullableBoolean:
-      type: boolean
+    NullableDouble:
+      type: number
+      format: double
     SegmentDocument:
       type: string
       minLength: 1
-    InvalidRequestException: {}
-    TraceId:
-      type: string
-      minLength: 1
-      maxLength: 35
     BatchGetTracesResult:
       type: object
       properties:
@@ -368,10 +377,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: Pagination token.
-    NullableDouble:
-      type: number
-      format: double
-    ThrottledException: {}
+    String:
+      type: string
+    SegmentId:
+      type: string
+    TraceId:
+      type: string
+      minLength: 1
+      maxLength: 35
     Trace:
       type: object
       properties:
@@ -392,24 +405,11 @@ components:
           - $ref: '#/components/schemas/SegmentList'
           - description: Segment documents for the segments and subsegments that comprise the trace.
       description: A collection of segment documents with matching trace IDs.
-    UnprocessedTraceIdList:
+    SegmentList:
       type: array
       items:
-        $ref: '#/components/schemas/TraceId'
-    SegmentId:
-      type: string
-    Segment:
-      type: object
-      properties:
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/SegmentId'
-          - description: The segment's ID.
-        Document:
-          allOf:
-          - $ref: '#/components/schemas/SegmentDocument'
-          - description: The segment document.
-      description: <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a href="https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html">PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p> <p>For the full segment document schema, see <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">Amazon Web Services X-Ray Segment Documents</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>
+        $ref: '#/components/schemas/Segment'
+    ThrottledException: {}
   securitySchemes:
     hmac:
       type: apiKey

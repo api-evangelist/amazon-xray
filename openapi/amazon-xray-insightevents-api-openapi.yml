@@ -185,57 +185,43 @@ paths:
       tags:
       - InsightEvents
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
+    NullableLong:
+      type: integer
+    InsightEventList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightEvent'
+    RequestImpactStatistics:
+      type: object
+      properties:
+        FaultCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of requests that have resulted in a fault,
+        OkCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The number of successful requests.
+        TotalCount:
+          allOf:
+          - $ref: '#/components/schemas/NullableLong'
+          - description: The total number of requests to the service.
+      description: Statistics that describe how the incident has impacted a service.
+    InvalidRequestException: {}
     Timestamp:
       type: string
       format: date-time
-    String:
+    Token:
       type: string
-    NullableLong:
-      type: integer
+      minLength: 1
+      maxLength: 2000
+    EventSummaryText:
+      type: string
+    AnomalousServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnomalousService'
     ServiceId:
       type: object
       properties:
@@ -256,48 +242,8 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p/>
       description: <p/>
-    InsightEventList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightEvent'
-    GetInsightEventsResult:
-      type: object
-      properties:
-        InsightEvents:
-          allOf:
-          - $ref: '#/components/schemas/InsightEventList'
-          - description: A detailed description of the event. This includes the time of the event, client and root cause impact statistics, and the top anomalous service at the time of the event.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/Token'
-          - description: Use this token to retrieve the next page of insight events.
-    InvalidRequestException: {}
-    AnomalousService:
-      type: object
-      properties:
-        ServiceId:
-          $ref: '#/components/schemas/ServiceId'
-      description: 'The service within the service graph that has anomalously high fault rates. '
-    AnomalousServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnomalousService'
-    RequestImpactStatistics:
-      type: object
-      properties:
-        FaultCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of requests that have resulted in a fault,
-        OkCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The number of successful requests.
-        TotalCount:
-          allOf:
-          - $ref: '#/components/schemas/NullableLong'
-          - description: The total number of requests to the service.
-      description: Statistics that describe how the incident has impacted a service.
+    String:
+      type: string
     InsightEvent:
       type: object
       properties:
@@ -322,17 +268,71 @@ components:
           - $ref: '#/components/schemas/AnomalousServiceList'
           - description: The service during the event that is most impacted by the incident.
       description: X-Ray reevaluates insights periodically until they are resolved, and records each intermediate state in an event. You can review incident events in the Impact Timeline on the Inspect page in the X-Ray console.
+    AnomalousService:
+      type: object
+      properties:
+        ServiceId:
+          $ref: '#/components/schemas/ServiceId'
+      description: 'The service within the service graph that has anomalously high fault rates. '
     ServiceNames:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    EventSummaryText:
-      type: string
-    Token:
-      type: string
-      minLength: 1
-      maxLength: 2000
     ThrottledException: {}
+    GetInsightEventsResult:
+      type: object
+      properties:
+        InsightEvents:
+          allOf:
+          - $ref: '#/components/schemas/InsightEventList'
+          - description: A detailed description of the event. This includes the time of the event, client and root cause impact statistics, and the top anomalous service at the time of the event.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/Token'
+          - description: Use this token to retrieve the next page of insight events.
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

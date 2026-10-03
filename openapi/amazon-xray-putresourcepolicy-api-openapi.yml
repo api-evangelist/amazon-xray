@@ -200,14 +200,26 @@ paths:
       - PutResourcePolicy
 components:
   parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -224,34 +236,13 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
   schemas:
-    Timestamp:
-      type: string
-      format: date-time
-    MalformedPolicyDocumentException: {}
-    InvalidPolicyRevisionIdException: {}
-    LockoutPreventionException: {}
-    PolicySizeLimitExceededException: {}
-    PolicyRevisionId:
-      type: string
     PutResourcePolicyResult:
       type: object
       properties:
@@ -259,11 +250,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/ResourcePolicy'
           - description: The resource policy document, as provided in the <code>PutResourcePolicyRequest</code>.
-    PolicyName:
+    Timestamp:
       type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
+      format: date-time
+    PolicyRevisionId:
+      type: string
+    PolicyCountLimitExceededException: {}
     ResourcePolicy:
       type: object
       properties:
@@ -286,7 +278,15 @@ components:
       description: A resource policy grants one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy is associated with a specific Amazon Web Services account.
     PolicyDocument:
       type: string
-    PolicyCountLimitExceededException: {}
+    PolicySizeLimitExceededException: {}
+    LockoutPreventionException: {}
+    PolicyName:
+      type: string
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
+    InvalidPolicyRevisionIdException: {}
+    MalformedPolicyDocumentException: {}
     ThrottledException: {}
   securitySchemes:
     hmac:
