@@ -178,7 +178,70 @@ paths:
       tags:
       - InsightImpactGraph
 components:
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+    InsightImpactGraphEdge:
+      type: object
+      properties:
+        ReferenceId:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: Identifier of the edge. Unique within a service map.
+      description: The connection between two service in an insight impact graph.
+    InvalidRequestException: {}
+    InsightImpactGraphEdgeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphEdge'
     InsightImpactGraphService:
       type: object
       properties:
@@ -207,7 +270,6 @@ components:
           - $ref: '#/components/schemas/InsightImpactGraphEdgeList'
           - description: Connections to downstream services.
       description: 'Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used. '
-    InvalidRequestException: {}
     Timestamp:
       type: string
       format: date-time
@@ -215,34 +277,6 @@ components:
       type: string
       minLength: 1
       maxLength: 2000
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
-    InsightImpactGraphServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphService'
-    String:
-      type: string
-    InsightImpactGraphEdge:
-      type: object
-      properties:
-        ReferenceId:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: Identifier of the edge. Unique within a service map.
-      description: The connection between two service in an insight impact graph.
-    InsightImpactGraphEdgeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphEdge'
-    NullableInteger:
-      type: integer
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    ThrottledException: {}
     GetInsightImpactGraphResult:
       type: object
       properties:
@@ -274,49 +308,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/Token'
           - description: Pagination token.
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
+    InsightImpactGraphServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphService'
+    ThrottledException: {}
+    String:
+      type: string
+    NullableInteger:
+      type: integer
   securitySchemes:
     hmac:
       type: apiKey

@@ -151,11 +151,13 @@ paths:
       - EncryptionConfig
 components:
   schemas:
-    EncryptionStatus:
-      type: string
-      enum:
-      - UPDATING
-      - ACTIVE
+    GetEncryptionConfigResult:
+      type: object
+      properties:
+        EncryptionConfig:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionConfig'
+          - description: The encryption configuration document.
     EncryptionConfig:
       type: object
       properties:
@@ -172,43 +174,23 @@ components:
           - $ref: '#/components/schemas/EncryptionType'
           - description: The type of encryption. Set to <code>KMS</code> for encryption with KMS keys. Set to <code>NONE</code> for default encryption.
       description: A configuration document that specifies encryption configuration settings.
-    InvalidRequestException: {}
     String:
       type: string
-    ThrottledException: {}
-    GetEncryptionConfigResult:
-      type: object
-      properties:
-        EncryptionConfig:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionConfig'
-          - description: The encryption configuration document.
     EncryptionType:
       type: string
       enum:
       - NONE
       - KMS
+    EncryptionStatus:
+      type: string
+      enum:
+      - UPDATING
+      - ACTIVE
+    InvalidRequestException: {}
+    ThrottledException: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -219,14 +201,32 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

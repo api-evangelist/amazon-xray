@@ -163,28 +163,72 @@ paths:
       tags:
       - DeleteSamplingRule
 components:
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    URLPath:
+      type: string
+      maxLength: 128
     AttributeMap:
       type: object
       maxProperties: 5
       additionalProperties:
         $ref: '#/components/schemas/AttributeValue'
-    Priority:
-      type: integer
-      minimum: 1
-      maximum: 9999
-    ResourceARN:
-      type: string
-      maxLength: 500
-    InvalidRequestException: {}
-    Timestamp:
-      type: string
-      format: date-time
     RuleName:
       type: string
       minLength: 1
       maxLength: 32
-    Host:
+    FixedRate:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 1
+    InvalidRequestException: {}
+    Version:
+      type: integer
+      minimum: 1
+    ServiceName:
       type: string
       maxLength: 64
     DeleteSamplingRuleResult:
@@ -194,11 +238,24 @@ components:
           allOf:
           - $ref: '#/components/schemas/SamplingRuleRecord'
           - description: The deleted rule definition and metadata.
-    FixedRate:
-      type: number
-      format: double
-      minimum: 0
-      maximum: 1
+    Timestamp:
+      type: string
+      format: date-time
+    Host:
+      type: string
+      maxLength: 64
+    AttributeValue:
+      type: string
+      minLength: 1
+      maxLength: 32
+    ThrottledException: {}
+    ResourceARN:
+      type: string
+      maxLength: 500
+    Priority:
+      type: integer
+      minimum: 1
+      maximum: 9999
     SamplingRuleRecord:
       type: object
       properties:
@@ -215,24 +272,6 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: When the rule was last modified.
       description: A <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html">SamplingRule</a> and its metadata.
-    ServiceType:
-      type: string
-      maxLength: 64
-    ServiceName:
-      type: string
-      maxLength: 64
-    String:
-      type: string
-    ReservoirSize:
-      type: integer
-      minimum: 0
-    AttributeValue:
-      type: string
-      minLength: 1
-      maxLength: 32
-    HTTPMethod:
-      type: string
-      maxLength: 10
     SamplingRule:
       type: object
       required:
@@ -300,56 +339,17 @@ components:
           - $ref: '#/components/schemas/AttributeMap'
           - description: Matches attributes derived from the request.
       description: A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.
-    Version:
-      type: integer
-      minimum: 1
-    ThrottledException: {}
-    URLPath:
+    ServiceType:
       type: string
-      maxLength: 128
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
+      maxLength: 64
+    String:
+      type: string
+    HTTPMethod:
+      type: string
+      maxLength: 10
+    ReservoirSize:
+      type: integer
+      minimum: 0
   securitySchemes:
     hmac:
       type: apiKey

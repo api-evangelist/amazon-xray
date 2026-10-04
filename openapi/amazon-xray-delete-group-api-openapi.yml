@@ -168,20 +168,14 @@ paths:
       - Delete Group
 components:
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -192,8 +186,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -211,10 +211,10 @@ components:
         type: string
       required: false
   schemas:
-    InvalidRequestException: {}
     DeleteGroupResult:
       type: object
       properties: {}
+    InvalidRequestException: {}
     ThrottledException: {}
   securitySchemes:
     hmac:

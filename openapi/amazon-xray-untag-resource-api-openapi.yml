@@ -178,32 +178,9 @@ paths:
       tags:
       - Untag Resource
 components:
-  schemas:
-    TagKey:
-      type: string
-      minLength: 1
-      maxLength: 128
-    ResourceNotFoundException: {}
-    InvalidRequestException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    ThrottledException: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -214,8 +191,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -226,12 +209,29 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
+  schemas:
+    ResourceNotFoundException: {}
+    UntagResourceResponse:
+      type: object
+      properties: {}
+    TagKey:
+      type: string
+      minLength: 1
+      maxLength: 128
+    InvalidRequestException: {}
+    ThrottledException: {}
   securitySchemes:
     hmac:
       type: apiKey

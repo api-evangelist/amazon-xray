@@ -228,35 +228,94 @@ paths:
       tags:
       - CreateSamplingRule
 components:
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     TagValue:
       type: string
       minLength: 0
       maxLength: 256
-    TagKey:
+    URLPath:
       type: string
-      minLength: 1
       maxLength: 128
     AttributeMap:
       type: object
       maxProperties: 5
       additionalProperties:
         $ref: '#/components/schemas/AttributeValue'
-    Priority:
-      type: integer
-      minimum: 1
-      maximum: 9999
-    ResourceARN:
-      type: string
-      maxLength: 500
-    InvalidRequestException: {}
-    Timestamp:
-      type: string
-      format: date-time
+    Tag:
+      type: object
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: 'A tag key, such as <code>Stage</code> or <code>Name</code>. A tag key cannot be empty. The key can be a maximum of 128 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: 'An optional tag value, such as <code>Production</code> or <code>test-only</code>. The value can be a maximum of 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
+      description: '<p>A map that contains tag keys and tag values to attach to an Amazon Web Services X-Ray group or sampling rule. For more information about ways to use tags, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a> in the <i>Amazon Web Services General Reference</i>.</p> <p>The following restrictions apply to tags:</p> <ul> <li> <p>Maximum number of user-applied tags per resource: 50</p> </li> <li> <p>Tag keys and values are case sensitive.</p> </li> <li> <p>Don''t use <code>aws:</code> as a prefix for keys; it''s reserved for Amazon Web Services use. You cannot edit or delete system tags.</p> </li> </ul>'
     RuleName:
       type: string
       minLength: 1
       maxLength: 32
+    FixedRate:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 1
+    InvalidRequestException: {}
+    RuleLimitExceededException: {}
+    Version:
+      type: integer
+      minimum: 1
+    ServiceName:
+      type: string
+      maxLength: 64
     CreateSamplingRuleResult:
       type: object
       properties:
@@ -264,17 +323,30 @@ components:
           allOf:
           - $ref: '#/components/schemas/SamplingRuleRecord'
           - description: The saved rule definition and metadata.
-    Version:
-      type: integer
-      minimum: 1
+    Timestamp:
+      type: string
+      format: date-time
+    TagKey:
+      type: string
+      minLength: 1
+      maxLength: 128
     Host:
       type: string
       maxLength: 64
-    FixedRate:
-      type: number
-      format: double
-      minimum: 0
-      maximum: 1
+    AttributeValue:
+      type: string
+      minLength: 1
+      maxLength: 32
+    ThrottledException: {}
+    ResourceARN:
+      type: string
+      maxLength: 500
+    Priority:
+      type: integer
+      minimum: 1
+      maximum: 9999
+    String:
+      type: string
     SamplingRuleRecord:
       type: object
       properties:
@@ -294,17 +366,6 @@ components:
     ServiceType:
       type: string
       maxLength: 64
-    ServiceName:
-      type: string
-      maxLength: 64
-    String:
-      type: string
-    ReservoirSize:
-      type: integer
-      minimum: 0
-    HTTPMethod:
-      type: string
-      maxLength: 10
     SamplingRule:
       type: object
       required:
@@ -372,73 +433,12 @@ components:
           - $ref: '#/components/schemas/AttributeMap'
           - description: Matches attributes derived from the request.
       description: A sampling rule that services use to decide whether to instrument a request. Rule fields can match properties of the service, or properties of a request. The service can ignore rules that don't match its properties.
-    AttributeValue:
+    HTTPMethod:
       type: string
-      minLength: 1
-      maxLength: 32
-    RuleLimitExceededException: {}
-    ThrottledException: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      - Value
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: 'A tag key, such as <code>Stage</code> or <code>Name</code>. A tag key cannot be empty. The key can be a maximum of 128 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: 'An optional tag value, such as <code>Production</code> or <code>test-only</code>. The value can be a maximum of 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> '
-      description: '<p>A map that contains tag keys and tag values to attach to an Amazon Web Services X-Ray group or sampling rule. For more information about ways to use tags, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a> in the <i>Amazon Web Services General Reference</i>.</p> <p>The following restrictions apply to tags:</p> <ul> <li> <p>Maximum number of user-applied tags per resource: 50</p> </li> <li> <p>Tag keys and values are case sensitive.</p> </li> <li> <p>Don''t use <code>aws:</code> as a prefix for keys; it''s reserved for Amazon Web Services use. You cannot edit or delete system tags.</p> </li> </ul>'
-    URLPath:
-      type: string
-      maxLength: 128
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
+      maxLength: 10
+    ReservoirSize:
+      type: integer
+      minimum: 0
   securitySchemes:
     hmac:
       type: apiKey

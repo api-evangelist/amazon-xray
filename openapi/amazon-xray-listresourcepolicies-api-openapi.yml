@@ -168,58 +168,28 @@ paths:
       tags:
       - ListResourcePolicies
 components:
-  parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
     ResourcePolicyNextToken:
       type: string
       minLength: 1
       maxLength: 100
+    PolicyRevisionId:
+      type: string
     ResourcePolicyList:
       type: array
       items:
         $ref: '#/components/schemas/ResourcePolicy'
+    ListResourcePoliciesResult:
+      type: object
+      properties:
+        ResourcePolicies:
+          allOf:
+          - $ref: '#/components/schemas/ResourcePolicyList'
+          - description: The list of resource policies in the target Amazon Web Services account.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/ResourcePolicyNextToken'
+          - description: Pagination token. Not currently supported.
     ResourcePolicy:
       type: object
       properties:
@@ -240,31 +210,61 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: When the policy was last updated, in Unix time seconds.
       description: A resource policy grants one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy is associated with a specific Amazon Web Services account.
-    PolicyRevisionId:
+    Timestamp:
       type: string
-    InvalidRequestException: {}
+      format: date-time
     PolicyName:
       type: string
       pattern: '[\w+=,.@-]+'
       minLength: 1
       maxLength: 128
-    ListResourcePoliciesResult:
-      type: object
-      properties:
-        ResourcePolicies:
-          allOf:
-          - $ref: '#/components/schemas/ResourcePolicyList'
-          - description: The list of resource policies in the target Amazon Web Services account.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/ResourcePolicyNextToken'
-          - description: Pagination token. Not currently supported.
-    Timestamp:
-      type: string
-      format: date-time
-    ThrottledException: {}
     PolicyDocument:
       type: string
+    InvalidRequestException: {}
+    ThrottledException: {}
+  parameters:
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
