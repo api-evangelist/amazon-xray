@@ -1,33 +1,33 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/amazon-xray-openapi-original.yaml, openapi/amazon-xray-openapi.yml
+source: openapi/amazon-xray-creategroup-api-openapi.yml, openapi/amazon-xray-createsamplingrule-api-openapi.yml,
+  openapi/amazon-xray-delete-group-api-openapi.yml, openapi/amazon-xray-deleteresourcepolicy-api-openapi.yml,
+  openapi/amazon-xray-deletesamplingrule-api-openapi.yml, openapi/amazon-xray-encryptionconfig-api-openapi.yml,
+  openapi/amazon-xray-get-group-api-openapi.yml, openapi/amazon-xray-getsamplingrules-api-openapi.yml,
+  openapi/amazon-xray-groups-api-openapi.yml, openapi/amazon-xray-insight-api-openapi.yml, openapi/amazon-xray-insightevents-api-openapi.yml,
+  openapi/amazon-xray-insightimpactgraph-api-openapi.yml, openapi/amazon-xray-insightsummaries-api-openapi.yml,
+  openapi/amazon-xray-list-tags-for-resource-api-openapi.yml, openapi/amazon-xray-listresourcepolicies-api-openapi.yml,
+  openapi/amazon-xray-putencryptionconfig-api-openapi.yml, openapi/amazon-xray-putresourcepolicy-api-openapi.yml,
+  openapi/amazon-xray-sampling-api-openapi.yml, openapi/amazon-xray-samplingstatisticsummaries-api-openapi.yml,
+  openapi/amazon-xray-samplingtargets-api-openapi.yml, openapi/amazon-xray-service-graph-api-openapi.yml,
+  openapi/amazon-xray-tag-resource-api-openapi.yml, openapi/amazon-xray-telemetryrecords-api-openapi.yml,
+  openapi/amazon-xray-timeseriesservicestatistics-api-openapi.yml, openapi/amazon-xray-tracegraph-api-openapi.yml,
+  openapi/amazon-xray-traces-api-openapi.yml, openapi/amazon-xray-tracesegments-api-openapi.yml,
+  openapi/amazon-xray-tracesummaries-api-openapi.yml, openapi/amazon-xray-untag-resource-api-openapi.yml,
+  openapi/amazon-xray-update-group-api-openapi.yml, openapi/amazon-xray-updatesamplingrule-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 35
+  operations: 32
   by_action_class:
-    acting: 35
+    acting: 14
+    connected: 18
   by_consequence:
-    write: 35
+    write: 14
+    read: 18
   human_in_the_loop_required: 0
 operations:
-- path: /Traces
-  method: post
-  operationId: BatchGetTraces
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /CreateGroup
   method: post
   operationId: CreateGroup
@@ -112,258 +112,102 @@ operations:
   method: post
   operationId: GetEncryptionConfig
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /GetGroup
   method: post
   operationId: GetGroup
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /Groups
-  method: post
-  operationId: GetGroups
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /Insight
-  method: post
-  operationId: GetInsight
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /InsightEvents
-  method: post
-  operationId: GetInsightEvents
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /InsightImpactGraph
-  method: post
-  operationId: GetInsightImpactGraph
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /InsightSummaries
-  method: post
-  operationId: GetInsightSummaries
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /GetSamplingRules
   method: post
   operationId: GetSamplingRules
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /SamplingStatisticSummaries
+      max-ttl: 3600
+    audit: none
+- path: /Groups
   method: post
-  operationId: GetSamplingStatisticSummaries
+  operationId: GetGroups
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /SamplingTargets
+      max-ttl: 3600
+    audit: none
+- path: /Insight
   method: post
-  operationId: GetSamplingTargets
+  operationId: GetInsight
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /ServiceGraph
+      max-ttl: 3600
+    audit: none
+- path: /InsightEvents
   method: post
-  operationId: GetServiceGraph
+  operationId: GetInsightEvents
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /TimeSeriesServiceStatistics
+      max-ttl: 3600
+    audit: none
+- path: /InsightImpactGraph
   method: post
-  operationId: GetTimeSeriesServiceStatistics
+  operationId: GetInsightImpactGraph
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /TraceGraph
+      max-ttl: 3600
+    audit: none
+- path: /InsightSummaries
   method: post
-  operationId: GetTraceGraph
+  operationId: GetInsightSummaries
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /TraceSummaries
-  method: post
-  operationId: GetTraceSummaries
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /ListResourcePolicies
-  method: post
-  operationId: ListResourcePolicies
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /ListTagsForResource
   method: post
   operationId: ListTagsForResource
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
+- path: /ListResourcePolicies
+  method: post
+  operationId: ListResourcePolicies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /PutEncryptionConfig
   method: post
   operationId: PutEncryptionConfig
@@ -396,38 +240,46 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /TelemetryRecords
+- path: /SamplingRules
   method: post
-  operationId: PutTelemetryRecords
+  operationId: GetSamplingRules
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /TraceSegments
+      max-ttl: 3600
+    audit: none
+- path: /SamplingStatisticSummaries
   method: post
-  operationId: PutTraceSegments
+  operationId: GetSamplingStatisticSummaries
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
+- path: /SamplingTargets
+  method: post
+  operationId: GetSamplingTargets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ServiceGraph
+  method: post
+  operationId: GetServiceGraph
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /TagResource
   method: post
   operationId: TagResource
@@ -444,6 +296,94 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /TelemetryRecords
+  method: post
+  operationId: PutTelemetryRecords
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /TimeSeriesServiceStatistics
+  method: post
+  operationId: GetTimeSeriesServiceStatistics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TraceGraph
+  method: post
+  operationId: GetTraceGraph
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Traces
+  method: post
+  operationId: BatchGetTraces
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /TraceSummaries
+  method: post
+  operationId: GetTraceSummaries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TraceSegments
+  method: post
+  operationId: PutTraceSegments
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /TraceSummaries
+  method: post
+  operationId: GetTraceSummaries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /UntagResource
   method: post
   operationId: UntagResource
@@ -479,86 +419,6 @@ operations:
 - path: /UpdateSamplingRule
   method: post
   operationId: UpdateSamplingRule
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /Traces
-  method: post
-  operationId: PutTraceSegments
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /TraceSummaries
-  method: post
-  operationId: GetTraceSummaries
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /ServiceGraph
-  method: post
-  operationId: GetServiceGraph
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /SamplingRules
-  method: post
-  operationId: GetSamplingRules
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /Groups
-  method: post
-  operationId: GetGroups
   x-agentic-access:
     action-class: acting
     consequence: write
