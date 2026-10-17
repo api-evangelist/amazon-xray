@@ -216,74 +216,81 @@ paths:
       tags:
       - TraceSummaries
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    Http:
+    ErrorRootCauseEntity:
       type: object
       properties:
-        HttpURL:
+        Name:
           allOf:
           - $ref: '#/components/schemas/String'
-          - description: The request URL.
-        HttpStatus:
+          - description: The name of the entity.
+        Exceptions:
           allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: The response status.
-        HttpMethod:
+          - $ref: '#/components/schemas/RootCauseExceptions'
+          - description: The types and messages of the exceptions.
+        Remote:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A flag that denotes a remote subsegment.
+      description: A collection of segments and corresponding subsegments associated to a trace summary error.
+    InvalidRequestException: {}
+    FaultRootCauseEntityPath:
+      type: array
+      items:
+        $ref: '#/components/schemas/FaultRootCauseEntity'
+    TraceAvailabilityZones:
+      type: array
+      items:
+        $ref: '#/components/schemas/AvailabilityZoneDetail'
+    FaultRootCauseServices:
+      type: array
+      items:
+        $ref: '#/components/schemas/FaultRootCauseService'
+    FaultRootCauses:
+      type: array
+      items:
+        $ref: '#/components/schemas/FaultRootCause'
+    TraceSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceSummary'
+    ThrottledException: {}
+    ErrorRootCauseServices:
+      type: array
+      items:
+        $ref: '#/components/schemas/ErrorRootCauseService'
+    InstanceIdDetail:
+      type: object
+      properties:
+        Id:
           allOf:
           - $ref: '#/components/schemas/String'
-          - description: The request method.
-        UserAgent:
+          - description: The ID of a corresponding EC2 instance.
+      description: 'A list of EC2 instance IDs corresponding to the segments in a trace. '
+    FaultRootCauseEntity:
+      type: object
+      properties:
+        Name:
           allOf:
           - $ref: '#/components/schemas/String'
-          - description: The request's user agent string.
-        ClientIp:
+          - description: The name of the entity.
+        Exceptions:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The IP address of the requestor.
-      description: Information about an HTTP request.
+          - $ref: '#/components/schemas/RootCauseExceptions'
+          - description: The types and messages of the exceptions.
+        Remote:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A flag that denotes a remote subsegment.
+      description: A collection of segments and corresponding subsegments associated to a trace summary fault error.
+    RootCauseExceptions:
+      type: array
+      items:
+        $ref: '#/components/schemas/RootCauseException'
+    ResponseTimeRootCauseEntityPath:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResponseTimeRootCauseEntity'
     ServiceId:
       type: object
       properties:
@@ -304,103 +311,18 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p/>
       description: <p/>
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    FaultRootCauseServices:
-      type: array
-      items:
-        $ref: '#/components/schemas/FaultRootCauseService'
-    FaultRootCauseService:
+    ValueWithServiceIds:
       type: object
       properties:
-        Name:
+        AnnotationValue:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The service name.
-        Names:
+          - $ref: '#/components/schemas/AnnotationValue'
+          - description: Values of the annotation.
+        ServiceIds:
           allOf:
-          - $ref: '#/components/schemas/ServiceNames'
-          - description: A collection of associated service names.
-        Type:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The type associated to the service.
-        AccountId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The account ID associated to the service.
-        EntityPath:
-          allOf:
-          - $ref: '#/components/schemas/FaultRootCauseEntityPath'
-          - description: 'The path of root cause entities found on the service. '
-        Inferred:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A Boolean value indicating if the service is inferred from the trace.
-      description: A collection of fields identifying the services in a trace summary fault.
-    FaultRootCauseEntityPath:
-      type: array
-      items:
-        $ref: '#/components/schemas/FaultRootCauseEntity'
-    TraceSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TraceSummary'
-    ResponseTimeRootCauseEntityPath:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResponseTimeRootCauseEntity'
-    ValuesWithServiceIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/ValueWithServiceIds'
-    InvalidRequestException: {}
-    ErrorRootCauseServices:
-      type: array
-      items:
-        $ref: '#/components/schemas/ErrorRootCauseService'
-    NullableLong:
-      type: integer
-    ResponseTimeRootCauseService:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The service name.
-        Names:
-          allOf:
-          - $ref: '#/components/schemas/ServiceNames'
-          - description: A collection of associated service names.
-        Type:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The type associated to the service.
-        AccountId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The account ID associated to the service.
-        EntityPath:
-          allOf:
-          - $ref: '#/components/schemas/ResponseTimeRootCauseEntityPath'
-          - description: 'The path of root cause entities found on the service. '
-        Inferred:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A Boolean value indicating if the service is inferred from the trace.
-      description: A collection of fields identifying the service in a response time warning.
-    Annotations:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ValuesWithServiceIds'
-    Integer:
-      type: integer
-    FaultRootCauses:
-      type: array
-      items:
-        $ref: '#/components/schemas/FaultRootCause'
+          - $ref: '#/components/schemas/ServiceIds'
+          - description: Services to which the annotation applies.
+      description: Information about a segment annotation.
     RootCauseException:
       type: object
       properties:
@@ -413,62 +335,6 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The message of the exception.
       description: The exception associated with a root cause.
-    ResponseTimeRootCause:
-      type: object
-      properties:
-        Services:
-          allOf:
-          - $ref: '#/components/schemas/ResponseTimeRootCauseServices'
-          - description: A list of corresponding services. A service identifies a segment and contains a name, account ID, type, and inferred flag.
-        ClientImpacting:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A flag that denotes that the root cause impacts the trace client.
-      description: The root cause information for a response time warning.
-    ErrorRootCause:
-      type: object
-      properties:
-        Services:
-          allOf:
-          - $ref: '#/components/schemas/ErrorRootCauseServices'
-          - description: A list of services corresponding to an error. A service identifies a segment and it contains a name, account ID, type, and inferred flag.
-        ClientImpacting:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A flag that denotes that the root cause impacts the trace client.
-      description: The root cause of a trace summary error.
-    TraceAvailabilityZones:
-      type: array
-      items:
-        $ref: '#/components/schemas/AvailabilityZoneDetail'
-    ErrorRootCauseService:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The service name.
-        Names:
-          allOf:
-          - $ref: '#/components/schemas/ServiceNames'
-          - description: A collection of associated service names.
-        Type:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The type associated to the service.
-        AccountId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The account ID associated to the service.
-        EntityPath:
-          allOf:
-          - $ref: '#/components/schemas/ErrorRootCauseEntityPath'
-          - description: 'The path of root cause entities found on the service. '
-        Inferred:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A Boolean value indicating if the service is inferred from the trace.
-      description: A collection of fields identifying the services in a trace summary error.
     TraceUser:
       type: object
       properties:
@@ -481,26 +347,43 @@ components:
           - $ref: '#/components/schemas/ServiceIds'
           - description: Services that the user's request hit.
       description: Information about a user recorded in segment documents.
-    TraceUsers:
-      type: array
-      items:
-        $ref: '#/components/schemas/TraceUser'
-    RootCauseExceptions:
-      type: array
-      items:
-        $ref: '#/components/schemas/RootCauseException'
-    InstanceIdDetail:
+    ErrorRootCause:
       type: object
       properties:
-        Id:
+        Services:
+          allOf:
+          - $ref: '#/components/schemas/ErrorRootCauseServices'
+          - description: A list of services corresponding to an error. A service identifies a segment and it contains a name, account ID, type, and inferred flag.
+        ClientImpacting:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A flag that denotes that the root cause impacts the trace client.
+      description: The root cause of a trace summary error.
+    ServiceIds:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceId'
+    SamplingStrategyName:
+      type: string
+      enum:
+      - PartialScan
+      - FixedRate
+    ResponseTimeRootCauseEntity:
+      type: object
+      properties:
+        Name:
           allOf:
           - $ref: '#/components/schemas/String'
-          - description: The ID of a corresponding EC2 instance.
-      description: 'A list of EC2 instance IDs corresponding to the segments in a trace. '
-    TraceId:
-      type: string
-      minLength: 1
-      maxLength: 35
+          - description: The name of the entity.
+        Coverage:
+          allOf:
+          - $ref: '#/components/schemas/NullableDouble'
+          - description: The type and messages of the exceptions.
+        Remote:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A flag that denotes a remote subsegment.
+      description: A collection of segments and corresponding subsegments associated to a response time warning.
     TraceSummary:
       type: object
       properties:
@@ -585,23 +468,40 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: The matched time stamp of a defined event.
       description: Metadata generated from the segment documents in a trace.
-    SamplingStrategyName:
-      type: string
-      enum:
-      - PartialScan
-      - FixedRate
-    ResponseTimeRootCauseServices:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResponseTimeRootCauseService'
-    ResourceARNDetail:
+    NullableBoolean:
+      type: boolean
+    ResponseTimeRootCauseService:
       type: object
       properties:
-        ARN:
+        Name:
           allOf:
           - $ref: '#/components/schemas/String'
-          - description: The ARN of a corresponding resource.
-      description: A list of resources ARNs corresponding to the segments in a trace.
+          - description: The service name.
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/ServiceNames'
+          - description: A collection of associated service names.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The type associated to the service.
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The account ID associated to the service.
+        EntityPath:
+          allOf:
+          - $ref: '#/components/schemas/ResponseTimeRootCauseEntityPath'
+          - description: 'The path of root cause entities found on the service. '
+        Inferred:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A Boolean value indicating if the service is inferred from the trace.
+      description: A collection of fields identifying the service in a response time warning.
+    ResponseTimeRootCauses:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResponseTimeRootCause'
     GetTraceSummariesResult:
       type: object
       properties:
@@ -621,25 +521,42 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: If the requested time frame contained more than one page of results, you can use this token to retrieve the next page. The first page contains the most recent results, closest to the end of the time frame.
-    ValueWithServiceIds:
-      type: object
-      properties:
-        AnnotationValue:
-          allOf:
-          - $ref: '#/components/schemas/AnnotationValue'
-          - description: Values of the annotation.
-        ServiceIds:
-          allOf:
-          - $ref: '#/components/schemas/ServiceIds'
-          - description: Services to which the annotation applies.
-      description: Information about a segment annotation.
-    ServiceIds:
+    Integer:
+      type: integer
+    ResponseTimeRootCauseServices:
       type: array
       items:
-        $ref: '#/components/schemas/ServiceId'
-    Timestamp:
+        $ref: '#/components/schemas/ResponseTimeRootCauseService'
+    TraceId:
       type: string
-      format: date-time
+      minLength: 1
+      maxLength: 35
+    Http:
+      type: object
+      properties:
+        HttpURL:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The request URL.
+        HttpStatus:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: The response status.
+        HttpMethod:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The request method.
+        UserAgent:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The request's user agent string.
+        ClientIp:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The IP address of the requestor.
+      description: Information about an HTTP request.
+    String:
+      type: string
     AvailabilityZoneDetail:
       type: object
       properties:
@@ -648,31 +565,61 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The name of a corresponding Availability Zone.
       description: A list of Availability Zones corresponding to the segments in a trace.
-    ErrorRootCauseEntityPath:
-      type: array
-      items:
-        $ref: '#/components/schemas/ErrorRootCauseEntity'
-    TraceInstanceIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/InstanceIdDetail'
-    TraceResourceARNs:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResourceARNDetail'
-    FaultRootCause:
+    ResponseTimeRootCause:
       type: object
       properties:
         Services:
           allOf:
-          - $ref: '#/components/schemas/FaultRootCauseServices'
-          - description: A list of corresponding services. A service identifies a segment and it contains a name, account ID, type, and inferred flag.
+          - $ref: '#/components/schemas/ResponseTimeRootCauseServices'
+          - description: A list of corresponding services. A service identifies a segment and contains a name, account ID, type, and inferred flag.
         ClientImpacting:
           allOf:
           - $ref: '#/components/schemas/NullableBoolean'
           - description: A flag that denotes that the root cause impacts the trace client.
-      description: The root cause information for a trace summary fault.
-    ThrottledException: {}
+      description: The root cause information for a response time warning.
+    ResourceARNDetail:
+      type: object
+      properties:
+        ARN:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The ARN of a corresponding resource.
+      description: A list of resources ARNs corresponding to the segments in a trace.
+    Timestamp:
+      type: string
+      format: date-time
+    ErrorRootCauses:
+      type: array
+      items:
+        $ref: '#/components/schemas/ErrorRootCause'
+    FaultRootCauseService:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The service name.
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/ServiceNames'
+          - description: A collection of associated service names.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The type associated to the service.
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The account ID associated to the service.
+        EntityPath:
+          allOf:
+          - $ref: '#/components/schemas/FaultRootCauseEntityPath'
+          - description: 'The path of root cause entities found on the service. '
+        Inferred:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A Boolean value indicating if the service is inferred from the trace.
+      description: A collection of fields identifying the services in a trace summary fault.
     AnnotationValue:
       type: object
       properties:
@@ -689,71 +636,124 @@ components:
           - $ref: '#/components/schemas/String'
           - description: Value for a String annotation.
       description: 'Value of a segment annotation. Has one of three value types: Number, Boolean, or String.'
-    FaultRootCauseEntity:
+    NullableLong:
+      type: integer
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    FaultRootCause:
       type: object
       properties:
-        Name:
+        Services:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The name of the entity.
-        Exceptions:
-          allOf:
-          - $ref: '#/components/schemas/RootCauseExceptions'
-          - description: The types and messages of the exceptions.
-        Remote:
+          - $ref: '#/components/schemas/FaultRootCauseServices'
+          - description: A list of corresponding services. A service identifies a segment and it contains a name, account ID, type, and inferred flag.
+        ClientImpacting:
           allOf:
           - $ref: '#/components/schemas/NullableBoolean'
-          - description: A flag that denotes a remote subsegment.
-      description: A collection of segments and corresponding subsegments associated to a trace summary fault error.
-    ErrorRootCauseEntity:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The name of the entity.
-        Exceptions:
-          allOf:
-          - $ref: '#/components/schemas/RootCauseExceptions'
-          - description: The types and messages of the exceptions.
-        Remote:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A flag that denotes a remote subsegment.
-      description: A collection of segments and corresponding subsegments associated to a trace summary error.
-    String:
-      type: string
+          - description: A flag that denotes that the root cause impacts the trace client.
+      description: The root cause information for a trace summary fault.
     NullableInteger:
       type: integer
-    ResponseTimeRootCauses:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResponseTimeRootCause'
-    ErrorRootCauses:
-      type: array
-      items:
-        $ref: '#/components/schemas/ErrorRootCause'
-    NullableBoolean:
-      type: boolean
-    ResponseTimeRootCauseEntity:
+    Annotations:
       type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The name of the entity.
-        Coverage:
-          allOf:
-          - $ref: '#/components/schemas/NullableDouble'
-          - description: The type and messages of the exceptions.
-        Remote:
-          allOf:
-          - $ref: '#/components/schemas/NullableBoolean'
-          - description: A flag that denotes a remote subsegment.
-      description: A collection of segments and corresponding subsegments associated to a response time warning.
+      additionalProperties:
+        $ref: '#/components/schemas/ValuesWithServiceIds'
+    TraceResourceARNs:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResourceARNDetail'
     NullableDouble:
       type: number
       format: double
+    TraceInstanceIds:
+      type: array
+      items:
+        $ref: '#/components/schemas/InstanceIdDetail'
+    ErrorRootCauseEntityPath:
+      type: array
+      items:
+        $ref: '#/components/schemas/ErrorRootCauseEntity'
+    ErrorRootCauseService:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The service name.
+        Names:
+          allOf:
+          - $ref: '#/components/schemas/ServiceNames'
+          - description: A collection of associated service names.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The type associated to the service.
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The account ID associated to the service.
+        EntityPath:
+          allOf:
+          - $ref: '#/components/schemas/ErrorRootCauseEntityPath'
+          - description: 'The path of root cause entities found on the service. '
+        Inferred:
+          allOf:
+          - $ref: '#/components/schemas/NullableBoolean'
+          - description: A Boolean value indicating if the service is inferred from the trace.
+      description: A collection of fields identifying the services in a trace summary error.
+    TraceUsers:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceUser'
+    ValuesWithServiceIds:
+      type: array
+      items:
+        $ref: '#/components/schemas/ValueWithServiceIds'
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

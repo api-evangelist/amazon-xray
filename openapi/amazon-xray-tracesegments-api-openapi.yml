@@ -204,19 +204,6 @@ paths:
       - TraceSegments
 components:
   schemas:
-    PutTraceSegmentsResult:
-      type: object
-      properties:
-        UnprocessedTraceSegments:
-          allOf:
-          - $ref: '#/components/schemas/UnprocessedTraceSegmentList'
-          - description: Segments that failed processing.
-    UnprocessedTraceSegmentList:
-      type: array
-      items:
-        $ref: '#/components/schemas/UnprocessedTraceSegment'
-    TraceSegmentDocument:
-      type: string
     UnprocessedTraceSegment:
       type: object
       properties:
@@ -233,19 +220,26 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The error message.
       description: Information about a segment that failed processing.
+    InvalidRequestException: {}
+    TraceSegmentDocument:
+      type: string
+    ThrottledException: {}
     String:
       type: string
-    InvalidRequestException: {}
-    ThrottledException: {}
+    PutTraceSegmentsResult:
+      type: object
+      properties:
+        UnprocessedTraceSegments:
+          allOf:
+          - $ref: '#/components/schemas/UnprocessedTraceSegmentList'
+          - description: Segments that failed processing.
+    UnprocessedTraceSegmentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/UnprocessedTraceSegment'
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -262,20 +256,26 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string

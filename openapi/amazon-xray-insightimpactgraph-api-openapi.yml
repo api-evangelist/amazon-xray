@@ -178,57 +178,7 @@ paths:
       tags:
       - InsightImpactGraph
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
     InsightImpactGraphEdge:
       type: object
       properties:
@@ -242,6 +192,15 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/InsightImpactGraphEdge'
+    ThrottledException: {}
+    Token:
+      type: string
+      minLength: 1
+      maxLength: 2000
+    InsightImpactGraphServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightImpactGraphService'
     InsightImpactGraphService:
       type: object
       properties:
@@ -270,13 +229,6 @@ components:
           - $ref: '#/components/schemas/InsightImpactGraphEdgeList'
           - description: Connections to downstream services.
       description: 'Information about an application that processed requests, users that made requests, or downstream services, resources, and applications that an application used. '
-    Timestamp:
-      type: string
-      format: date-time
-    Token:
-      type: string
-      minLength: 1
-      maxLength: 2000
     GetInsightImpactGraphResult:
       type: object
       properties:
@@ -308,15 +260,63 @@ components:
           allOf:
           - $ref: '#/components/schemas/Token'
           - description: Pagination token.
-    InsightImpactGraphServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightImpactGraphService'
-    ThrottledException: {}
     String:
       type: string
+    Timestamp:
+      type: string
+      format: date-time
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
     NullableInteger:
       type: integer
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

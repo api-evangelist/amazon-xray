@@ -165,49 +165,6 @@ paths:
       tags:
       - SamplingTargets
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
     UnprocessedStatistics:
       type: object
@@ -225,39 +182,47 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The error message.
       description: Sampling statistics from a call to <a href="https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html">GetSamplingTargets</a> that X-Ray could not process.
-    ClientID:
-      type: string
-      minLength: 24
-      maxLength: 24
-    Double:
-      type: number
-      format: double
+    InvalidRequestException: {}
+    ThrottledException: {}
     RuleName:
       type: string
       minLength: 1
       maxLength: 32
-    InvalidRequestException: {}
-    BorrowCount:
-      type: integer
-      minimum: 0
     SamplingTargetDocumentList:
       type: array
       items:
         $ref: '#/components/schemas/SamplingTargetDocument'
-    Timestamp:
+    ClientID:
       type: string
-      format: date-time
-    RequestCount:
-      type: integer
-      minimum: 0
-    ThrottledException: {}
+      minLength: 24
+      maxLength: 24
+    SamplingTargetDocument:
+      type: object
+      properties:
+        RuleName:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The name of the sampling rule.
+        FixedRate:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The percentage of matching requests to instrument, after the reservoir is exhausted.
+        ReservoirQuota:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: The number of requests per second that X-Ray allocated for this service.
+        ReservoirQuotaTTL:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: When the reservoir quota expires.
+        Interval:
+          allOf:
+          - $ref: '#/components/schemas/NullableInteger'
+          - description: The number of seconds for the service to wait before getting sampling targets again.
+      description: Temporary changes to a sampling rule configuration. To meet the global sampling target for a rule, X-Ray calculates a new reservoir for each service based on the recent sampling results of all services that called <a href="https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html">GetSamplingTargets</a>.
     SampledCount:
       type: integer
       minimum: 0
-    String:
-      type: string
-    NullableInteger:
-      type: integer
     SamplingStatisticsDocument:
       type: object
       required:
@@ -307,34 +272,69 @@ components:
           allOf:
           - $ref: '#/components/schemas/UnprocessedStatisticsList'
           - description: Information about <a href="https://docs.aws.amazon.com/xray/latest/api/API_SamplingStatisticsDocument.html">SamplingStatisticsDocument</a> that X-Ray could not process.
-    SamplingTargetDocument:
-      type: object
-      properties:
-        RuleName:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The name of the sampling rule.
-        FixedRate:
-          allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: The percentage of matching requests to instrument, after the reservoir is exhausted.
-        ReservoirQuota:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: The number of requests per second that X-Ray allocated for this service.
-        ReservoirQuotaTTL:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: When the reservoir quota expires.
-        Interval:
-          allOf:
-          - $ref: '#/components/schemas/NullableInteger'
-          - description: The number of seconds for the service to wait before getting sampling targets again.
-      description: Temporary changes to a sampling rule configuration. To meet the global sampling target for a rule, X-Ray calculates a new reservoir for each service based on the recent sampling results of all services that called <a href="https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html">GetSamplingTargets</a>.
+    String:
+      type: string
     UnprocessedStatisticsList:
       type: array
       items:
         $ref: '#/components/schemas/UnprocessedStatistics'
+    Double:
+      type: number
+      format: double
+    BorrowCount:
+      type: integer
+      minimum: 0
+    Timestamp:
+      type: string
+      format: date-time
+    NullableInteger:
+      type: integer
+    RequestCount:
+      type: integer
+      minimum: 0
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

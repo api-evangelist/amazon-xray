@@ -207,50 +207,17 @@ paths:
       tags:
       - InsightSummaries
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
+    InvalidRequestException: {}
+    ThrottledException: {}
+    GroupARN:
+      type: string
+      minLength: 1
+      maxLength: 400
+    InsightSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightSummary'
     ServiceId:
       type: object
       properties:
@@ -271,30 +238,10 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p/>
       description: <p/>
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
-    InvalidRequestException: {}
-    NullableLong:
-      type: integer
-    AnomalousService:
-      type: object
-      properties:
-        ServiceId:
-          $ref: '#/components/schemas/ServiceId'
-      description: 'The service within the service graph that has anomalously high fault rates. '
-    InsightSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightSummary'
-    GroupName:
+    Token:
       type: string
       minLength: 1
-      maxLength: 32
+      maxLength: 2000
     RequestImpactStatistics:
       type: object
       properties:
@@ -311,6 +258,14 @@ components:
           - $ref: '#/components/schemas/NullableLong'
           - description: The total number of requests to the service.
       description: Statistics that describe how the incident has impacted a service.
+    AnomalousServiceList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnomalousService'
+    InsightCategory:
+      type: string
+      enum:
+      - FAULT
     InsightSummary:
       type: object
       properties:
@@ -365,39 +320,28 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: The time, in Unix seconds, that the insight was last updated.
       description: Information that describes an insight.
+    InsightCategoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightCategory'
     InsightSummaryText:
       type: string
-    GroupARN:
+    String:
       type: string
-      minLength: 1
-      maxLength: 400
+    AnomalousService:
+      type: object
+      properties:
+        ServiceId:
+          $ref: '#/components/schemas/ServiceId'
+      description: 'The service within the service graph that has anomalously high fault rates. '
     Timestamp:
       type: string
       format: date-time
-    Token:
-      type: string
-      minLength: 1
-      maxLength: 2000
-    AnomalousServiceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnomalousService'
-    ThrottledException: {}
     InsightState:
       type: string
       enum:
       - ACTIVE
       - CLOSED
-    String:
-      type: string
-    InsightCategory:
-      type: string
-      enum:
-      - FAULT
-    InsightCategoryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightCategory'
     GetInsightSummariesResult:
       type: object
       properties:
@@ -409,6 +353,62 @@ components:
           allOf:
           - $ref: '#/components/schemas/Token'
           - description: Pagination token.
+    NullableLong:
+      type: integer
+    GroupName:
+      type: string
+      minLength: 1
+      maxLength: 32
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    InsightId:
+      type: string
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

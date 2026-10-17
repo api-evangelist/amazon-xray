@@ -163,50 +163,20 @@ paths:
       tags:
       - Insight
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
+    InvalidRequestException: {}
+    ThrottledException: {}
+    GroupARN:
+      type: string
+      minLength: 1
+      maxLength: 400
+    GetInsightResult:
+      type: object
+      properties:
+        Insight:
+          allOf:
+          - $ref: '#/components/schemas/Insight'
+          - description: The summary information of an insight.
     ServiceId:
       type: object
       properties:
@@ -227,33 +197,6 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p/>
       description: <p/>
-    ServiceNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    InsightId:
-      type: string
-      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
-    InvalidRequestException: {}
-    GetInsightResult:
-      type: object
-      properties:
-        Insight:
-          allOf:
-          - $ref: '#/components/schemas/Insight'
-          - description: The summary information of an insight.
-    NullableLong:
-      type: integer
-    AnomalousService:
-      type: object
-      properties:
-        ServiceId:
-          $ref: '#/components/schemas/ServiceId'
-      description: 'The service within the service graph that has anomalously high fault rates. '
-    GroupName:
-      type: string
-      minLength: 1
-      maxLength: 32
     RequestImpactStatistics:
       type: object
       properties:
@@ -270,20 +213,46 @@ components:
           - $ref: '#/components/schemas/NullableLong'
           - description: The total number of requests to the service.
       description: Statistics that describe how the incident has impacted a service.
-    InsightSummaryText:
-      type: string
-    GroupARN:
-      type: string
-      minLength: 1
-      maxLength: 400
-    Timestamp:
-      type: string
-      format: date-time
     AnomalousServiceList:
       type: array
       items:
         $ref: '#/components/schemas/AnomalousService'
-    ThrottledException: {}
+    InsightCategory:
+      type: string
+      enum:
+      - FAULT
+    InsightCategoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InsightCategory'
+    InsightSummaryText:
+      type: string
+    String:
+      type: string
+    AnomalousService:
+      type: object
+      properties:
+        ServiceId:
+          $ref: '#/components/schemas/ServiceId'
+      description: 'The service within the service graph that has anomalously high fault rates. '
+    Timestamp:
+      type: string
+      format: date-time
+    InsightState:
+      type: string
+      enum:
+      - ACTIVE
+      - CLOSED
+    NullableLong:
+      type: integer
+    GroupName:
+      type: string
+      minLength: 1
+      maxLength: 32
+    ServiceNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
     Insight:
       type: object
       properties:
@@ -334,21 +303,52 @@ components:
           - $ref: '#/components/schemas/AnomalousServiceList'
           - description: The service within the insight that is most impacted by the incident.
       description: When fault rates go outside of the expected range, X-Ray creates an insight. Insights tracks emergent issues within your applications.
-    InsightState:
+    InsightId:
       type: string
-      enum:
-      - ACTIVE
-      - CLOSED
-    String:
-      type: string
-    InsightCategory:
-      type: string
-      enum:
-      - FAULT
-    InsightCategoryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InsightCategory'
+      pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}'
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

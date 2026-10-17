@@ -289,68 +289,13 @@ paths:
           - ap-south-1
           - ca-central-1
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
+    InvalidRequestException: {}
+    ThrottledException: {}
     SegmentList:
       type: array
       items:
         $ref: '#/components/schemas/Segment'
-    InvalidRequestException: {}
-    SegmentDocument:
-      type: string
-      minLength: 1
-    UnprocessedTraceIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TraceId'
-    SegmentId:
-      type: string
-    TraceId:
-      type: string
-      minLength: 1
-      maxLength: 35
     Segment:
       type: object
       properties:
@@ -363,21 +308,14 @@ components:
           - $ref: '#/components/schemas/SegmentDocument'
           - description: The segment document.
       description: <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a href="https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html">PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p> <p>For the full segment document schema, see <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">Amazon Web Services X-Ray Segment Documents</a> in the <i>Amazon Web Services X-Ray Developer Guide</i>.</p>
-    BatchGetTracesResult:
-      type: object
-      properties:
-        Traces:
-          allOf:
-          - $ref: '#/components/schemas/TraceList'
-          - description: Full traces for the specified requests.
-        UnprocessedTraceIds:
-          allOf:
-          - $ref: '#/components/schemas/UnprocessedTraceIdList'
-          - description: Trace IDs of requests that haven't been processed.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token.
+    SegmentId:
+      type: string
+    NullableBoolean:
+      type: boolean
+    TraceId:
+      type: string
+      minLength: 1
+      maxLength: 35
     Trace:
       type: object
       properties:
@@ -398,18 +336,80 @@ components:
           - $ref: '#/components/schemas/SegmentList'
           - description: Segment documents for the segments and subsegments that comprise the trace.
       description: A collection of segment documents with matching trace IDs.
+    UnprocessedTraceIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceId'
+    String:
+      type: string
+    BatchGetTracesResult:
+      type: object
+      properties:
+        Traces:
+          allOf:
+          - $ref: '#/components/schemas/TraceList'
+          - description: Full traces for the specified requests.
+        UnprocessedTraceIds:
+          allOf:
+          - $ref: '#/components/schemas/UnprocessedTraceIdList'
+          - description: Trace IDs of requests that haven't been processed.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token.
     TraceList:
       type: array
       items:
         $ref: '#/components/schemas/Trace'
-    ThrottledException: {}
-    String:
-      type: string
-    NullableBoolean:
-      type: boolean
     NullableDouble:
       type: number
       format: double
+    SegmentDocument:
+      type: string
+      minLength: 1
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
