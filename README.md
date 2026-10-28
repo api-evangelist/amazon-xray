@@ -1,4 +1,4 @@
-# Amazon X-Ray (amazon-xray)
+# Amazon X-Ray
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,83 +66,291 @@
 
 AWS X-Ray is a distributed tracing service that helps developers analyze and debug production applications, providing end-to-end visibility into requests as they travel through the application. X-Ray provides service maps, trace analysis, sampling rules, group filtering, and AI-powered insights for identifying performance bottlenecks and errors across microservices and serverless architectures.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/amazon-xray/refs/heads/main/apis.yml)
+**Areas:** Application Performance · AWS · Debugging · Developer Tools · Distributed Tracing · Monitoring · Observability
 
-## Scope
+## Amazon X-Ray on APIs.io
 
-- **Type:** Index
+Everything profiled for Amazon X-Ray is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-xray/](https://apis.io/providers/amazon-xray/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (32)
 
-- Application Performance
-- AWS
-- Debugging
-- Distributed Tracing
-- Monitoring
-- Observability
+- [Amazon X-Ray CreateGroup API](https://apis.io/apis/amazon-xray/amazon-xray-creategroup-api/) — The CreateGroup API from Amazon X-Ray — 1 operation(s) for creategroup.
+- [Amazon X-Ray CreateSamplingRule API](https://apis.io/apis/amazon-xray/amazon-xray-createsamplingrule-api/) — The CreateSamplingRule API from Amazon X-Ray — 1 operation(s) for createsamplingrule.
+- [Amazon X-Ray DeleteResourcePolicy API](https://apis.io/apis/amazon-xray/amazon-xray-deleteresourcepolicy-api/) — The DeleteResourcePolicy API from Amazon X-Ray — 1 operation(s) for deleteresourcepolicy.
+- [Amazon X-Ray DeleteSamplingRule API](https://apis.io/apis/amazon-xray/amazon-xray-deletesamplingrule-api/) — The DeleteSamplingRule API from Amazon X-Ray — 1 operation(s) for deletesamplingrule.
+- [Amazon X-Ray EncryptionConfig API](https://apis.io/apis/amazon-xray/amazon-xray-encryptionconfig-api/) — The EncryptionConfig API from Amazon X-Ray — 1 operation(s) for encryptionconfig.
+- [Amazon X-Ray GetSamplingRules API](https://apis.io/apis/amazon-xray/amazon-xray-getsamplingrules-api/) — The GetSamplingRules API from Amazon X-Ray — 1 operation(s) for getsamplingrules.
+- [Amazon X-Ray Groups API](https://apis.io/apis/amazon-xray/amazon-xray-groups-api/) — The Groups API from Amazon X-Ray — 1 operation(s) for groups.
+- [Amazon X-Ray Insight API](https://apis.io/apis/amazon-xray/amazon-xray-insight-api/) — The Insight API from Amazon X-Ray — 1 operation(s) for insight.
+- [Amazon X-Ray InsightEvents API](https://apis.io/apis/amazon-xray/amazon-xray-insightevents-api/) — The InsightEvents API from Amazon X-Ray — 1 operation(s) for insightevents.
+- [Amazon X-Ray InsightImpactGraph API](https://apis.io/apis/amazon-xray/amazon-xray-insightimpactgraph-api/) — The InsightImpactGraph API from Amazon X-Ray — 1 operation(s) for insightimpactgraph.
+- [Amazon X-Ray InsightSummaries API](https://apis.io/apis/amazon-xray/amazon-xray-insightsummaries-api/) — The InsightSummaries API from Amazon X-Ray — 1 operation(s) for insightsummaries.
+- [Amazon X-Ray ListResourcePolicies API](https://apis.io/apis/amazon-xray/amazon-xray-listresourcepolicies-api/) — The ListResourcePolicies API from Amazon X-Ray — 1 operation(s) for listresourcepolicies.
+- [Amazon X-Ray PutEncryptionConfig API](https://apis.io/apis/amazon-xray/amazon-xray-putencryptionconfig-api/) — The PutEncryptionConfig API from Amazon X-Ray — 1 operation(s) for putencryptionconfig.
+- [Amazon X-Ray PutResourcePolicy API](https://apis.io/apis/amazon-xray/amazon-xray-putresourcepolicy-api/) — The PutResourcePolicy API from Amazon X-Ray — 1 operation(s) for putresourcepolicy.
+- [Amazon X-Ray Sampling API](https://apis.io/apis/amazon-xray/amazon-xray-sampling-api/) — The Sampling API from Amazon X-Ray — 1 operation(s) for sampling.
+- [Amazon X-Ray SamplingStatisticSummaries API](https://apis.io/apis/amazon-xray/amazon-xray-samplingstatisticsummaries-api/) — The SamplingStatisticSummaries API from Amazon X-Ray — 1 operation(s) for samplingstatisticsummaries.
+- [Amazon X-Ray SamplingTargets API](https://apis.io/apis/amazon-xray/amazon-xray-samplingtargets-api/) — The SamplingTargets API from Amazon X-Ray — 1 operation(s) for samplingtargets.
+- [Amazon X-Ray Service Graph API](https://apis.io/apis/amazon-xray/amazon-xray-service-graph-api/) — The Service Graph API from Amazon X-Ray — 1 operation(s) for service graph.
+- [Amazon X-Ray TelemetryRecords API](https://apis.io/apis/amazon-xray/amazon-xray-telemetryrecords-api/) — The TelemetryRecords API from Amazon X-Ray — 1 operation(s) for telemetryrecords.
+- [Amazon X-Ray TimeSeriesServiceStatistics API](https://apis.io/apis/amazon-xray/amazon-xray-timeseriesservicestatistics-api/) — The TimeSeriesServiceStatistics API from Amazon X-Ray — 1 operation(s) for timeseriesservicestatistics.
+- [Amazon X-Ray TraceGraph API](https://apis.io/apis/amazon-xray/amazon-xray-tracegraph-api/) — The TraceGraph API from Amazon X-Ray — 1 operation(s) for tracegraph.
+- [Amazon X-Ray Traces API](https://apis.io/apis/amazon-xray/amazon-xray-traces-api/) — The Traces API from Amazon X-Ray — 2 operation(s) for traces.
+- [Amazon X-Ray TraceSegments API](https://apis.io/apis/amazon-xray/amazon-xray-tracesegments-api/) — The TraceSegments API from Amazon X-Ray — 1 operation(s) for tracesegments.
+- [Amazon X-Ray TraceSummaries API](https://apis.io/apis/amazon-xray/amazon-xray-tracesummaries-api/) — The TraceSummaries API from Amazon X-Ray — 1 operation(s) for tracesummaries.
+- [Amazon X-Ray UpdateSamplingRule API](https://apis.io/apis/amazon-xray/amazon-xray-updatesamplingrule-api/) — The UpdateSamplingRule API from Amazon X-Ray — 1 operation(s) for updatesamplingrule.
+- [Amazon X-Ray Delete Group API](https://apis.io/apis/amazon-xray/amazon-xray-delete-group-api/) — The Delete Group API from Amazon X-Ray — 1 operation(s) for delete group.
+- [Amazon X-Ray Get Group API](https://apis.io/apis/amazon-xray/amazon-xray-get-group-api/) — The Get Group API from Amazon X-Ray — 1 operation(s) for get group.
+- [Amazon X-Ray List Tags For Resource API](https://apis.io/apis/amazon-xray/amazon-xray-list-tags-for-resource-api/) — The List Tags For Resource API from Amazon X-Ray — 1 operation(s) for list tags for resource.
+- [Amazon X-Ray Tag Resource API](https://apis.io/apis/amazon-xray/amazon-xray-tag-resource-api/) — The Tag Resource API from Amazon X-Ray — 1 operation(s) for tag resource.
+- [Amazon X-Ray Untag Resource API](https://apis.io/apis/amazon-xray/amazon-xray-untag-resource-api/) — The Untag Resource API from Amazon X-Ray — 1 operation(s) for untag resource.
+- [Amazon X-Ray Update Group API](https://apis.io/apis/amazon-xray/amazon-xray-update-group-api/) — The Update Group API from Amazon X-Ray — 1 operation(s) for update group.
+- [Amazon X-Ray Xray Operations API](https://apis.io/apis/amazon-xray/amazon-xray-operations-api/) — The Xray Operations API from Amazon X-Ray — 8 operation(s) for xray operations.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Amazon X-Ray REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-RESTful API for AWS X-Ray distributed tracing operations including trace retrieval, service map generation, sampling rule management, group management, and insights analysis for application performance monitoring. 30 operations for traces, service graphs, sampling, groups, and insights.
+- [Amazon Xray Agentic Access](https://apis.io/agentic-access/amazon-xray/amazon-xray-agentic-access/)
 
-- **Human URL:** [https://aws.amazon.com/xray/](https://aws.amazon.com/xray/)
-- **Base URL:** `https://xray.amazonaws.com`
+#### JSON Schema (233)
 
-#### Tags
+The data models the API reads and writes.
 
-- AWS
-- Distributed Tracing
-- Observability
-- Tracing
+- [AWS X-Ray Trace](https://apis.io/schemas/amazon-xray/amazon-xray-trace/)
+- [Alias](https://apis.io/schemas/amazon-xray/xray-alias/)
+- [AliasList](https://apis.io/schemas/amazon-xray/xray-alias-list/)
+- [AliasNames](https://apis.io/schemas/amazon-xray/xray-alias-names/)
+- [AmazonResourceName](https://apis.io/schemas/amazon-xray/xray-amazon-resource-name/)
+- [AnnotationKey](https://apis.io/schemas/amazon-xray/xray-annotation-key/)
+- [AnnotationValue](https://apis.io/schemas/amazon-xray/xray-annotation-value/)
+- [Annotations](https://apis.io/schemas/amazon-xray/xray-annotations/)
+- [AnomalousService](https://apis.io/schemas/amazon-xray/xray-anomalous-service/)
+- [AnomalousServiceList](https://apis.io/schemas/amazon-xray/xray-anomalous-service-list/)
+- [AttributeKey](https://apis.io/schemas/amazon-xray/xray-attribute-key/)
+- [AttributeMap](https://apis.io/schemas/amazon-xray/xray-attribute-map/)
+- [AttributeValue](https://apis.io/schemas/amazon-xray/xray-attribute-value/)
+- [AvailabilityZoneDetail](https://apis.io/schemas/amazon-xray/xray-availability-zone-detail/)
+- [BackendConnectionErrors](https://apis.io/schemas/amazon-xray/xray-backend-connection-errors/)
+- [BatchGetTracesRequest](https://apis.io/schemas/amazon-xray/xray-batch-get-traces-request/)
+- [BatchGetTracesResult](https://apis.io/schemas/amazon-xray/xray-batch-get-traces-result/)
+- [Boolean](https://apis.io/schemas/amazon-xray/xray-boolean/)
+- [BorrowCount](https://apis.io/schemas/amazon-xray/xray-borrow-count/)
+- [ClientID](https://apis.io/schemas/amazon-xray/xray-client-id/)
+- [CreateGroupRequest](https://apis.io/schemas/amazon-xray/xray-create-group-request/)
+- [CreateGroupResult](https://apis.io/schemas/amazon-xray/xray-create-group-result/)
+- [CreateSamplingRuleRequest](https://apis.io/schemas/amazon-xray/xray-create-sampling-rule-request/)
+- [CreateSamplingRuleResult](https://apis.io/schemas/amazon-xray/xray-create-sampling-rule-result/)
+- [DeleteGroupRequest](https://apis.io/schemas/amazon-xray/xray-delete-group-request/)
+- …and 208 more published on APIs.io
 
-#### Properties
+#### JSON Structure (232)
 
-- [Documentation](https://docs.aws.amazon.com/xray/latest/api/)
-- [OpenAPI](openapi/amazon-xray-openapi-original.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/xray-trace-summary-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/amazon-xray-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Pricing](https://aws.amazon.com/xray/pricing/)
-- [Getting Started](https://aws.amazon.com/xray/getting-started/)
-- [Authentication](https://docs.aws.amazon.com/xray/latest/api/CommonParameters.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [Status Page](https://status.aws.amazon.com/)
-- [F A Q](https://aws.amazon.com/xray/faqs/)
-- [API Reference](https://docs.aws.amazon.com/xray/latest/api/Welcome.html)
-- [Code Examples](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-sample.html)
-- [Security](https://docs.aws.amazon.com/xray/latest/devguide/security.html)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Xray Alias List Structure](https://apis.io/json-structure/amazon-xray/xray-alias-list-structure/)
+- [Xray Alias Names Structure](https://apis.io/json-structure/amazon-xray/xray-alias-names-structure/)
+- [Xray Alias Structure](https://apis.io/json-structure/amazon-xray/xray-alias-structure/)
+- [Xray Amazon Resource Name Structure](https://apis.io/json-structure/amazon-xray/xray-amazon-resource-name-structure/)
+- [Xray Annotation Key Structure](https://apis.io/json-structure/amazon-xray/xray-annotation-key-structure/)
+- [Xray Annotation Value Structure](https://apis.io/json-structure/amazon-xray/xray-annotation-value-structure/)
+- [Xray Annotations Structure](https://apis.io/json-structure/amazon-xray/xray-annotations-structure/)
+- [Xray Anomalous Service List Structure](https://apis.io/json-structure/amazon-xray/xray-anomalous-service-list-structure/)
+- [Xray Anomalous Service Structure](https://apis.io/json-structure/amazon-xray/xray-anomalous-service-structure/)
+- [Xray Attribute Key Structure](https://apis.io/json-structure/amazon-xray/xray-attribute-key-structure/)
+- [Xray Attribute Map Structure](https://apis.io/json-structure/amazon-xray/xray-attribute-map-structure/)
+- [Xray Attribute Value Structure](https://apis.io/json-structure/amazon-xray/xray-attribute-value-structure/)
+- [Xray Availability Zone Detail Structure](https://apis.io/json-structure/amazon-xray/xray-availability-zone-detail-structure/)
+- [Xray Backend Connection Errors Structure](https://apis.io/json-structure/amazon-xray/xray-backend-connection-errors-structure/)
+- [Xray Batch Get Traces Request Structure](https://apis.io/json-structure/amazon-xray/xray-batch-get-traces-request-structure/)
+- [Xray Batch Get Traces Result Structure](https://apis.io/json-structure/amazon-xray/xray-batch-get-traces-result-structure/)
+- [Xray Boolean Structure](https://apis.io/json-structure/amazon-xray/xray-boolean-structure/)
+- [Xray Borrow Count Structure](https://apis.io/json-structure/amazon-xray/xray-borrow-count-structure/)
+- [Xray Client Id Structure](https://apis.io/json-structure/amazon-xray/xray-client-id-structure/)
+- [Xray Create Group Request Structure](https://apis.io/json-structure/amazon-xray/xray-create-group-request-structure/)
+- [Xray Create Group Result Structure](https://apis.io/json-structure/amazon-xray/xray-create-group-result-structure/)
+- [Xray Create Sampling Rule Request Structure](https://apis.io/json-structure/amazon-xray/xray-create-sampling-rule-request-structure/)
+- [Xray Create Sampling Rule Result Structure](https://apis.io/json-structure/amazon-xray/xray-create-sampling-rule-result-structure/)
+- [Xray Delete Group Request Structure](https://apis.io/json-structure/amazon-xray/xray-delete-group-request-structure/)
+- [Xray Delete Group Result Structure](https://apis.io/json-structure/amazon-xray/xray-delete-group-result-structure/)
+- …and 207 more published on APIs.io
 
-- [Portal](https://aws.amazon.com/)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Xray Context](https://apis.io/jsonld/amazon-xray/amazon-xray-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Xray Vocabulary](https://apis.io/vocabularies/amazon-xray/amazon-xray-vocabulary/)
+
+#### Examples (109)
+
+Example requests and responses.
+
+- [Xray Alias Example](https://apis.io/examples/amazon-xray/xray-alias-example/)
+- [Xray Annotation Value Example](https://apis.io/examples/amazon-xray/xray-annotation-value-example/)
+- [Xray Anomalous Service Example](https://apis.io/examples/amazon-xray/xray-anomalous-service-example/)
+- [Xray Availability Zone Detail Example](https://apis.io/examples/amazon-xray/xray-availability-zone-detail-example/)
+- [Xray Backend Connection Errors Example](https://apis.io/examples/amazon-xray/xray-backend-connection-errors-example/)
+- [Xray Batch Get Traces Request Example](https://apis.io/examples/amazon-xray/xray-batch-get-traces-request-example/)
+- [Xray Batch Get Traces Result Example](https://apis.io/examples/amazon-xray/xray-batch-get-traces-result-example/)
+- [Xray Create Group Request Example](https://apis.io/examples/amazon-xray/xray-create-group-request-example/)
+- [Xray Create Group Result Example](https://apis.io/examples/amazon-xray/xray-create-group-result-example/)
+- [Xray Create Sampling Rule Request Example](https://apis.io/examples/amazon-xray/xray-create-sampling-rule-request-example/)
+- [Xray Create Sampling Rule Result Example](https://apis.io/examples/amazon-xray/xray-create-sampling-rule-result-example/)
+- [Xray Delete Group Request Example](https://apis.io/examples/amazon-xray/xray-delete-group-request-example/)
+- [Xray Delete Resource Policy Request Example](https://apis.io/examples/amazon-xray/xray-delete-resource-policy-request-example/)
+- [Xray Delete Sampling Rule Request Example](https://apis.io/examples/amazon-xray/xray-delete-sampling-rule-request-example/)
+- [Xray Delete Sampling Rule Result Example](https://apis.io/examples/amazon-xray/xray-delete-sampling-rule-result-example/)
+- [Xray Edge Example](https://apis.io/examples/amazon-xray/xray-edge-example/)
+- [Xray Edge Statistics Example](https://apis.io/examples/amazon-xray/xray-edge-statistics-example/)
+- [Xray Encryption Config Example](https://apis.io/examples/amazon-xray/xray-encryption-config-example/)
+- [Xray Error Root Cause Entity Example](https://apis.io/examples/amazon-xray/xray-error-root-cause-entity-example/)
+- [Xray Error Root Cause Example](https://apis.io/examples/amazon-xray/xray-error-root-cause-example/)
+- [Xray Error Root Cause Service Example](https://apis.io/examples/amazon-xray/xray-error-root-cause-service-example/)
+- [Xray Error Statistics Example](https://apis.io/examples/amazon-xray/xray-error-statistics-example/)
+- [Xray Fault Root Cause Entity Example](https://apis.io/examples/amazon-xray/xray-fault-root-cause-entity-example/)
+- [Xray Fault Root Cause Example](https://apis.io/examples/amazon-xray/xray-fault-root-cause-example/)
+- [Xray Fault Root Cause Service Example](https://apis.io/examples/amazon-xray/xray-fault-root-cause-service-example/)
+- …and 84 more published on APIs.io
+
+#### Collections (65)
+
+Postman and Open Collection request collections.
+
+- [Amazon X-Ray API](https://apis.io/collections/amazon-xray/open-amazon-xray/)
+- [AWS X-Ray CreateGroup API](https://apis.io/collections/amazon-xray/open-amazon-xray-creategroup-api/)
+- [AWS X-Ray CreateGroup CreateSamplingRule API](https://apis.io/collections/amazon-xray/open-amazon-xray-createsamplingrule-api/)
+- [AWS X-Ray CreateGroup DeleteGroup API](https://apis.io/collections/amazon-xray/open-amazon-xray-deletegroup-api/)
+- [AWS X-Ray CreateGroup DeleteResourcePolicy API](https://apis.io/collections/amazon-xray/open-amazon-xray-deleteresourcepolicy-api/)
+- [AWS X-Ray CreateGroup DeleteSamplingRule API](https://apis.io/collections/amazon-xray/open-amazon-xray-deletesamplingrule-api/)
+- [AWS X-Ray CreateGroup EncryptionConfig API](https://apis.io/collections/amazon-xray/open-amazon-xray-encryptionconfig-api/)
+- [AWS X-Ray CreateGroup GetGroup API](https://apis.io/collections/amazon-xray/open-amazon-xray-getgroup-api/)
+- [AWS X-Ray CreateGroup GetSamplingRules API](https://apis.io/collections/amazon-xray/open-amazon-xray-getsamplingrules-api/)
+- [AWS X-Ray CreateGroup Groups API](https://apis.io/collections/amazon-xray/open-amazon-xray-groups-api/)
+- [AWS X-Ray CreateGroup Insight API](https://apis.io/collections/amazon-xray/open-amazon-xray-insight-api/)
+- [AWS X-Ray CreateGroup InsightEvents API](https://apis.io/collections/amazon-xray/open-amazon-xray-insightevents-api/)
+- [AWS X-Ray CreateGroup InsightImpactGraph API](https://apis.io/collections/amazon-xray/open-amazon-xray-insightimpactgraph-api/)
+- [AWS X-Ray CreateGroup InsightSummaries API](https://apis.io/collections/amazon-xray/open-amazon-xray-insightsummaries-api/)
+- [AWS X-Ray CreateGroup ListResourcePolicies API](https://apis.io/collections/amazon-xray/open-amazon-xray-listresourcepolicies-api/)
+- [AWS X-Ray CreateGroup ListTagsForResource API](https://apis.io/collections/amazon-xray/open-amazon-xray-listtagsforresource-api/)
+- [AWS X-Ray CreateGroup PutEncryptionConfig API](https://apis.io/collections/amazon-xray/open-amazon-xray-putencryptionconfig-api/)
+- [AWS X-Ray CreateGroup PutResourcePolicy API](https://apis.io/collections/amazon-xray/open-amazon-xray-putresourcepolicy-api/)
+- [AWS X-Ray CreateGroup Sampling API](https://apis.io/collections/amazon-xray/open-amazon-xray-sampling-api/)
+- [AWS X-Ray CreateGroup SamplingStatisticSummaries API](https://apis.io/collections/amazon-xray/open-amazon-xray-samplingstatisticsummaries-api/)
+- [AWS X-Ray CreateGroup SamplingTargets API](https://apis.io/collections/amazon-xray/open-amazon-xray-samplingtargets-api/)
+- [AWS X-Ray CreateGroup Service Graph API](https://apis.io/collections/amazon-xray/open-amazon-xray-service-graph-api/)
+- [AWS X-Ray CreateGroup ServiceGraph API](https://apis.io/collections/amazon-xray/open-amazon-xray-servicegraph-api/)
+- [AWS X-Ray CreateGroup TagResource API](https://apis.io/collections/amazon-xray/open-amazon-xray-tagresource-api/)
+- [AWS X-Ray CreateGroup TelemetryRecords API](https://apis.io/collections/amazon-xray/open-amazon-xray-telemetryrecords-api/)
+- …and 40 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon X-Ray — jsonschema rules](https://apis.io/rules/amazon-xray/amazon-xray-jsonschema-spectral-rules/)
+- [Amazon X-Ray API Rules](https://apis.io/rules/amazon-xray/amazon-xray-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Xray Authentication](https://apis.io/security/amazon-xray/amazon-xray-authentication/)
+- [Amazon Xray Domain Security](https://apis.io/security/amazon-xray/amazon-xray-domain-security/)
+- [Amazon Xray Trust Center](https://apis.io/security/amazon-xray/amazon-xray-trust-center/)
+- [Amazon Xray Vulnerability Disclosure](https://apis.io/security/amazon-xray/amazon-xray-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Xray Plans Pricing](https://apis.io/plans/amazon-xray/amazon-xray-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Xray Rate Limits](https://apis.io/rate-limits/amazon-xray/amazon-xray-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Xray Finops](https://apis.io/finops/amazon-xray/amazon-xray-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/xray/)
 - [Documentation](https://docs.aws.amazon.com/xray/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/premiumsupport/)
 - [Blog](https://aws.amazon.com/blogs/developer/)
-- [GitHub Organization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/xray/)
-- [Sign Up](https://signin.aws.amazon.com/signup?request_type=register)
-- [Login](https://aws.amazon.com/console/)
-- [Status Page](https://health.aws.amazon.com/health/status)
-- [Knowledge Center](https://repost.aws/knowledge-center)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/aws-xray)
-- [Contact](https://aws.amazon.com/contact-us/)
-- [Spectral Rules](rules/amazon-xray-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-xray-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 59.6** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 69.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 72.6 |
+| Access clarity | 53.9 |
+
+**Agent readiness 22.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-xray/](https://apis.io/providers/amazon-xray/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon X-Ray: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-xray/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
